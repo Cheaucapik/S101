@@ -4,20 +4,21 @@
 #include <ctype.h>
 #pragma warning (disable : 4996)
 
-enum{MAX_ETU = 100, MAX_ABS = 100, NOM_MAX = 30}; //pour éviter les nb magiques
+enum{MAX_ETU = 100, NOM_MAX = 30, MAX_ABS = 100}; //pour éviter les nb magiques
 
 unsigned int id_etu = 1, *pid_etu = &id_etu, id_abs = 1, *pid_absence = &id_abs; //permet l'incrémentation sans la modification des valeurs dans la fonction
 
 typedef struct{
     char nom_etu[NOM_MAX];
     unsigned int num_grp;
-    unsigned int id_etu;
+    unsigned int id_etu_tab;
+    unsigned int num_grp_copie; //utile dans le tri à bulles
 }Etudiant;
 
 typedef struct{
     unsigned int num_jour;
     char demi_journee[3];
-    unsigned int id_abs;
+    unsigned int id_abs_tab;
     unsigned int total_abs;
 }Absence;
 
@@ -28,14 +29,15 @@ Etudiant tab_etudiant[MAX_ETU]; //tableau pour contenir toutes les données de l
 int execution(char *commande); //exécute une commande par comparaison
 int aide(void); //Commande supplémentaire affichant toutes les commandes
 int inscription(char nom_etu[NOM_MAX], unsigned int num_grp); //C1 : inscription <nom etu> <nom grp> → inscription de l'étudiant
-int absence(int temp_id_etu, int num_jour, char demi_journee[3]); //C2 : absence : <id etu> <Num jour> <am/pm>
-int etudiants(int num_jour_courant, int num_jour);
+int absence(int temp_id_etu, int num_jour, char demi_journee[3]); //C2 : absence : <id etu> <Num jour> <am/pm> → enregistrer une absence
+int etudiants(int num_jour_courant); //C3 : etudiants <Num jour courant> → liste des etudiants
+int compareEtudiant(const void *a, const void *b); //qsort
 
 int main(int argc, char *argv[]){
     char commande[50];
 
     printf("Entrer votre commande :\n"); //entrée de la commande
-    while(1){ //tant que c'est vrai
+    while(1){ //boucle tant que l'on n'arrête pas le programme
         printf("> "); //esthétique
             if (argc > 1) {
                 strcpy(commande, argv[1]); //si l'entrée est nulle
@@ -66,20 +68,21 @@ int execution(char *commande){ //exécute une commande par comparaison
         absence(temp_id_etu, num_jour, demi_journee);
     }
     else if(sscanf(commande, "etudiants %u", &num_jour_courant) == 1){ //C1 : inscription
-        etudiants(num_jour_courant, num_jour);
+        etudiants(num_jour_courant);
     }
     else if (strcmp(commande, "help") == 0) { //Cpersonnalisée : help
         aide();
     }
     else{
         printf("Commande inconnue veuillez reessayer.\n");
+        return 0;
     }
     return 0;
 }
 
 int inscription(char nom_etu[NOM_MAX], unsigned int num_grp){ //C1 : inscription <nom etu> <nom grp> → inscription de l'étudiant
     for(int i = 1; i < id_etu; ++i){
-        if((strcmp(nom_etu, tab_etudiant[i].nom_etu) == 0) && (num_grp == tab_etudiant[i].num_grp)){ //évite les doublons
+        if((strcasecmp(nom_etu, tab_etudiant[i].nom_etu) == 0) && (num_grp == tab_etudiant[i].num_grp)){ //évite les doublons
             printf("Nom incorrect\n");
             return 0;
         }
@@ -87,7 +90,7 @@ int inscription(char nom_etu[NOM_MAX], unsigned int num_grp){ //C1 : inscription
     printf("Inscription enregistree (%u)\n", id_etu);
     strcpy(tab_etudiant[id_etu].nom_etu, nom_etu); //copie le nom de l'étudiant dans un tableau (meme position que tout le reste) 
     tab_etudiant[id_etu].num_grp = num_grp; //copie le groupe de l'étudiant dans un tableau (meme position que tout le reste)
-    tab_etudiant[id_etu].id_etu = id_etu; //copie l'id de l'etudiant dans un tableau pour les autres commandes
+    tab_etudiant[id_etu].id_etu_tab = id_etu; //copie l'id de l'etudiant dans un tableau pour les autres commandes
     ++id_etu; //incrémente l'id de l'étudiant à chaque fois
     return 0;
 }
@@ -95,7 +98,7 @@ int inscription(char nom_etu[NOM_MAX], unsigned int num_grp){ //C1 : inscription
 int absence(int temp_id_etu, int num_jour, char demi_journee[3]){ //C2 : absence : <id etu> <Num jour> <am/pm>
     int id_etu_exite = 0;
     for(int i = 1; i < id_etu; ++i){ //evite que l'on enregistre une absence à l'id d'un étudiant inexistant
-        if(temp_id_etu == tab_etudiant[i].id_etu){ 
+        if(temp_id_etu == tab_etudiant[i].id_etu_tab){ 
             id_etu_exite =  1;
             break;
         }
@@ -113,36 +116,39 @@ int absence(int temp_id_etu, int num_jour, char demi_journee[3]){ //C2 : absence
         return 0;
     }
     for(int i = 1; i < id_abs; ++i){
-        if(temp_id_etu == tab_absence[i].id_abs && num_jour == tab_absence[i].num_jour && strcmp(demi_journee, tab_absence[i].demi_journee) == 0){ //évite les doublons d'absence
+        if(temp_id_etu == tab_absence[i].id_abs_tab && num_jour == tab_absence[i].num_jour && strcmp(demi_journee, tab_absence[i].demi_journee) == 0){ //évite les doublons d'absence
             printf("Absence deja connue\n");
             return 0;
         }
     }
     printf("Absence enregistree [%u]\n", id_abs);
-    tab_absence[id_abs].id_abs = temp_id_etu; //copie l'id d'absence de l'étudiant dans un tableau (meme position que tout le reste)
+    tab_absence[id_abs].id_abs_tab = temp_id_etu; //copie l'id d'absence de l'étudiant dans un tableau (meme position que tout le reste)
     tab_absence[id_abs].num_jour = num_jour; //copie le num_jour de l'absence de l'étudiant dans un tableau (meme position que tout le reste)
     strcpy(tab_absence[id_abs].demi_journee, demi_journee); //copie la demi_journee d'absence de l'étudiant dans un tableau (meme position que tout le reste)
     ++id_abs; //incrémente l'id de l'absence
 
     for(int i = 1; i < id_etu; ++i){
-        if(temp_id_etu == tab_etudiant[i].id_etu){
-            tab_absence[temp_id_etu].total_abs++;
+        if(temp_id_etu == tab_etudiant[i].id_etu_tab){
+            tab_absence[temp_id_etu].total_abs++; //incrémente pour chaque étudiant le total d'absence
         }
     }
     return 0;
 }
 
-int etudiants(int num_jour_courant, int num_jour){
+int etudiants(int num_jour_courant){
+    qsort();
     if(num_jour_courant < 1){
         printf("Date incorrecte\n");
         return 0;
     }
-    if(num_jour <= num_jour_courant){
-        for(int i = 1; i < id_etu; ++i){
-            printf("(%u) %-30s %10u %5u\n", tab_etudiant[i].id_etu, tab_etudiant[i].nom_etu, tab_etudiant[i].num_grp, tab_absence[i].total_abs);
-        }
+    for(int i = 1; i < id_etu; ++i){
+        printf("(%u) %-30s %10u %5u\n", tab_etudiant[i].id_etu_tab, tab_etudiant[i].nom_etu, tab_etudiant[i].num_grp, tab_absence[i].total_abs);
     }
     return 0;
+}
+
+int compareEtudiant(const void *a, const void *b) {
+
 }
 
 int aide(void){ //Commande supplémentaire affichant toutes les commandes
