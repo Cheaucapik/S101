@@ -12,7 +12,6 @@ typedef struct{
     char nom_etu[NOM_MAX];
     unsigned int num_grp;
     unsigned int id_etu_tab;
-    unsigned int num_grp_copie; //utile dans le tri à bulles
 }Etudiant;
 
 typedef struct{
@@ -31,14 +30,13 @@ int aide(void); //Commande supplémentaire affichant toutes les commandes
 int inscription(char nom_etu[NOM_MAX], unsigned int num_grp); //C1 : inscription <nom etu> <nom grp> → inscription de l'étudiant
 int absence(int temp_id_etu, int num_jour, char demi_journee[3]); //C2 : absence : <id etu> <Num jour> <am/pm> → enregistrer une absence
 int etudiants(int num_jour_courant); //C3 : etudiants <Num jour courant> → liste des etudiants
-int compareEtudiant(const void *a, const void *b); //qsort
+int compare(const void *a, const void *b); //qsort
 
 int main(int argc, char *argv[]){
     char commande[50];
 
     printf("Entrer votre commande :\n"); //entrée de la commande
     while(1){ //boucle tant que l'on n'arrête pas le programme
-        printf("> "); //esthétique
             if (argc > 1) {
                 strcpy(commande, argv[1]); //si l'entrée est nulle
             } else {
@@ -73,8 +71,8 @@ int execution(char *commande){ //exécute une commande par comparaison
     else if (strcmp(commande, "help") == 0) { //Cpersonnalisée : help
         aide();
     }
-    else{
-        printf("Commande inconnue veuillez reessayer.\n");
+    else{ //Cpersonnalisée : help
+        printf("Commande inconnue, veuillez reessayer.\n");
         return 0;
     }
     return 0;
@@ -129,14 +127,14 @@ int absence(int temp_id_etu, int num_jour, char demi_journee[3]){ //C2 : absence
 
     for(int i = 1; i < id_etu; ++i){
         if(temp_id_etu == tab_etudiant[i].id_etu_tab){
-            tab_absence[temp_id_etu].total_abs++; //incrémente pour chaque étudiant le total d'absence
+            tab_absence[id_abs].total_abs++; //incrémente pour chaque étudiant le total d'absence
         }
     }
     return 0;
 }
 
 int etudiants(int num_jour_courant){
-    qsort();
+    qsort(tab_etudiant + 1, id_etu - 1, sizeof(Etudiant), compare); //trie le tableau d'étudiants
     if(num_jour_courant < 1){
         printf("Date incorrecte\n");
         return 0;
@@ -147,8 +145,16 @@ int etudiants(int num_jour_courant){
     return 0;
 }
 
-int compareEtudiant(const void *a, const void *b) {
-
+int compare(const void *a, const void *b){
+    Etudiant *etudiantA = (Etudiant *)a;
+    Etudiant *etudiantB = (Etudiant *)b;
+    if (etudiantA->num_grp > etudiantB->num_grp) { //si le num_grp de l'étudiant A < num_grp de l'étudiant
+        return 1; //num_grp de l'étudiant A est bien inférieur à celui de l'étudiant B
+    } else if (etudiantA->num_grp < etudiantB->num_grp) { //si le num_grp de l'étudiant A < num_grp de l'étudiant
+        return -1; //num_grp de l'étudiant A est bien inférieur à celui de l'étudiant B
+    } else{
+        return strcmp(etudiantA->nom_etu, etudiantB->nom_etu); //Ordre alphabétique si même grp
+    }
 }
 
 int aide(void){ //Commande supplémentaire affichant toutes les commandes
