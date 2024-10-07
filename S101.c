@@ -4,7 +4,7 @@
 #include <ctype.h>
 #pragma warning (disable : 4996)
 
-enum{MAX_ETU = 100, NOM_MAX = 30, MAX_ABS = 100}; //pour éviter les nb magiques
+enum{MAX_ETU = 100, NOM_MAX = 30, MAX_ABS = 100, MAX_NICOLAS = 100}; //pour éviter les nb magiques
 
 unsigned int id_etu = 1, *pid_etu = &id_etu, id_abs = 1, *pid_absence = &id_abs; //permet l'incrémentation sans la modification des valeurs dans la fonction
 
