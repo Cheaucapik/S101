@@ -1,0 +1,3 @@
+"C:\Program Files\JetBrains\CLion 2024.2.1\bin\cmake\win\x64\bin\cmake.exe" -E rm -f CMakeFiles\S101.dir/objects.a
+C:\PROGRA~1\JETBRA~1\CLION2~1.1\bin\mingw\bin\ar.exe qc CMakeFiles\S101.dir/objects.a @CMakeFiles\S101.dir\objects1.rsp
+C:\PROGRA~1\JETBRA~1\CLION2~1.1\bin\mingw\bin\gcc.exe -g -Wl,--whole-archive CMakeFiles\S101.dir/objects.a -Wl,--no-whole-archive -o S101.exe -Wl,--out-implib,libS101.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\S101.dir\linkLibs.rsp
