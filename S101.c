@@ -1,8 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include <ctype.h>
-#pragma warning (disable : 4996)
+#pragma warning (disable : 4996 6031)
 
 enum{MAX_ETU = 100, NOM_MAX = 30, MAX_ABS = 100}; //pour éviter les nb magiques
 
@@ -27,7 +26,7 @@ typedef struct{
 
 //fonctions prototypes
 int execution(char *commande, Donnees *donnees); //exécute une commande par comparaison
-int aide(void); //Commande supplémentaire affichant toutes les commandes
+void help(void); //Commande supplémentaire affichant toutes les commandes
 int inscription(char nom_etu[NOM_MAX], unsigned int num_grp, Donnees *donnees); //C1 : inscription <nom etu> <nom grp> → inscription de l'étudiant
 int absence(int temp_id_etu, int num_jour, char demi_journee[3], Donnees *donnees); //C2 : absence : <id etu> <Num jour> <am/pm> → enregistrer une absence
 int etudiants(int num_jour_courant, Donnees *donnees); //C3 : etudiants <Num jour courant> → liste des etudiants
@@ -71,7 +70,7 @@ int execution(char *commande, Donnees *donnees){ //exécute une commande par com
         etudiants(num_jour_courant, donnees);
     }
     else if (strcmp(commande, "help") == 0) { //Cpersonnalisée : help
-        aide();
+        help();
     }
     else{ //Cpersonnalisée : help
         printf("Commande inconnue, veuillez reessayer.\n");
@@ -159,7 +158,7 @@ int compare(const void *a, const void *b){
     }
 }
 
-int aide(void){ //Commande supplémentaire affichant toutes les commandes
+void help(void){ //Commande supplémentaire affichant toutes les commandes
     printf("****************************************************************************************************\n"); //esthétique
     printf("%60s", "Commandes disponibles\n");
     printf("****************************************************************************************************\n"); //esthétique
