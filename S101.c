@@ -15,7 +15,6 @@ typedef struct{
     unsigned int num_jour;
     char demi_journee[3];
     unsigned int id_abs_tab;
-    unsigned int total_abs;
 }Absence;
 
 typedef struct{
@@ -35,11 +34,10 @@ int compare(const void *a, const void *b); //qsort
 int main(int argc, char *argv[]){
     char commande[50];
     Donnees donnees = {1, 1}; //initialisation de id_etu et de id_abs
-
     printf("Entrer votre commande :\n"); //entrée de la commande
     while(1){ //boucle tant que l'on n'arrête pas le programme
             if (argc > 1) {
-                strcpy(commande, argv[1]); //si l'entrée est nulle
+                strcpy(commande, argv[1]); //si l'entrée n'est pas nulle
             } else {
                 fgets(commande, sizeof(commande), stdin);
                 commande[strcspn(commande, "\n")] = 0; //évite de prendre en compte la remise à la ligne
@@ -126,11 +124,6 @@ int absence(int temp_id_etu, int num_jour, char demi_journee[3], Donnees *donnee
     strcpy(donnees->tab_absence[donnees->id_abs].demi_journee, demi_journee); //copie la demi_journee d'absence de l'étudiant dans un tableau (meme position que tout le reste)
     ++donnees->id_abs; //incrémente l'id de l'absence
 
-    for(int i = 1; i < donnees->id_etu; ++i){
-        if(temp_id_etu == donnees->tab_etudiant[i].id_etu_tab){
-            donnees->tab_absence[donnees->id_abs].total_abs++; //incrémente pour chaque étudiant le total d'absence
-        }
-    }
     return 0;
 }
 
@@ -141,7 +134,14 @@ int etudiants(int num_jour_courant, Donnees *donnees){
         return 0;
     }
     for(int i = 1; i < donnees->id_etu; ++i){
-        printf("(%u) %-30s %10u %5u\n", donnees->tab_etudiant[i].id_etu_tab, donnees->tab_etudiant[i].nom_etu, donnees->tab_etudiant[i].num_grp, donnees->tab_absence[i].total_abs);
+        unsigned int total_abs = 0;
+        for(int j = 1; j < donnees->id_abs; ++j){
+            if(donnees->tab_absence[j].id_abs_tab == donnees->tab_etudiant[i].id_etu_tab &&
+               donnees->tab_absence[j].num_jour <= num_jour_courant){
+                total_abs++;
+            }
+        }
+        printf("(%u) %-30s %10u %5u\n", donnees->tab_etudiant[i].id_etu_tab, donnees->tab_etudiant[i].nom_etu, donnees->tab_etudiant[i].num_grp, total_abs);
     }
     return 0;
 }
