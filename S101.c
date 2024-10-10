@@ -1,20 +1,23 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <ctype.h>
 #pragma warning (disable : 4996 6031)
 
-enum{MAX_ETU = 100, NOM_MAX = 30, MAX_ABS = 100}; //pour éviter les nb magiques
+enum{MAX_ETU = 100, //il ne peut pas y avoir plus de 100 étudiants inscrits 
+    NOM_MAX = 30, //limites numériques du programme (un nom ne peut pas excéder 30 caractères)
+    MAX_ABS = 100};
 
 typedef struct{
-    char nom_etu[NOM_MAX];
-    unsigned int num_grp;
-    unsigned int id_etu_tab;
+    char nom_etu[NOM_MAX]; //Contient le nom d'étudiant
+    unsigned int num_grp; //Contient le numéro de groupe de chaque étudiant
+    unsigned int id_etu_tab; //Contient l'id étudiant de chaque étudiant
 }Etudiant; //données concernant l'étudiant
 
 typedef struct{
-    unsigned int num_jour;
-    char demi_journee[3];
-    unsigned int id_abs_tab;
+    unsigned int num_jour; //Contient le numéro de jour de chaque absence
+    char demi_journee[3]; //Contient la demi-journée de chaque absence
+    unsigned int id_abs_tab; //Contient l'id d'absence de chaque étudiant
 }Absence; //données concernant les absences d'un étudiant
 
 typedef struct{
@@ -40,7 +43,7 @@ int main(int argc, char *argv[]){
                 strcpy(commande, argv[1]); //si l'entrée n'est pas nulle
             } else {
                 fgets(commande, sizeof(commande), stdin);
-                commande[strcspn(commande, "\n")] = 0; //évite de prendre en compte la remise à la ligne du fgets
+                commande[strcspn(commande, "\n")] = 0; //évite de prendre en compte du retour à la ligne du fgets -> dans la commande dès qu'il y a un retour à la ligne il est remplacé par le caractère nul
                 execution(commande, &donnees); //execution de la commande
             }
     }
@@ -48,7 +51,7 @@ int main(int argc, char *argv[]){
 }
 
 int execution(char *commande, Donnees *donnees){ //exécute une commande par comparaison
-        char nom_etu[NOM_MAX];
+        char nom_etu[NOM_MAX]; //nom d'étudiant ne peut pas excéder NOM_MAX de caractères
         unsigned int num_grp;
         unsigned int num_jour = 1;
         char demi_journee[3];
@@ -93,14 +96,15 @@ int inscription(char nom_etu[NOM_MAX], unsigned int num_grp, Donnees *donnees){ 
 }
 
 int absence(int temp_id_etu, int num_jour, char demi_journee[3], Donnees *donnees){ //C2 : absence : <id etu> <Num jour> <am/pm>
-    int id_etu_exite = 0;
+
+    int id_etu_existe = 0; //on suppose que l'id_etu existe
     for(int i = 1; i < donnees->id_etu; ++i){ //evite que l'on enregistre une absence à l'id d'un étudiant inexistant
         if(temp_id_etu == donnees->tab_etudiant[i].id_etu_tab){ 
-            id_etu_exite =  1;
-            break;
+            id_etu_existe =  1; //l'id existe
+            break; //dès qu'on trouve un id existant on sort de la boucle
         }
     }
-    if(!id_etu_exite){
+    if(!id_etu_existe){ //si ce n'est pas égal à 1, mais bien à 0 comme on l'a initialisé -> l'identifiant n'existe pas
         printf("Identifiant incorrect\n");
         return 0;
     }
