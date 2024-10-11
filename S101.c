@@ -2,6 +2,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <ctype.h>
 #pragma warning (disable : 4996 6031)
 
 enum{MAX_ETU = 100, //il ne peut pas y avoir plus de 100 étudiants inscrits 
@@ -42,8 +43,34 @@ int compare(const void *a, const void *b); //qsort
 int justificatif(unsigned int tempIdAbs, unsigned int numJour, char justificatifTxt[MAX_JUSTIFICATIF], Donnees *donnees);
 int validations(Donnees *donnees);
 int validation(unsigned int tempIdAbs, char code[3], Donnees* donnees);
+bool etudiantExistance(Donnees *donnees, int tempIdEtu);
+bool absenceExistance(Donnees *donnees, int tempIdAbs);
+
+bool etudiantExistance(Donnees *donnees, int tempIdEtu){
+    for(int i = 1; i < donnees->idEtuInc; ++i){ //evite que l'on enregistre une absence à l'id d'un étudiant inexistant
+        if(tempIdEtu == donnees->tabEtudiant[i].idEtuTab){ 
+            return true; //l'id existe
+        }
+    }
+    return false; //l'id n'existe pas
+}
+
+bool absenceExistance(Donnees *donnees, int tempIdAbs){
+    for(int i = 1; i < donnees->idAbsInc; ++i){
+        if(tempIdAbs == donnees->tabAbsence[i].idAbsTab){
+        return true; //l'id existe
+        }
+    }
+    return false; //l'id n'existe pas
+}
 
 int inscription(char nomEtu[NOM_MAX], unsigned int numGrp, Donnees *donnees){ //C1 : inscription <nom etu> <nom grp> → inscription de l'étudiant
+    for(int i = 0; i < strlen(nomEtu); ++i){ //s'assure que le nomEtu comporte seulement des caractères de l'alphabet
+        if(!isalpha(nomEtu[i])){
+            printf("Nom incorrect\n"); //à enlever à la fin
+            return 0; 
+        }
+    }
     for(int i = 1; i < donnees->idEtuInc; ++i){
         if((strcasecmp(nomEtu, donnees->tabEtudiant[i].nomEtuTab) == 0) && (numGrp == donnees->tabEtudiant[i].numGrpTab)){ //évite les doublons
             printf("Nom incorrect\n");
@@ -60,15 +87,7 @@ int inscription(char nomEtu[NOM_MAX], unsigned int numGrp, Donnees *donnees){ //
 
 int absence(int tempIdEtu, int numJour, char demiJournee[3], Donnees *donnees){ //C2 : absence : <id etu> <Num jour> <am/pm>
 
-    bool idEtuExiste = false; //on suppose que l'idEtu n'existe pas
-    for(int i = 1; i < donnees->idEtuInc; ++i){ //evite que l'on enregistre une absence à l'id d'un étudiant inexistant
-        if(tempIdEtu == donnees->tabEtudiant[i].idEtuTab){ 
-            idEtuExiste =  true; //l'id existe
-            break; //dès qu'on trouve un id existant on sort de la boucle
-        }
-    }
-
-    if(!idEtuExiste){ //si ce n'est pas égal à 1, mais bien à 0 comme on l'a initialisé -> l'identifiant n'existe pas
+    if(!etudiantExistance(donnees, tempIdEtu)){ //si l'identifiant n'existe pas
         printf("Identifiant incorrect\n");
         return 0;
     }
@@ -131,13 +150,7 @@ int compare(const void *a, const void *b){
 
 int justificatif(unsigned int tempIdAbs, unsigned int numJour, char justificatifTxt[MAX_JUSTIFICATIF], Donnees *donnees){
 
-    bool idAbsenceExiste = false; //on suppose que l'id n'existe pas
-    for(int i = 1; i < donnees->idAbsInc; ++i){
-        if(tempIdAbs == donnees->tabAbsence[i].idAbsTab){
-            idAbsenceExiste = true;
-        }
-    }
-    if(!idAbsenceExiste){
+    if(!absenceExistance(donnees, tempIdAbs)){
         printf("Identifiant incorrect\n");
         return 0;
     }
@@ -228,7 +241,7 @@ int execution(char *commande, Donnees *donnees){ //exécute une commande par com
         help();
     }
     else{ //Cpersonnalisée : help
-        printf("Commande inconnue, veuillez reessayer.\n");
+        printf("Commande inconnue, veuillez reessayer.\n"); //à enlever à la fin
         return 0;
     }
     return 0;
