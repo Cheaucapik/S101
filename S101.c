@@ -22,7 +22,8 @@ typedef struct{
     unsigned int idAbsTab; //Contient l'id d'absence de chaque étudiant
     char justificatifTab[MAX_ETU]; //contient le justificatif d'absence de chaque étudiant ayant une absence
     unsigned int idAbsJustifieeTab; //contient l'id de l'absence si elle est justifiée
-    char AbsNonJustifeeTab; //contient les absences non justifées 
+    char absNonJustifeeTab; //contient les absences non justifées 
+    unsigned int idValidation; //contient l'id de validation de chaque justificatif
 }Absence; //données concernant les absences d'un étudiant
 
 typedef struct{
@@ -39,6 +40,8 @@ int absence(int tempIdEtu, int numJour, char demiJournee[3], Donnees *donnees); 
 int etudiants(int numJourCourant, Donnees *donnees); //C3 : etudiants <Num jour courant> → liste des etudiants
 int compare(const void *a, const void *b); //qsort
 int justificatif(unsigned int tempIdAbs, unsigned int numJour, char justificatifTxt[MAX_JUSTIFICATIF], Donnees *donnees);
+int validations(Donnees *donnees);
+int validation(unsigned int tempIdAbs, char code[3], Donnees* donnees);
 
 int inscription(char nomEtu[NOM_MAX], unsigned int numGrp, Donnees *donnees){ //C1 : inscription <nom etu> <nom grp> → inscription de l'étudiant
     for(int i = 1; i < donnees->idEtuInc; ++i){
@@ -139,7 +142,7 @@ int justificatif(unsigned int tempIdAbs, unsigned int numJour, char justificatif
         return 0;
     }
     if(numJour - 3 > donnees->tabAbsence[tempIdAbs].numJourTab){ //si le numJour dépasse 3 jours au numJour de l'absence, on enregistre le justificatif et on classe l'absence comme étant non justifiée
-        donnees->tabAbsence[tempIdAbs].AbsNonJustifeeTab = tempIdAbs;
+        donnees->tabAbsence[tempIdAbs].absNonJustifeeTab = tempIdAbs;
     }
     if(numJour < donnees->tabAbsence[tempIdAbs].numJourTab){
         printf("Date incorrecte\n");
@@ -153,6 +156,23 @@ int justificatif(unsigned int tempIdAbs, unsigned int numJour, char justificatif
     }
     printf("Justificatif enregistre\n");
     donnees->tabAbsence[tempIdAbs].idAbsJustifieeTab = tempIdAbs;
+    return 0;
+}
+
+int validations(Donnees *donnees){
+    for(int i = 1; i < donnees->idAbsInc; ++i){
+        if(donnees->tabAbsence[i].idAbsTab){
+
+        }
+    }
+}
+
+int validation(unsigned int tempIdAbs, char code[3], Donnees* donnees){
+    if((strcmp(code, "ok") !=  0) && (strcmp(code, "ko") != 0)){
+        printf("Code incorrect\n");
+        return 0;
+    }
+    printf("Validation enregistree");
     return 0;
 }
 
@@ -181,6 +201,7 @@ int execution(char *commande, Donnees *donnees){ //exécute une commande par com
         unsigned int numJourCourant = 1;
         unsigned int tempIdAbs; //utile dans la commande justificatif, désigne l'éntrée de l'utilisateur
         char justificatifTxt[MAX_JUSTIFICATIF];
+        char code[3];
 
     if(strcmp(commande, "exit") == 0){ //C0 : exit
         exit(0); //arrêt du programme
@@ -196,6 +217,12 @@ int execution(char *commande, Donnees *donnees){ //exécute une commande par com
     }
     else if(sscanf(commande, "justificatif %u %u %49s", &tempIdAbs, &numJour, justificatifTxt) == 3){ //C1 : inscription
         justificatif(tempIdAbs, numJour, justificatifTxt, donnees);
+    }
+    else if(strcmp(commande, "validations") == 0){
+        validations(donnees);
+    }
+    else if(sscanf(commande, "validation %u %2s", &tempIdAbs, code) == 2){ //C1 : inscription
+        validation(tempIdAbs, code, donnees);
     }
     else if (strcmp(commande, "help") == 0) { //Cpersonnalisée : help
         help();
