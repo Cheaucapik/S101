@@ -6,7 +6,9 @@
 
 enum{MAX_ETU = 100, //il ne peut pas y avoir plus de 100 étudiants inscrits 
     NOM_MAX = 30, //limites numériques du programme (un nom ne peut pas excéder 30 caractères)
-    MAX_ABS = 100};
+    MAX_ABS = 100,
+    MAX_JUSTIFICATIF = 50,
+    MAX_COMMANDE = 50};
 
 typedef struct{
     char nomEtuTab[NOM_MAX]; //Contient le nom d'étudiant
@@ -18,6 +20,7 @@ typedef struct{
     unsigned int numJourTab; //Contient le numéro de jour de chaque absence
     char demiJourneeTab[3]; //Contient la demi-journée de chaque absence
     unsigned int idAbsTab; //Contient l'id d'absence de chaque étudiant
+    char justificatifTab[MAX_ETU]; //contient le justificatif d'absence de chaque étudiant ayant une absence
 }Absence; //données concernant les absences d'un étudiant
 
 typedef struct{
@@ -142,6 +145,8 @@ int execution(char *commande, Donnees *donnees){ //exécute une commande par com
         char demiJournee[3];
         unsigned tempIdEtu; //utile dans la commande absence, désigne l'entrée de l'utilisateur
         unsigned int numJourCourant = 1;
+        unsigned int tempIdAbs; //utile dans la commande justificatif, désigne l'éntrée de l'utilisateur
+        char justificatif[MAX_JUSTIFICATIF];
 
     if(strcmp(commande, "exit") == 0){ //C0 : exit
         exit(0); //arrêt du programme
@@ -155,6 +160,9 @@ int execution(char *commande, Donnees *donnees){ //exécute une commande par com
     else if(sscanf(commande, "etudiants %u", &numJourCourant) == 1){ //C1 : inscription
         etudiants(numJourCourant, donnees);
     }
+    else if(sscanf(commande, "justificatif %u", &tempIdAbs, &numJour) == 1){ //C1 : inscription
+        etudiants(numJourCourant, donnees);
+    }
     else if (strcmp(commande, "help") == 0) { //Cpersonnalisée : help
         help();
     }
@@ -166,7 +174,7 @@ int execution(char *commande, Donnees *donnees){ //exécute une commande par com
 }
 
 int main(int argc, char *argv[]){
-    char commande[50];
+    char commande[MAX_COMMANDE];
     Donnees donnees = {1, 1}; //initialisation de idEtu et de idAbs
     printf("Entrer votre commande :\n"); //entrée de la commande
     while(1){ //boucle tant que l'on n'arrête pas le programme
