@@ -29,21 +29,21 @@ typedef struct{
 //fonctions prototypes
 int execution(char *commande, Donnees *donnees); //exécute une commande par comparaison
 void help(void); //Commande supplémentaire affichant toutes les commandes
-int inscription(char nomEtu[NOM_MAX], unsigned int num_grp, Donnees *donnees); //C1 : inscription <nom etu> <nom grp> → inscription de l'étudiant
+int inscription(char nomEtu[NOM_MAX], unsigned int numGrp, Donnees *donnees); //C1 : inscription <nom etu> <nom grp> → inscription de l'étudiant
 int absence(int tempIdEtu, int numJour, char demiJournee[3], Donnees *donnees); //C2 : absence : <id etu> <Num jour> <am/pm> → enregistrer une absence
 int etudiants(int numJourCourant, Donnees *donnees); //C3 : etudiants <Num jour courant> → liste des etudiants
 int compare(const void *a, const void *b); //qsort
 
-int inscription(char nom_etu[NOM_MAX], unsigned int num_grp, Donnees *donnees){ //C1 : inscription <nom etu> <nom grp> → inscription de l'étudiant
+int inscription(char nomEtu[NOM_MAX], unsigned int numGrp, Donnees *donnees){ //C1 : inscription <nom etu> <nom grp> → inscription de l'étudiant
     for(int i = 1; i < donnees->idEtuInc; ++i){
-        if((strcasecmp(nom_etu, donnees->tabEtudiant[i].nomEtuTab) == 0) && (num_grp == donnees->tabEtudiant[i].numGrpTab)){ //évite les doublons
+        if((strcasecmp(nomEtu, donnees->tabEtudiant[i].nomEtuTab) == 0) && (numGrp == donnees->tabEtudiant[i].numGrpTab)){ //évite les doublons
             printf("Nom incorrect\n");
             return 0;
         }
     }
     printf("Inscription enregistree (%u)\n", donnees->idEtuInc);
-    strcpy(donnees->tabEtudiant[donnees->idEtuInc].nomEtuTab, nom_etu); //le nom de l'étudiant est copié dans un tableau se trouvant à la même place que l'id de l'étudiant pour pouvoir attribuer ce nom à un étudiant(id)
-    donnees->tabEtudiant[donnees->idEtuInc].numGrpTab = num_grp; //le numéro de groupe est copié dans un tableau se trouvant à la même place que l'id de l'étudiant pour pouvoir attribuer ce numéro à un étudaint(id)
+    strcpy(donnees->tabEtudiant[donnees->idEtuInc].nomEtuTab, nomEtu); //le nom de l'étudiant est copié dans un tableau se trouvant à la même place que l'id de l'étudiant pour pouvoir attribuer ce nom à un étudiant(id)
+    donnees->tabEtudiant[donnees->idEtuInc].numGrpTab = numGrp; //le numéro de groupe est copié dans un tableau se trouvant à la même place que l'id de l'étudiant pour pouvoir attribuer ce numéro à un étudaint(id)
     donnees->tabEtudiant[donnees->idEtuInc].idEtuTab = donnees->idEtuInc; //l'id de l'étudiant est copié dans un tableau à la même place que son id. Ainsi on a l'id 1 qui se trouve à la position 1 du tableau, permettant une gestion plus facile des données
     ++donnees->idEtuInc; //incrémente l'id de l'étudiant à chaque nouvelle inscription
     return 0;
@@ -51,7 +51,7 @@ int inscription(char nom_etu[NOM_MAX], unsigned int num_grp, Donnees *donnees){ 
 
 int absence(int tempIdEtu, int numJour, char demiJournee[3], Donnees *donnees){ //C2 : absence : <id etu> <Num jour> <am/pm>
 
-    bool idEtuExiste = false; //on suppose que l'id_etu existe n'existe pas
+    bool idEtuExiste = false; //on suppose que l'idEtu n'existe pas
     for(int i = 1; i < donnees->idEtuInc; ++i){ //evite que l'on enregistre une absence à l'id d'un étudiant inexistant
         if(tempIdEtu == donnees->tabEtudiant[i].idEtuTab){ 
             idEtuExiste =  true; //l'id existe
@@ -62,11 +62,11 @@ int absence(int tempIdEtu, int numJour, char demiJournee[3], Donnees *donnees){ 
         printf("Identifiant incorrect\n");
         return 0;
     }
-    if(numJour > 40 || numJour < 1){ //1 <= num_jour <=40
+    if(numJour > 40 || numJour < 1){ //1 <= numJour <=40
         printf("Date incorrecte\n");
         return 0;
     }
-    if((strcmp(demiJournee, "am") != 0) && strcmp(demiJournee, "pm") != 0){ //demi_journee soit égale à pm soit à am
+    if((strcmp(demiJournee, "am") != 0) && strcmp(demiJournee, "pm") != 0){ //demiJournee soit égale à pm soit à am
         printf("Demi-journee incorrecte\n");
         return 0;
     }
@@ -77,7 +77,7 @@ int absence(int tempIdEtu, int numJour, char demiJournee[3], Donnees *donnees){ 
         }
     }
     printf("Absence enregistree [%u]\n", donnees->idAbsInc);
-    donnees->tabAbsence[donnees->idAbsInc].idAbsTab = tempIdEtu; //l'id de l'absence est copiée dans un tableau où elle dépend de l'id de l'étudiant pour pouvoir attribuer une absence à un étudiant, tout cela à la position id_abs
+    donnees->tabAbsence[donnees->idAbsInc].idAbsTab = tempIdEtu; //l'id de l'absence est copiée dans un tableau où elle dépend de l'id de l'étudiant pour pouvoir attribuer une absence à un étudiant, tout cela à la position idAbs
     donnees->tabAbsence[donnees->idAbsInc].numJourTab = numJour; //le numéro de jour est copié dans un tableau se trouvant à la même place que l'absence pour pouvoir attribuer ce numéro à l'absence
     strcpy(donnees->tabAbsence[donnees->idAbsInc].demiJourneeTab, demiJournee); //la demi-journée est copiée dans un tableau se trouvant à la même place que l'absence pour pouvoir attribuer cette demi-journée à l'absence
     ++donnees->idAbsInc; //incrémente l'id de l'absence à chaque nouvelle absence
@@ -85,9 +85,9 @@ int absence(int tempIdEtu, int numJour, char demiJournee[3], Donnees *donnees){ 
     return 0;
 }
 
-int etudiants(int num_jour_courant, Donnees *donnees){
+int etudiants(int numJourCourant, Donnees *donnees){
     qsort(donnees->tabEtudiant + 1, donnees->idEtuInc - 1, sizeof(Etudiant), compare); //trie le tableau d'étudiants dans un ordre croissant (par groupe), puis par ordre alphabétique
-    if(num_jour_courant < 1){
+    if(numJourCourant < 1){
         printf("Date incorrecte\n");
         return 0;
     }
@@ -96,7 +96,7 @@ int etudiants(int num_jour_courant, Donnees *donnees){
         unsigned int totalAbs = 0; //le total d'absences revient à 0 pour chaque nouveau étudiant
         for(int j = 1; j < donnees->idAbsInc; ++j){
             if(donnees->tabAbsence[j].idAbsTab == donnees->tabEtudiant[i].idEtuTab &&
-               donnees->tabAbsence[j].numJourTab <= num_jour_courant){
+               donnees->tabAbsence[j].numJourTab <= numJourCourant){
                 totalAbs++; //incrémente le total d'absence si on trouve une absence (pour l'étudiant) pour le num de jour courant supérieur ou égal au num de jour de l'absence
             }
         }
@@ -108,14 +108,14 @@ int etudiants(int num_jour_courant, Donnees *donnees){
 int compare(const void *a, const void *b){
     Etudiant *etudiantA = (Etudiant *)a;
     Etudiant *etudiantB = (Etudiant *)b;
-    if (etudiantA->numGrpTab < etudiantB->numGrpTab) { //si le num_grp de l'étudiant A < num_grp de l'étudiant
+    if (etudiantA->numGrpTab < etudiantB->numGrpTab) { //si le numGrp de l'étudiant A < numGrp de l'étudiant
         return -1;
-    } //num_grp de l'étudiant A est bien inférieur à celui de l'étudiant B
-    else if(etudiantA->numGrpTab > etudiantB->numGrpTab) { //si le num_grp de l'étudiant A < num_grp de l'étudiant
-        return 1; //num_grp de l'étudiant A est bien inférieur à celui de l'étudiant B
+    } //numGrp de l'étudiant A est bien inférieur à celui de l'étudiant B
+    else if(etudiantA->numGrpTab > etudiantB->numGrpTab) { //si le numGrp de l'étudiant A < numGrp de l'étudiant
+        return 1; //numGrp de l'étudiant A est bien inférieur à celui de l'étudiant B
     } 
     else{
-        return strcmp(etudiantA->nomEtuTab, etudiantB->nomEtuTab); //Ordre alphabétique (les num_grp de l'étudiant A et B sont identiques)
+        return strcmp(etudiantA->nomEtuTab, etudiantB->nomEtuTab); //Ordre alphabétique (les numGrp de l'étudiant A et B sont identiques)
     }
 }
 
@@ -136,7 +136,7 @@ void help(void){ //Commande supplémentaire affichant toutes les commandes
 }
 
 int execution(char *commande, Donnees *donnees){ //exécute une commande par comparaison
-        char nom_etu[NOM_MAX]; //nom d'étudiant ne peut pas excéder NOM_MAX de caractères
+        char nomEtu[NOM_MAX]; //nom d'étudiant ne peut pas excéder NOM_MAX de caractères
         unsigned int numGrp;
         unsigned int numJour = 1;
         char demiJournee[3];
@@ -146,8 +146,8 @@ int execution(char *commande, Donnees *donnees){ //exécute une commande par com
     if(strcmp(commande, "exit") == 0){ //C0 : exit
         exit(0); //arrêt du programme
     }
-    else if(sscanf(commande, "inscription %29s %u", nom_etu, &numGrp) == 2){ //C1 : inscription
-        inscription(nom_etu, numGrp, donnees);
+    else if(sscanf(commande, "inscription %29s %u", nomEtu, &numGrp) == 2){ //C1 : inscription
+        inscription(nomEtu, numGrp, donnees);
     }
     else if (sscanf(commande, "absence %u %u %2s", &tempIdEtu, &numJour, demiJournee) == 3) { //C2 : absence
         absence(tempIdEtu, numJour, demiJournee, donnees);
@@ -167,7 +167,7 @@ int execution(char *commande, Donnees *donnees){ //exécute une commande par com
 
 int main(int argc, char *argv[]){
     char commande[50];
-    Donnees donnees = {1, 1}; //initialisation de id_etu et de id_abs
+    Donnees donnees = {1, 1}; //initialisation de idEtu et de idAbs
     printf("Entrer votre commande :\n"); //entrée de la commande
     while(1){ //boucle tant que l'on n'arrête pas le programme
             if (argc > 1) {
