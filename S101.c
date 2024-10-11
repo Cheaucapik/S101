@@ -21,6 +21,8 @@ typedef struct{
     char demiJourneeTab[3]; //Contient la demi-journée de chaque absence
     unsigned int idAbsTab; //Contient l'id d'absence de chaque étudiant
     char justificatifTab[MAX_ETU]; //contient le justificatif d'absence de chaque étudiant ayant une absence
+    unsigned int idAbsJustifieeTab; //contient l'id de l'absence si elle est justifiée
+    char AbsNonJustifeeTab; //contient les absences non justifées 
 }Absence; //données concernant les absences d'un étudiant
 
 typedef struct{
@@ -36,6 +38,7 @@ int inscription(char nomEtu[NOM_MAX], unsigned int numGrp, Donnees *donnees); //
 int absence(int tempIdEtu, int numJour, char demiJournee[3], Donnees *donnees); //C2 : absence : <id etu> <Num jour> <am/pm> → enregistrer une absence
 int etudiants(int numJourCourant, Donnees *donnees); //C3 : etudiants <Num jour courant> → liste des etudiants
 int compare(const void *a, const void *b); //qsort
+int justificatif(unsigned int tempIdAbs, unsigned int numJour, char justificatifTxt[MAX_JUSTIFICATIF], Donnees *donnees);
 
 int inscription(char nomEtu[NOM_MAX], unsigned int numGrp, Donnees *donnees){ //C1 : inscription <nom etu> <nom grp> → inscription de l'étudiant
     for(int i = 1; i < donnees->idEtuInc; ++i){
@@ -61,6 +64,7 @@ int absence(int tempIdEtu, int numJour, char demiJournee[3], Donnees *donnees){ 
             break; //dès qu'on trouve un id existant on sort de la boucle
         }
     }
+
     if(!idEtuExiste){ //si ce n'est pas égal à 1, mais bien à 0 comme on l'a initialisé -> l'identifiant n'existe pas
         printf("Identifiant incorrect\n");
         return 0;
@@ -122,6 +126,36 @@ int compare(const void *a, const void *b){
     }
 }
 
+int justificatif(unsigned int tempIdAbs, unsigned int numJour, char justificatifTxt[MAX_JUSTIFICATIF], Donnees *donnees){
+
+    bool idAbsenceExiste = false; //on suppose que l'id n'existe pas
+    for(int i = 1; i < donnees->idAbsInc; ++i){
+        if(tempIdAbs == donnees->tabAbsence[i].idAbsTab){
+            idAbsenceExiste = true;
+        }
+    }
+    if(!idAbsenceExiste){
+        printf("Identifiant incorrect\n");
+        return 0;
+    }
+    if(numJour - 3 > donnees->tabAbsence[tempIdAbs].numJourTab){ //si le numJour dépasse 3 jours au numJour de l'absence, on enregistre le justificatif et on classe l'absence comme étant non justifiée
+        donnees->tabAbsence[tempIdAbs].AbsNonJustifeeTab = tempIdAbs;
+    }
+    if(numJour < donnees->tabAbsence[tempIdAbs].numJourTab){
+        printf("Date incorrecte\n");
+        return 0;
+    }
+    for(int i = 1; i < donnees->idAbsInc; ++i){
+        if(tempIdAbs == donnees->tabAbsence[i].idAbsJustifieeTab){
+            printf("Justificatif deja connu\n");
+            return 0;
+        }
+    }
+    printf("Justificatif enregistre\n");
+    donnees->tabAbsence[tempIdAbs].idAbsJustifieeTab = tempIdAbs;
+    return 0;
+}
+
 void help(void){ //Commande supplémentaire affichant toutes les commandes
     printf("****************************************************************************************************\n"); //esthétique
     printf("%60s", "Commandes disponibles\n");
@@ -146,7 +180,7 @@ int execution(char *commande, Donnees *donnees){ //exécute une commande par com
         unsigned tempIdEtu; //utile dans la commande absence, désigne l'entrée de l'utilisateur
         unsigned int numJourCourant = 1;
         unsigned int tempIdAbs; //utile dans la commande justificatif, désigne l'éntrée de l'utilisateur
-        char justificatif[MAX_JUSTIFICATIF];
+        char justificatifTxt[MAX_JUSTIFICATIF];
 
     if(strcmp(commande, "exit") == 0){ //C0 : exit
         exit(0); //arrêt du programme
@@ -160,8 +194,8 @@ int execution(char *commande, Donnees *donnees){ //exécute une commande par com
     else if(sscanf(commande, "etudiants %u", &numJourCourant) == 1){ //C1 : inscription
         etudiants(numJourCourant, donnees);
     }
-    else if(sscanf(commande, "justificatif %u", &tempIdAbs, &numJour) == 1){ //C1 : inscription
-        etudiants(numJourCourant, donnees);
+    else if(sscanf(commande, "justificatif %u %u %49s", &tempIdAbs, &numJour, justificatifTxt) == 3){ //C1 : inscription
+        justificatif(tempIdAbs, numJour, justificatifTxt, donnees);
     }
     else if (strcmp(commande, "help") == 0) { //Cpersonnalisée : help
         help();
