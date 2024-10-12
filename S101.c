@@ -45,6 +45,65 @@ int validations(Donnees *donnees);
 int validation(unsigned int tempIdAbs, char code[3], Donnees* donnees);
 bool etudiantExistance(Donnees *donnees, int tempIdEtu);
 bool absenceExistance(Donnees *donnees, int tempIdAbs);
+int alphaValide(const char* chaine);
+
+int execution(char *commande, Donnees *donnees){ //exécute une commande par comparaison
+        char nomEtu[NOM_MAX]; //nom d'étudiant ne peut pas excéder NOM_MAX de caractères
+        unsigned int numGrp;
+        unsigned int numJour = 1;
+        char demiJournee[3];
+        unsigned tempIdEtu; //utile dans la commande absence, désigne l'entrée de l'utilisateur
+        unsigned int numJourCourant = 1;
+        unsigned int tempIdAbs; //utile dans la commande justificatif, désigne l'éntrée de l'utilisateur
+        char justificatifTxt[MAX_JUSTIFICATIF];
+        char code[3];
+
+    if(strcmp(commande, "exit") == 0){ //C0 : exit
+        exit(0); //arrêt du programme
+    }
+    else if(sscanf(commande, "inscription %29s %u", nomEtu, &numGrp) == 2){ //C1 : inscription
+        inscription(nomEtu, numGrp, donnees);
+    }
+    else if (sscanf(commande, "absence %u %u %2s", &tempIdEtu, &numJour, demiJournee) == 3) { //C2 : absence
+        absence(tempIdEtu, numJour, demiJournee, donnees);
+    }
+    else if(sscanf(commande, "etudiants %u", &numJourCourant) == 1){ //C1 : inscription
+        etudiants(numJourCourant, donnees);
+    }
+    else if(sscanf(commande, "justificatif %u %u %49s", &tempIdAbs, &numJour, justificatifTxt) == 3){ //C1 : inscription
+        justificatif(tempIdAbs, numJour, justificatifTxt, donnees); 
+    }
+    else if(strcmp(commande, "validations") == 0){
+        validations(donnees);
+    }
+    else if(sscanf(commande, "validation %u %2s", &tempIdAbs, code) == 2){ //C1 : inscription
+        validation(tempIdAbs, code, donnees);
+    }
+    else if (strcmp(commande, "help") == 0) { //Cpersonnalisée : help
+        help();
+    }
+    else{ //Cpersonnalisée : help
+        printf("Commande inconnue, veuillez reessayer.\n"); //à enlever à la fin
+        return 0;
+    }
+    return 0;
+}
+
+int main(int argc, char *argv[]){
+    char commande[MAX_COMMANDE];
+    Donnees donnees = {1, 1}; //initialisation de idEtu et de idAbs
+    printf("Entrer votre commande :\n"); //entrée de la commande
+    while(1){ //boucle tant que l'on n'arrête pas le programme
+            if (argc > 1) { //si l'entrée n'est pas nulle
+                strcpy(commande, argv[1]);
+            } else {
+                fgets(commande, sizeof(commande), stdin);
+                commande[strcspn(commande, "\n")] = 0; //évite de prendre en compte du retour à la ligne du fgets -> dans la commande dès qu'il y a un retour à la ligne il est remplacé par le caractère nul
+                execution(commande, &donnees); //execution de la commande
+            }
+    }
+    return 0;
+}
 
 bool etudiantExistance(Donnees *donnees, int tempIdEtu){
     for(int i = 1; i < donnees->idEtuInc; ++i){ //evite que l'on enregistre une absence à l'id d'un étudiant inexistant
@@ -64,13 +123,22 @@ bool absenceExistance(Donnees *donnees, int tempIdAbs){
     return false; //l'id n'existe pas
 }
 
-int inscription(char nomEtu[NOM_MAX], unsigned int numGrp, Donnees *donnees){ //C1 : inscription <nom etu> <nom grp> → inscription de l'étudiant
-    for(int i = 0; i < strlen(nomEtu); ++i){ //s'assure que le nomEtu comporte seulement des caractères de l'alphabet
-        if(!isalpha(nomEtu[i])){
-            printf("Nom incorrect\n"); //à enlever à la fin
-            return 0; 
+int alphaValide(const char* chaine){
+    unsigned int longueur = strlen(chaine);
+    for(int i = 0; i < longueur; ++i){
+        if(!isalpha(chaine[i])){
+            return 0; //si la chaine contient un caractère autre qu'un chiffre
         }
     }
+    return 1; //la chaine contient que des chiffres
+}
+
+int inscription(char nomEtu[NOM_MAX], unsigned int numGrp, Donnees *donnees){ //C1 : inscription <nom etu> <nom grp> → inscription de l'étudiant
+
+    if(!alphaValide(nomEtu)){ //si le nom comporte des caractères autre que des lettres, on sort de la fonction
+        return 0;
+    }
+
     for(int i = 1; i < donnees->idEtuInc; ++i){
         if((strcasecmp(nomEtu, donnees->tabEtudiant[i].nomEtuTab) == 0) && (numGrp == donnees->tabEtudiant[i].numGrpTab)){ //évite les doublons
             printf("Nom incorrect\n");
@@ -95,7 +163,7 @@ int absence(int tempIdEtu, int numJour, char demiJournee[3], Donnees *donnees){ 
         printf("Date incorrecte\n");
         return 0;
     }
-    if((strcmp(demiJournee, "am") != 0) && strcmp(demiJournee, "pm") != 0){ //demiJournee soit égale à pm soit à am
+    if(((strcmp(demiJournee, "am") != 0) && (strcmp(demiJournee, "pm") != 0))){ //demiJournee soit égale à pm soit à am
         printf("Demi-journee incorrecte\n");
         return 0;
     }
@@ -106,7 +174,7 @@ int absence(int tempIdEtu, int numJour, char demiJournee[3], Donnees *donnees){ 
         }
     }
     printf("Absence enregistree [%u]\n", donnees->idAbsInc);
-    donnees->tabAbsence[donnees->idAbsInc].idAbsTab = tempIdEtu; //l'id de l'absence est copiée dans un tableau où elle dépend de l'id de l'étudiant pour pouvoir attribuer une absence à un étudiant, tout cela à la position idAbs
+    donnees->tabAbsence[donnees->idAbsInc].idAbsTab = donnees->idAbsInc; //l'id de l'absence est copiée dans un tableau à la même poistion que son id
     donnees->tabAbsence[donnees->idAbsInc].numJourTab = numJour; //le numéro de jour est copié dans un tableau se trouvant à la même place que l'absence pour pouvoir attribuer ce numéro à l'absence
     strcpy(donnees->tabAbsence[donnees->idAbsInc].demiJourneeTab, demiJournee); //la demi-journée est copiée dans un tableau se trouvant à la même place que l'absence pour pouvoir attribuer cette demi-journée à l'absence
     ++donnees->idAbsInc; //incrémente l'id de l'absence à chaque nouvelle absence
@@ -181,84 +249,30 @@ int validations(Donnees *donnees){
 }
 
 int validation(unsigned int tempIdAbs, char code[3], Donnees* donnees){
+    if(!absenceExistance(donnees, tempIdAbs)){
+        printf("Identifiant incorrect\n");
+        return 0;
+    }
     if((strcmp(code, "ok") !=  0) && (strcmp(code, "ko") != 0)){
         printf("Code incorrect\n");
         return 0;
     }
-    printf("Validation enregistree");
+    printf("Validation enregistree\n");
     return 0;
 }
 
 void help(void){ //Commande supplémentaire affichant toutes les commandes
-    printf("****************************************************************************************************\n"); //esthétique
-    printf("%60s", "Commandes disponibles\n");
-    printf("****************************************************************************************************\n"); //esthétique
-    printf("%-50s %50s", "help", "affiche la liste des commandes disponibles\n"); //Cpersonnalisée
-    printf("%-50s %50s", "exit", "arrete le programme\n"); //C0
-    printf("%-50s %50s", "inscription <nom etu> <nom grp>", "inscription de l'etudiant\n"); //C1
-    printf("%-50s %50s", "absence <id etu> <Num jour> <am/pm>", "enregistrer une absence\n"); //C2
-    printf("%-50s %50s", "etudiants <Num jour courant>", "liste des etudiants\n"); //C3
-    printf("%-50s %50s", "justificatif <Id absence>", "Depot de justificatif\n"); //C4
-    printf("%-50s %50s", "validations", "liste des absences a valider\n"); //C5
-    printf("%-50s %50s", "validation <id absence> <ok/ko>", "validation d'une justification d'absence\n"); //C6
-    printf("%-50s %50s", "etudiant <id etu> <Num jour courant>", "situation d'un etudiant\n"); //C7
-    printf("%-50s %50s", "defaillants <Num jour courant>", "liste des absences\n"); //C8
-}
-
-int execution(char *commande, Donnees *donnees){ //exécute une commande par comparaison
-        char nomEtu[NOM_MAX]; //nom d'étudiant ne peut pas excéder NOM_MAX de caractères
-        unsigned int numGrp;
-        unsigned int numJour = 1;
-        char demiJournee[3];
-        unsigned tempIdEtu; //utile dans la commande absence, désigne l'entrée de l'utilisateur
-        unsigned int numJourCourant = 1;
-        unsigned int tempIdAbs; //utile dans la commande justificatif, désigne l'éntrée de l'utilisateur
-        char justificatifTxt[MAX_JUSTIFICATIF];
-        char code[3];
-
-    if(strcmp(commande, "exit") == 0){ //C0 : exit
-        exit(0); //arrêt du programme
-    }
-    else if(sscanf(commande, "inscription %29s %u", nomEtu, &numGrp) == 2){ //C1 : inscription
-        inscription(nomEtu, numGrp, donnees);
-    }
-    else if (sscanf(commande, "absence %u %u %2s", &tempIdEtu, &numJour, demiJournee) == 3) { //C2 : absence
-        absence(tempIdEtu, numJour, demiJournee, donnees);
-    }
-    else if(sscanf(commande, "etudiants %u", &numJourCourant) == 1){ //C1 : inscription
-        etudiants(numJourCourant, donnees);
-    }
-    else if(sscanf(commande, "justificatif %u %u %49s", &tempIdAbs, &numJour, justificatifTxt) == 3){ //C1 : inscription
-        justificatif(tempIdAbs, numJour, justificatifTxt, donnees);
-    }
-    else if(strcmp(commande, "validations") == 0){
-        validations(donnees);
-    }
-    else if(sscanf(commande, "validation %u %2s", &tempIdAbs, code) == 2){ //C1 : inscription
-        validation(tempIdAbs, code, donnees);
-    }
-    else if (strcmp(commande, "help") == 0) { //Cpersonnalisée : help
-        help();
-    }
-    else{ //Cpersonnalisée : help
-        printf("Commande inconnue, veuillez reessayer.\n"); //à enlever à la fin
-        return 0;
-    }
-    return 0;
-}
-
-int main(int argc, char *argv[]){
-    char commande[MAX_COMMANDE];
-    Donnees donnees = {1, 1}; //initialisation de idEtu et de idAbs
-    printf("Entrer votre commande :\n"); //entrée de la commande
-    while(1){ //boucle tant que l'on n'arrête pas le programme
-            if (argc > 1) {
-                strcpy(commande, argv[1]); //si l'entrée n'est pas nulle
-            } else {
-                fgets(commande, sizeof(commande), stdin);
-                commande[strcspn(commande, "\n")] = 0; //évite de prendre en compte du retour à la ligne du fgets -> dans la commande dès qu'il y a un retour à la ligne il est remplacé par le caractère nul
-                execution(commande, &donnees); //execution de la commande
-            }
-    }
-    return 0;
+    printf("********************************************************************************************************************************************\n"); //esthétique
+    printf("%80s", "Commandes disponibles\n");
+    printf("********************************************************************************************************************************************\n"); //esthétique
+    printf("%-70s %70s", "help", "affiche la liste des commandes disponibles\n"); //Cpersonnalisée
+    printf("%-70s %70s", "exit", "arrete le programme\n"); //C0
+    printf("%-70s %70s", "inscription <nom etu> <nom grp>", "inscription de l'etudiant\n"); //C1
+    printf("%-70s %70s", "absence <id etu> <Num jour> <am/pm>", "enregistrer une absence\n"); //C2
+    printf("%-70s %70s", "etudiants <Num jour courant>", "liste des etudiants\n"); //C3
+    printf("%-70s %70s", "justificatif <Id absence> <Num jour> <justificatif>", "Depot de justificatif\n"); //C4
+    printf("%-70s %70s", "validations", "liste des absences a valider\n"); //C5
+    printf("%-70s %70s", "validation <id absence> <ok/ko>", "validation d'une justification d'absence\n"); //C6
+    printf("%-70s %70s", "etudiant <id etu> <Num jour courant>", "situation d'un etudiant\n"); //C7
+    printf("%-70s %70s", "defaillants <Num jour courant>", "liste des absences\n"); //C8
 }
