@@ -8,8 +8,8 @@
 enum{MAX_ETU = 100, //il ne peut pas y avoir plus de 100 étudiants inscrits 
     NOM_MAX = 30, //limites numériques du programme (un nom ne peut pas excéder 30 caractères)
     MAX_ABS = 100,
-    MAX_JUSTIFICATIF = 50,
-    MAX_COMMANDE = 50};
+    MAX_JUSTIFICATIF = 50, //Le texte de justification ne peux pas excéder 50 caractères
+    MAX_COMMANDE = 70}; //La commande justificatif fait un peu moins de 70 caractères si on utilise les 50 caractères possibles
 
 typedef struct{
     char nomEtuTab[NOM_MAX]; //Contient le nom d'étudiant
@@ -21,9 +21,10 @@ typedef struct{
     unsigned int numJourTab; //Contient le numéro de jour de chaque absence
     char demiJourneeTab[3]; //Contient la demi-journée de chaque absence
     unsigned int idAbsTab; //Contient l'id d'absence de chaque étudiant
-    char justificatifTab[MAX_ETU]; //contient le justificatif d'absence de chaque étudiant ayant une absence
+
+    char justificatifTxtTab[MAX_JUSTIFICATIF]; //contient le texte justificatif d'absence de chaque étudiant ayant justifié une absence
     unsigned int idAbsJustifieeTab; //contient l'id de l'absence si elle est justifiée
-    char idAbsNonJustifeeTab; //contient les absences non justifées 
+    unsigned int idAbsNonJustifeeTab; //contient les absences non justifées 
     unsigned int idValidation; //contient l'id de validation de chaque justificatif
 }Absence; //données concernant les absences d'un étudiant
 
@@ -39,7 +40,7 @@ void help(void); //Commande supplémentaire affichant toutes les commandes
 int inscription(char nomEtu[NOM_MAX], unsigned int numGrp, Donnees *donnees); //C1 : inscription <nom etu> <nom grp> → inscription de l'étudiant
 int absence(int tempIdEtu, int numJour, char demiJournee[3], Donnees *donnees); //C2 : absence : <id etu> <Num jour> <am/pm> → enregistrer une absence
 int etudiants(int numJourCourant, Donnees *donnees); //C3 : etudiants <Num jour courant> → liste des etudiants
-int compare(const void *a, const void *b); //qsort
+int compareEtu(const void *a, const void *b); //qsort
 int justificatif(unsigned int tempIdAbs, unsigned int numJour, char justificatifTxt[MAX_JUSTIFICATIF], Donnees *donnees);
 int validations(Donnees *donnees);
 int validation(unsigned int tempIdAbsJust, char code[3], Donnees* donnees);
@@ -69,16 +70,16 @@ int execution(char *commande, Donnees *donnees){ //exécute une commande par com
     else if (sscanf(commande, "absence %u %u %2s", &tempIdEtu, &numJour, demiJournee) == 3) { //C2 : absence
         absence(tempIdEtu, numJour, demiJournee, donnees);
     }
-    else if(sscanf(commande, "etudiants %u", &numJourCourant) == 1){ //C1 : inscription
+    else if(sscanf(commande, "etudiants %u", &numJourCourant) == 1){ //C3 : etudiants
         etudiants(numJourCourant, donnees);
     }
-    else if(sscanf(commande, "justificatif %u %u %49s", &tempIdAbs, &numJour, justificatifTxt) == 3){ //C1 : inscription
+    else if(sscanf(commande, "justificatif %u %u %[^\n]s", &tempIdAbs, &numJour, justificatifTxt) == 3){ //C4 : justificatif
         justificatif(tempIdAbs, numJour, justificatifTxt, donnees); 
     }
-    else if(strcmp(commande, "validations") == 0){
+    else if(strcmp(commande, "validations") == 0){ //C5 : validations
         validations(donnees);
     }
-    else if(sscanf(commande, "validation %u %2s", &tempIdAbsJust, code) == 2){ //C1 : inscription
+    else if(sscanf(commande, "validation %u %2s", &tempIdAbsJust, code) == 2){ //C6 : validation
         validation(tempIdAbsJust, code, donnees);
     }
     else if (strcmp(commande, "help") == 0) { //Cpersonnalisée : help
@@ -98,6 +99,7 @@ int main(int argc, char *argv[]){
     while(1){ //boucle tant que l'on n'arrête pas le programme
             if (argc > 1) { //si l'entrée n'est pas nulle
                 strcpy(commande, argv[1]);
+                return 0;
             } else {
                 fgets(commande, sizeof(commande), stdin);
                 commande[strcspn(commande, "\n")] = 0; //évite de prendre en compte du retour à la ligne du fgets -> dans la commande dès qu'il y a un retour à la ligne il est remplacé par le caractère nul
@@ -138,7 +140,7 @@ int alphaValide(const char* chaine){
     unsigned int longueur = strlen(chaine);
     for(int i = 0; i < longueur; ++i){
         if(!isalpha(chaine[i])){
-            return 0; //si la chaine contient un caractère autre qu'un chiffre
+            return 0; //si la chaine contient un caractère autre qu'une lettre
         }
     }
     return 1; //la chaine contient que des chiffres
@@ -185,7 +187,7 @@ int absence(int tempIdEtu, int numJour, char demiJournee[3], Donnees *donnees){ 
         }
     }
     printf("Absence enregistree [%u]\n", donnees->idAbsInc);
-    donnees->tabAbsence[donnees->idAbsInc].idAbsTab = donnees->idAbsInc; //l'id de l'absence est copiée dans un tableau à la même poistion que son id
+    donnees->tabAbsence[donnees->idAbsInc].idAbsTab = tempIdEtu; //l'id de l'absence est copiée dans un tableau à la même poistion que son id
     donnees->tabAbsence[donnees->idAbsInc].numJourTab = numJour; //le numéro de jour est copié dans un tableau se trouvant à la même place que l'absence pour pouvoir attribuer ce numéro à l'absence
     strcpy(donnees->tabAbsence[donnees->idAbsInc].demiJourneeTab, demiJournee); //la demi-journée est copiée dans un tableau se trouvant à la même place que l'absence pour pouvoir attribuer cette demi-journée à l'absence
     ++donnees->idAbsInc; //incrémente l'id de l'absence à chaque nouvelle absence
@@ -194,7 +196,7 @@ int absence(int tempIdEtu, int numJour, char demiJournee[3], Donnees *donnees){ 
 }
 
 int etudiants(int numJourCourant, Donnees *donnees){
-    qsort(donnees->tabEtudiant + 1, donnees->idEtuInc - 1, sizeof(Etudiant), compare); //trie le tableau d'étudiants dans un ordre croissant (par groupe), puis par ordre alphabétique
+    qsort(donnees->tabEtudiant + 1, donnees->idEtuInc - 1, sizeof(Etudiant), compareEtu); //trie le tableau d'étudiants dans un ordre croissant (par groupe), puis par ordre alphabétique
     if(numJourCourant < 1){
         printf("Date incorrecte\n");
         return 0;
@@ -208,12 +210,12 @@ int etudiants(int numJourCourant, Donnees *donnees){
                 totalAbs++; //incrémente le total d'absence si on trouve une absence (pour l'étudiant) pour le num de jour courant supérieur ou égal au num de jour de l'absence
             }
         }
-        printf("(%u) %-30s %10u %5u\n", donnees->tabEtudiant[i].idEtuTab, donnees->tabEtudiant[i].nomEtuTab, donnees->tabEtudiant[i].numGrpTab, totalAbs); //printf pour chaque étudiant, ligne par ligne
+        printf("(%u) %-30s %4u %4u\n", donnees->tabEtudiant[i].idEtuTab, donnees->tabEtudiant[i].nomEtuTab, donnees->tabEtudiant[i].numGrpTab, totalAbs); //printf pour chaque étudiant, ligne par ligne
     }
     return 0;
 }
 
-int compare(const void *a, const void *b){
+int compareEtu(const void *a, const void *b){
     Etudiant *etudiantA = (Etudiant *)a;
     Etudiant *etudiantB = (Etudiant *)b;
     if (etudiantA->numGrpTab < etudiantB->numGrpTab) { //si le numGrp de l'étudiant A < numGrp de l'étudiant
@@ -254,11 +256,7 @@ int justificatif(unsigned int tempIdAbs, unsigned int numJour, char justificatif
 }
 
 int validations(Donnees *donnees){
-    for(int i = 1; i < donnees->idAbsInc; ++i){
-        if(donnees->tabAbsence[i].idAbsTab){
-
-        }
-    }
+    printf("[%u] (%-4u) %-30s %u %u/%s (%s)", donnees->tabAbsence->idAbsTab, donnees->tabEtudiant->idEtuTab, donnees->tabEtudiant->nomEtuTab, donnees->tabEtudiant->numGrpTab, donnees->tabAbsence->numJourTab, donnees->tabAbsence->demiJourneeTab, donnees->tabAbsence->justificatifTxtTab);
 }
 
 int validation(unsigned int tempIdAbsJust, char code[3], Donnees* donnees){
@@ -277,7 +275,7 @@ int validation(unsigned int tempIdAbsJust, char code[3], Donnees* donnees){
         }
     }
     printf("Validation enregistree\n");
-    donnees->tabAbsence[tempIdAbsJust].idValidation == tempIdAbsJust;
+    donnees->tabAbsence[tempIdAbsJust].idValidation = tempIdAbsJust;
     return 0;
 }
 
