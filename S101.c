@@ -89,7 +89,7 @@ int execution(char *commande, Donnees *donnees){ //exécute une commande par com
         printf("Commande inconnue, veuillez reessayer.\n"); //à enlever à la fin
         return 0;
     }
-    return 0;
+    return 1;
 }
 
 int main(int argc, char *argv[]){
@@ -106,7 +106,7 @@ int main(int argc, char *argv[]){
                 execution(commande, &donnees); //execution de la commande
             }
     }
-    return 0;
+    return 1;
 }
 
 bool etudiantExistance(Donnees *donnees, int tempIdEtu){
@@ -163,7 +163,7 @@ int inscription(char nomEtu[NOM_MAX], unsigned int numGrp, Donnees *donnees){ //
     donnees->tabEtudiant[donnees->idEtuInc].numGrpTab = numGrp; //le numéro de groupe est copié dans un tableau se trouvant à la même place que l'id de l'étudiant pour pouvoir attribuer ce numéro à un étudaint(id)
     donnees->tabEtudiant[donnees->idEtuInc].idEtuTab = donnees->idEtuInc; //l'id de l'étudiant est copié dans un tableau à la même place que son id. Ainsi on a l'id 1 qui se trouve à la position 1 du tableau, permettant une gestion plus facile des données
     ++donnees->idEtuInc; //incrémente l'id de l'étudiant à chaque nouvelle inscription
-    return 0;
+    return 1;
 }
 
 int absence(int tempIdEtu, int numJour, char demiJournee[3], Donnees *donnees){ //C2 : absence : <id etu> <Num jour> <am/pm>
@@ -192,7 +192,7 @@ int absence(int tempIdEtu, int numJour, char demiJournee[3], Donnees *donnees){ 
     strcpy(donnees->tabAbsence[donnees->idAbsInc].demiJourneeTab, demiJournee); //la demi-journée est copiée dans un tableau se trouvant à la même place que l'absence pour pouvoir attribuer cette demi-journée à l'absence
     ++donnees->idAbsInc; //incrémente l'id de l'absence à chaque nouvelle absence
 
-    return 0;
+    return 1;
 }
 
 int etudiants(int numJourCourant, Donnees *donnees){
@@ -212,7 +212,7 @@ int etudiants(int numJourCourant, Donnees *donnees){
         }
         printf("(%u) %-30s %4u %4u\n", donnees->tabEtudiant[i].idEtuTab, donnees->tabEtudiant[i].nomEtuTab, donnees->tabEtudiant[i].numGrpTab, totalAbs); //printf pour chaque étudiant, ligne par ligne
     }
-    return 0;
+    return 1;
 }
 
 int compareEtu(const void *a, const void *b){
@@ -244,7 +244,7 @@ int justificatif(unsigned int tempIdAbs, unsigned int numJour, char justificatif
     if(numJour - 3 > donnees->tabAbsence[tempIdAbs].numJourTab){ //si le numJour dépasse 3 jours au numJour de l'absence, on enregistre le justificatif et on classe l'absence comme étant non justifiée
         donnees->tabAbsence[tempIdAbs].idAbsNonJustifeeTab = tempIdAbs;
         printf("Justificatif enregistre\n");
-        return 0;
+        return 1;
     }
     if(numJour < donnees->tabAbsence[tempIdAbs].numJourTab){
         printf("Date incorrecte\n");
@@ -252,11 +252,11 @@ int justificatif(unsigned int tempIdAbs, unsigned int numJour, char justificatif
     }
     printf("Justificatif enregistre\n");
     donnees->tabAbsence[tempIdAbs].idAbsJustifieeTab = tempIdAbs; //enregistre l'id de l'absence justifiée dans un tableau ayant le meme Id que son absence (on différencie celles non justifiées et celles non justifiées)
-    return 0;
+    return 1;
 }
 
 int validations(Donnees *donnees){
-    printf("[%u] (%-4u) %-30s %u %u/%s (%s)", donnees->tabAbsence->idAbsTab, donnees->tabEtudiant->idEtuTab, donnees->tabEtudiant->nomEtuTab, donnees->tabEtudiant->numGrpTab, donnees->tabAbsence->numJourTab, donnees->tabAbsence->demiJourneeTab, donnees->tabAbsence->justificatifTxtTab);
+    printf("[%u] (%-4u) %-30s %4u %3u/%3s (%s)", donnees->tabAbsence->idAbsTab, donnees->tabEtudiant->idEtuTab, donnees->tabEtudiant->nomEtuTab, donnees->tabEtudiant->numGrpTab, donnees->tabAbsence->numJourTab, donnees->tabAbsence->demiJourneeTab, donnees->tabAbsence->justificatifTxtTab);
 }
 
 int validation(unsigned int tempIdAbsJust, char code[3], Donnees* donnees){
@@ -276,7 +276,7 @@ int validation(unsigned int tempIdAbsJust, char code[3], Donnees* donnees){
     }
     printf("Validation enregistree\n");
     donnees->tabAbsence[tempIdAbsJust].idValidation = tempIdAbsJust;
-    return 0;
+    return 1;
 }
 
 void help(void){ //Commande supplémentaire affichant toutes les commandes
