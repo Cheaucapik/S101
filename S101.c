@@ -187,7 +187,7 @@ int absence(int tempIdEtu, int numJour, char demiJournee[3], Donnees *donnees){ 
         }
     }
     printf("Absence enregistree [%u]\n", donnees->idAbsInc);
-    donnees->tabAbsence[donnees->idAbsInc].idAbsTab = tempIdEtu; //l'id de l'absence est copiée dans un tableau à la même poistion que son id
+    donnees->tabAbsence[donnees->idAbsInc].idAbsTab = tempIdEtu;
     donnees->tabAbsence[donnees->idAbsInc].numJourTab = numJour; //le numéro de jour est copié dans un tableau se trouvant à la même place que l'absence pour pouvoir attribuer ce numéro à l'absence
     strcpy(donnees->tabAbsence[donnees->idAbsInc].demiJourneeTab, demiJournee); //la demi-journée est copiée dans un tableau se trouvant à la même place que l'absence pour pouvoir attribuer cette demi-journée à l'absence
     ++donnees->idAbsInc; //incrémente l'id de l'absence à chaque nouvelle absence
@@ -235,6 +235,12 @@ int justificatif(unsigned int tempIdAbs, unsigned int numJour, char justificatif
         printf("Identifiant incorrect\n");
         return 0;
     }
+    for(int i = 1; i < donnees->idAbsInc; ++i){
+        if(tempIdAbs == donnees->tabAbsence[i].idAbsJustifieeTab || tempIdAbs == donnees->tabAbsence[i].idAbsNonJustifeeTab){
+            printf("Justificatif deja connu\n");
+            return 0;
+        }
+    }
     if(numJour - 3 > donnees->tabAbsence[tempIdAbs].numJourTab){ //si le numJour dépasse 3 jours au numJour de l'absence, on enregistre le justificatif et on classe l'absence comme étant non justifiée
         donnees->tabAbsence[tempIdAbs].idAbsNonJustifeeTab = tempIdAbs;
         printf("Justificatif enregistre\n");
@@ -243,12 +249,6 @@ int justificatif(unsigned int tempIdAbs, unsigned int numJour, char justificatif
     if(numJour < donnees->tabAbsence[tempIdAbs].numJourTab){
         printf("Date incorrecte\n");
         return 0;
-    }
-    for(int i = 1; i < donnees->idAbsInc; ++i){
-        if(tempIdAbs == donnees->tabAbsence[i].idAbsJustifieeTab || tempIdAbs == donnees->tabAbsence[i].idAbsNonJustifeeTab){
-            printf("Justificatif deja connu\n");
-            return 0;
-        }
     }
     printf("Justificatif enregistre\n");
     donnees->tabAbsence[tempIdAbs].idAbsJustifieeTab = tempIdAbs; //enregistre l'id de l'absence justifiée dans un tableau ayant le meme Id que son absence (on différencie celles non justifiées et celles non justifiées)
