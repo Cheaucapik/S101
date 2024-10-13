@@ -47,7 +47,6 @@ int validation(unsigned int tempIdAbsJust, char code[3], Donnees* donnees);
 bool etudiantExistance(Donnees *donnees, int tempIdEtu);
 bool absenceExistance(Donnees *donnees, int tempIdAbs);
 bool absenceJustExistance(Donnees *donnees, int tempIdAbsJust);
-int alphaValide(const char* chaine);
 
 int execution(char *commande, Donnees *donnees){ //exécute une commande par comparaison
         char nomEtu[NOM_MAX]; //nom d'étudiant ne peut pas excéder NOM_MAX de caractères
@@ -136,21 +135,7 @@ bool absenceJustExistance(Donnees *donnees, int tempIdAbsJust){
     return false; //l'id n'existe pas
 }
 
-int alphaValide(const char* chaine){
-    unsigned int longueur = strlen(chaine);
-    for(int i = 0; i < longueur; ++i){
-        if(!isalpha(chaine[i])){
-            return 0; //si la chaine contient un caractère autre qu'une lettre
-        }
-    }
-    return 1; //la chaine contient que des chiffres
-}
-
 int inscription(char nomEtu[NOM_MAX], unsigned int numGrp, Donnees *donnees){ //C1 : inscription <nom etu> <nom grp> → inscription de l'étudiant
-
-    if(!alphaValide(nomEtu)){ //si le nom comporte des caractères autre que des lettres, on sort de la fonction
-        return 0;
-    }
 
     for(int i = 1; i < donnees->idEtuInc; ++i){
         if((strcasecmp(nomEtu, donnees->tabEtudiant[i].nomEtuTab) == 0) && (numGrp == donnees->tabEtudiant[i].numGrpTab)){ //évite les doublons
