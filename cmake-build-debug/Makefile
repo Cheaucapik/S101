@@ -115,43 +115,6 @@ depend:
 	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles\Makefile.cmake 1
 .PHONY : depend
 
-#=============================================================================
-# Target rules for targets named S101
-
-# Build rule for target.
-S101: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 S101
-.PHONY : S101
-
-# fast build rule for target.
-S101/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\S101.dir\build.make CMakeFiles/S101.dir/build
-.PHONY : S101/fast
-
-S101.obj: S101.c.obj
-.PHONY : S101.obj
-
-# target to build an object file
-S101.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\S101.dir\build.make CMakeFiles/S101.dir/S101.c.obj
-.PHONY : S101.c.obj
-
-S101.i: S101.c.i
-.PHONY : S101.i
-
-# target to preprocess a source file
-S101.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\S101.dir\build.make CMakeFiles/S101.dir/S101.c.i
-.PHONY : S101.c.i
-
-S101.s: S101.c.s
-.PHONY : S101.s
-
-# target to generate assembly for a file
-S101.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\S101.dir\build.make CMakeFiles/S101.dir/S101.c.s
-.PHONY : S101.c.s
-
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -160,10 +123,6 @@ help:
 	@echo ... depend
 	@echo ... edit_cache
 	@echo ... rebuild_cache
-	@echo ... S101
-	@echo ... S101.obj
-	@echo ... S101.i
-	@echo ... S101.s
 .PHONY : help
 
 
