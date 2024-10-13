@@ -23,7 +23,7 @@ typedef struct{
     unsigned int idAbsTab; //Contient l'id d'absence de chaque étudiant
     char justificatifTab[MAX_ETU]; //contient le justificatif d'absence de chaque étudiant ayant une absence
     unsigned int idAbsJustifieeTab; //contient l'id de l'absence si elle est justifiée
-    char absNonJustifeeTab; //contient les absences non justifées 
+    char idAbsNonJustifeeTab; //contient les absences non justifées 
     unsigned int idValidation; //contient l'id de validation de chaque justificatif
 }Absence; //données concernant les absences d'un étudiant
 
@@ -42,9 +42,10 @@ int etudiants(int numJourCourant, Donnees *donnees); //C3 : etudiants <Num jour 
 int compare(const void *a, const void *b); //qsort
 int justificatif(unsigned int tempIdAbs, unsigned int numJour, char justificatifTxt[MAX_JUSTIFICATIF], Donnees *donnees);
 int validations(Donnees *donnees);
-int validation(unsigned int tempIdAbs, char code[3], Donnees* donnees);
+int validation(unsigned int tempIdAbsJust, char code[3], Donnees* donnees);
 bool etudiantExistance(Donnees *donnees, int tempIdEtu);
 bool absenceExistance(Donnees *donnees, int tempIdAbs);
+bool absenceJustExistance(Donnees *donnees, int tempIdAbsJust);
 int alphaValide(const char* chaine);
 
 int execution(char *commande, Donnees *donnees){ //exécute une commande par comparaison
@@ -55,6 +56,7 @@ int execution(char *commande, Donnees *donnees){ //exécute une commande par com
         unsigned tempIdEtu; //utile dans la commande absence, désigne l'entrée de l'utilisateur
         unsigned int numJourCourant = 1;
         unsigned int tempIdAbs; //utile dans la commande justificatif, désigne l'éntrée de l'utilisateur
+        unsigned int tempIdAbsJust; //utilise dans la commande validation
         char justificatifTxt[MAX_JUSTIFICATIF];
         char code[3];
 
@@ -76,8 +78,8 @@ int execution(char *commande, Donnees *donnees){ //exécute une commande par com
     else if(strcmp(commande, "validations") == 0){
         validations(donnees);
     }
-    else if(sscanf(commande, "validation %u %2s", &tempIdAbs, code) == 2){ //C1 : inscription
-        validation(tempIdAbs, code, donnees);
+    else if(sscanf(commande, "validation %u %2s", &tempIdAbsJust, code) == 2){ //C1 : inscription
+        validation(tempIdAbsJust, code, donnees);
     }
     else if (strcmp(commande, "help") == 0) { //Cpersonnalisée : help
         help();
@@ -117,6 +119,15 @@ bool etudiantExistance(Donnees *donnees, int tempIdEtu){
 bool absenceExistance(Donnees *donnees, int tempIdAbs){
     for(int i = 1; i < donnees->idAbsInc; ++i){
         if(tempIdAbs == donnees->tabAbsence[i].idAbsTab){
+        return true; //l'id existe
+        }
+    }
+    return false; //l'id n'existe pas
+}
+
+bool absenceJustExistance(Donnees *donnees, int tempIdAbsJust){
+    for(int i = 1; i < donnees->idAbsInc; ++i){
+        if(tempIdAbsJust == donnees->tabAbsence[i].idAbsJustifieeTab){
         return true; //l'id existe
         }
     }
@@ -163,7 +174,7 @@ int absence(int tempIdEtu, int numJour, char demiJournee[3], Donnees *donnees){ 
         printf("Date incorrecte\n");
         return 0;
     }
-    if(((strcmp(demiJournee, "am") != 0) && (strcmp(demiJournee, "pm") != 0))){ //demiJournee soit égale à pm soit à am
+    if((strcmp(demiJournee, "am") != 0) && (strcmp(demiJournee, "pm") != 0)){ //demiJournee soit égale à pm soit à am
         printf("Demi-journee incorrecte\n");
         return 0;
     }
@@ -223,20 +234,22 @@ int justificatif(unsigned int tempIdAbs, unsigned int numJour, char justificatif
         return 0;
     }
     if(numJour - 3 > donnees->tabAbsence[tempIdAbs].numJourTab){ //si le numJour dépasse 3 jours au numJour de l'absence, on enregistre le justificatif et on classe l'absence comme étant non justifiée
-        donnees->tabAbsence[tempIdAbs].absNonJustifeeTab = tempIdAbs;
+        donnees->tabAbsence[tempIdAbs].idAbsNonJustifeeTab = tempIdAbs;
+        printf("Justificatif enregistre\n");
+        return 0;
     }
     if(numJour < donnees->tabAbsence[tempIdAbs].numJourTab){
         printf("Date incorrecte\n");
         return 0;
     }
     for(int i = 1; i < donnees->idAbsInc; ++i){
-        if(tempIdAbs == donnees->tabAbsence[i].idAbsJustifieeTab){
+        if(tempIdAbs == donnees->tabAbsence[i].idAbsJustifieeTab || tempIdAbs == donnees->tabAbsence[i].idAbsNonJustifeeTab){
             printf("Justificatif deja connu\n");
             return 0;
         }
     }
     printf("Justificatif enregistre\n");
-    donnees->tabAbsence[tempIdAbs].idAbsJustifieeTab = tempIdAbs;
+    donnees->tabAbsence[tempIdAbs].idAbsJustifieeTab = tempIdAbs; //enregistre l'id de l'absence justifiée dans un tableau ayant le meme Id que son absence (on différencie celles non justifiées et celles non justifiées)
     return 0;
 }
 
@@ -248,8 +261,8 @@ int validations(Donnees *donnees){
     }
 }
 
-int validation(unsigned int tempIdAbs, char code[3], Donnees* donnees){
-    if(!absenceExistance(donnees, tempIdAbs)){
+int validation(unsigned int tempIdAbsJust, char code[3], Donnees* donnees){
+    if(!absenceJustExistance(donnees, tempIdAbsJust)){
         printf("Identifiant incorrect\n");
         return 0;
     }
@@ -257,7 +270,14 @@ int validation(unsigned int tempIdAbs, char code[3], Donnees* donnees){
         printf("Code incorrect\n");
         return 0;
     }
+    for(int i = 1; i < donnees->idAbsInc; ++i){
+        if(tempIdAbsJust == donnees->tabAbsence[i].idValidation){
+            printf("Validation deja connue");
+            return 0;
+        }
+    }
     printf("Validation enregistree\n");
+    donnees->tabAbsence[tempIdAbsJust].idValidation == tempIdAbsJust;
     return 0;
 }
 
