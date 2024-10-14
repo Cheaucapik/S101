@@ -29,6 +29,7 @@ typedef struct{
     unsigned int idAbsJustifieeTab; //contient l'id de l'absence si elle est justifiée
     unsigned int idAbsNonJustifeeTab; //contient les absences non justifées 
     unsigned int idValidation; //contient l'id de validation de chaque justificatif
+    unsigned int idAbsTab2;
 }Absence; //données concernant les absences d'un étudiant
 
 typedef struct{
@@ -122,7 +123,7 @@ bool etudiantExistance(Donnees *donnees, int tempIdEtu){
 
 bool absenceExistance(Donnees *donnees, int tempIdAbs){
     for(int i = 1; i < donnees->idAbsInc; ++i){
-        if(tempIdAbs == donnees->tabAbsence[i].idAbsTab){
+        if(tempIdAbs == donnees->tabAbsence[i].idAbsTab2){
         return true; //l'id existe
         }
     }
@@ -176,6 +177,7 @@ int absence(int tempIdEtu, int numJour, char demiJournee[3], Donnees *donnees){ 
     }
     printf("Absence enregistree [%u]\n", donnees->idAbsInc);
     donnees->tabAbsence[donnees->idAbsInc].idAbsTab = tempIdEtu;
+    donnees->tabAbsence[donnees->idAbsInc].idAbsTab2 = donnees->idAbsInc;
     donnees->tabAbsence[donnees->idAbsInc].numJourTab = numJour; //le numéro de jour est copié dans un tableau se trouvant à la même place que l'absence pour pouvoir attribuer ce numéro à l'absence
     strcpy(donnees->tabAbsence[donnees->idAbsInc].demiJourneeTab, demiJournee); //la demi-journée est copiée dans un tableau se trouvant à la même place que l'absence pour pouvoir attribuer cette demi-journée à l'absence
     ++donnees->idAbsInc; //incrémente l'id de l'absence à chaque nouvelle absence
@@ -239,11 +241,13 @@ int justificatif(unsigned int tempIdAbs, unsigned int numJour, char justificatif
         return 0;
     }
     printf("Justificatif enregistre\n");
+    strcpy(donnees->tabAbsence[donnees->idAbsInc].justificatifTxtTab, justificatifTxt);
     donnees->tabAbsence[tempIdAbs].idAbsJustifieeTab = tempIdAbs; //enregistre l'id de l'absence justifiée dans un tableau ayant le meme Id que son absence (on différencie celles non justifiées et celles non justifiées)
     return 1;
 }
 
 int validations(Donnees *donnees){
+    //afficher les absences à valider (celles qui sont justfiées)
     printf("[%u] (%-4u) %-30s %4u %3u/%3s (%s)", donnees->tabAbsence->idAbsTab, donnees->tabEtudiant->idEtuTab, donnees->tabEtudiant->nomEtuTab, donnees->tabEtudiant->numGrpTab, donnees->tabAbsence->numJourTab, donnees->tabAbsence->demiJourneeTab, donnees->tabAbsence->justificatifTxtTab);
 }
 
