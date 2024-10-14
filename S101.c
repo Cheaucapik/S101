@@ -6,10 +6,13 @@
 #pragma warning (disable : 4996 6031)
 
 enum{MAX_ETU = 100, //il ne peut pas y avoir plus de 100 étudiants inscrits 
-    NOM_MAX = 30, //limites numériques du programme (un nom ne peut pas excéder 30 caractères)
+    NOM_MAX = 31, //limites numériques du programme (un nom ne peut pas excéder 30 caractères)
     MAX_ABS = 100,
-    MAX_JUSTIFICATIF = 50, //Le texte de justification ne peux pas excéder 50 caractères
-    MAX_COMMANDE = 70}; //La commande justificatif fait un peu moins de 70 caractères si on utilise les 50 caractères possibles
+    MAX_JUSTIFICATIF = 51, //Le texte de justification ne peux pas excéder 50 caractères
+    MAX_COMMANDE = 70, //La commande justificatif fait un peu moins de 70 caractères si on utilise les 50 caractères possibles
+    MAX_JOUR = 40,
+    MIN_JOUR = 1,
+    JOUR_JUST = 3};
 
 typedef struct{
     char nomEtuTab[NOM_MAX]; //Contient le nom d'étudiant
@@ -157,7 +160,7 @@ int absence(int tempIdEtu, int numJour, char demiJournee[3], Donnees *donnees){ 
         printf("Identifiant incorrect\n");
         return 0;
     }
-    if(numJour > 40 || numJour < 1){ //1 <= numJour <=40
+    if(numJour > MAX_JOUR || numJour < MIN_JOUR){ //1 <= numJour <=40
         printf("Date incorrecte\n");
         return 0;
     }
@@ -182,7 +185,7 @@ int absence(int tempIdEtu, int numJour, char demiJournee[3], Donnees *donnees){ 
 
 int etudiants(int numJourCourant, Donnees *donnees){
     qsort(donnees->tabEtudiant + 1, donnees->idEtuInc - 1, sizeof(Etudiant), compareEtu); //trie le tableau d'étudiants dans un ordre croissant (par groupe), puis par ordre alphabétique
-    if(numJourCourant < 1){
+    if(numJourCourant < MIN_JOUR){
         printf("Date incorrecte\n");
         return 0;
     }
@@ -226,7 +229,7 @@ int justificatif(unsigned int tempIdAbs, unsigned int numJour, char justificatif
             return 0;
         }
     }
-    if(numJour - 3 > donnees->tabAbsence[tempIdAbs].numJourTab){ //si le numJour dépasse 3 jours au numJour de l'absence, on enregistre le justificatif et on classe l'absence comme étant non justifiée
+    if(numJour - JOUR_JUST > donnees->tabAbsence[tempIdAbs].numJourTab){ //si le numJour dépasse 3 jours au numJour de l'absence, on enregistre le justificatif et on classe l'absence comme étant non justifiée
         donnees->tabAbsence[tempIdAbs].idAbsNonJustifeeTab = tempIdAbs;
         printf("Justificatif enregistre\n");
         return 1;
