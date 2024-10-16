@@ -53,6 +53,7 @@ bool absenceExistance(Donnees *donnees, int tempIdAbs); //vérifie si l'id de l'
 bool absenceJustExistance(Donnees *donnees, int tempIdAbsJust); //vérifie si l'id de l'absence existe
 bool validationAttente(Donnees *donnees); //vérifie s'il y a des validations en attente
 int compareJust(const void *a, const void *b); //qsort utile dans la C5
+int compareChronos(const void *a, const void *b); //utilise dans la C5 (par ordre chornologique)
 
 int execution(char *commande, Donnees *donnees){ //exécute une commande par comparaison
         char nomEtu[NOM_MAX]; //nom d'étudiant ne peut pas excéder NOM_MAX de caractères
@@ -188,7 +189,7 @@ int absence(int tempIdEtu, int numJour, char demiJournee[3], Donnees *donnees){ 
     }
     printf("Absence enregistree [%u]\n", donnees->idAbsInc);
     donnees->tabAbsence[donnees->idAbsInc].idAbsEtuTab = tempIdEtu; //on enregiste l'id de l'absence de l'étudiant selon l'id de l'étudiant puisque c'est celui-ci que l'on rentre
-    donnees->tabAbsence[donnees->idAbsInc].idAbsTab = donnees->idAbsInc; //on enregistre l'id de l'absence 
+    donnees->tabAbsence[donnees->idAbsInc].idAbsTab = donnees->idAbsInc; //on enregistre l'id de l'absence pour les futures commandes nécessitant l'id de l'absence et non l'id de l'étudiant
     donnees->tabAbsence[donnees->idAbsInc].numJourTab = numJour; //le numéro de jour est copié dans un tableau se trouvant à la même place que l'absence pour pouvoir attribuer ce numéro à l'absence
     strcpy(donnees->tabAbsence[donnees->idAbsInc].demiJourneeTab, demiJournee); //la demi-journée est copiée dans un tableau se trouvant à la même place que l'absence pour pouvoir attribuer cette demi-journée à l'absence
     ++donnees->idAbsInc; //incrémente l'id de l'absence à chaque nouvelle absence
@@ -219,11 +220,11 @@ int etudiants(int numJourCourant, Donnees *donnees){
 int compareEtu(const void *a, const void *b){
     Etudiant *etudiantA = (Etudiant *)a;
     Etudiant *etudiantB = (Etudiant *)b;
-    if (etudiantA->numGrpTab < etudiantB->numGrpTab) { //si le numGrp de l'étudiant A < numGrp de l'étudiant
+    if (etudiantA->numGrpTab < etudiantB->numGrpTab) { //si le numGrp de l'étudiant A < numGrp de l'étudiant B
         return -1;
     } //numGrp de l'étudiant A est bien inférieur à celui de l'étudiant B
-    else if(etudiantA->numGrpTab > etudiantB->numGrpTab) { //si le numGrp de l'étudiant A < numGrp de l'étudiant
-        return 1; //numGrp de l'étudiant A est bien inférieur à celui de l'étudiant B
+    else if(etudiantA->numGrpTab > etudiantB->numGrpTab) { //si le numGrp de l'étudiant A < numGrp de l'étudiant B
+        return 1; //id de l'étudiant A est bien inférieur à celui de l'étudiant B
     } 
     else{
         return strcmp(etudiantA->nomEtuTab, etudiantB->nomEtuTab); //Ordre alphabétique (les numGrp de l'étudiant A et B sont identiques)
@@ -236,20 +237,20 @@ int justificatif(unsigned int tempIdAbs, unsigned int numJour, char justificatif
         printf("Identifiant incorrect\n");
         return 0;
     }
+    if(numJour < donnees->tabAbsence[tempIdAbs].numJourTab){
+        printf("Date incorrecte\n");
+        return 0;
+    }
     for(int i = 1; i < donnees->idAbsInc; ++i){
         if(tempIdAbs == donnees->tabAbsence[i].idAbsJustifieeTab || tempIdAbs == donnees->tabAbsence[i].idAbsNonJustifeeTab){
             printf("Justificatif deja connu\n");
             return 0;
         }
     }
-    if(numJour - JOUR_JUST > donnees->tabAbsence[tempIdAbs].numJourTab){ //si le numJour dépasse 3 jours au numJour de l'absence, on enregistre le justificatif et on classe l'absence comme étant non justifiée
+    if(numJour > donnees->tabAbsence[tempIdAbs].numJourTab + JOUR_JUST){ //si le numJour dépasse 3 jours au numJour de l'absence, on enregistre le justificatif et on classe l'absence comme étant non justifiée
+        printf("Justificatif enregistre mais non admis\n"); //A changer
         donnees->tabAbsence[tempIdAbs].idAbsNonJustifeeTab = tempIdAbs;
-        printf("Justificatif enregistre\n");
         return 1;
-    }
-    if(numJour < donnees->tabAbsence[tempIdAbs].numJourTab){
-        printf("Date incorrecte\n");
-        return 0;
     }
     printf("Justificatif enregistre\n");
     strcpy(donnees->tabAbsence[tempIdAbs].justificatifTxtTab, justificatifTxt); //copie le texte justificatif de l'absence
@@ -262,6 +263,8 @@ int validations(Donnees *donnees) {
         printf("Aucune validation en attente\n");
         return 0;
     }
+    qsort(donnees->tabAbsence + 1, donnees->idAbsInc - 1, sizeof(Absence), compareJust); //trie le tableau de validations dans un ordre croissant (par idEtu)
+    qsort(donnees->tabAbsence + 1, donnees->idAbsInc - 1, sizeof(Absence), compareChronos); //trie le tableau de validations dans un ordre chronologique
     for (int i = 1; i < donnees->idAbsInc; ++i) {
         if(donnees->tabAbsence[i].idAbsJustifieeTab !=0 && donnees->tabAbsence[i].idValidation == 0){
             printf("[%u] (%-u) %-30s %4u %3u/%2s (%s)\n", 
@@ -275,6 +278,34 @@ int validations(Donnees *donnees) {
         }
     }
     return 1;
+}
+
+int compareJust(const void *a, const void *b){
+    Etudiant *etudiantA = (Etudiant *)a;
+    Etudiant *etudiantB = (Etudiant *)b;
+    if (etudiantA->idEtuTab < etudiantB->idEtuTab) { //si l'id de l'étudiant A < id de l'étudiantB
+        return -1;
+    } //numGrp de l'étudiant A est bien inférieur à celui de l'étudiant B
+    else if(etudiantA->idEtuTab > etudiantB->idEtuTab) { //si l'id de l'étudiant A < id de l'étudiant B
+        return 1; //numGrp de l'étudiant A est bien inférieur à celui de l'étudiant B
+    } 
+    else{
+        return strcmp(etudiantA->nomEtuTab, etudiantB->nomEtuTab); //Ordre alphabétique (les numGrp de l'étudiant A et B sont identiques)
+    }
+}
+
+int compareChronos(const void *a, const void *b){
+    Absence *AbsenceA = (Absence *)a;
+    Absence *AbsenceB = (Absence *)b;
+    if (AbsenceA->numJourTab < AbsenceB->numJourTab) { //si le numJourAbs de l'étudiant A < numJourAbs de l'étudiant B
+        return -1;
+    } //numGrp de l'étudiant A est bien inférieur à celui de l'étudiant B
+    else if(AbsenceA->numJourTab > AbsenceB->numJourTab) { //si le numJourAbs de l'étudiant A < numJourAbs de l'étudiant B
+        return 1; //id de l'étudiant A est bien inférieur à celui de l'étudiant B
+    }
+    else{
+        strcmp(AbsenceA->demiJourneeTab, AbsenceB->demiJourneeTab); //si on a la même date on trie selon la demi-journée
+    }
 }
 
 int validation(unsigned int tempIdAbsJust, char code[3], Donnees* donnees){
