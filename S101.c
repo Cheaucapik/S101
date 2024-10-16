@@ -51,6 +51,8 @@ int validation(unsigned int tempIdAbsJust, char code[3], Donnees* donnees); //C6
 bool etudiantExistance(Donnees *donnees, int tempIdEtu); //vérifie si l'id étudiant existe
 bool absenceExistance(Donnees *donnees, int tempIdAbs); //vérifie si l'id de l'absence existe (selon l'id etu temp)
 bool absenceJustExistance(Donnees *donnees, int tempIdAbsJust); //vérifie si l'id de l'absence existe
+bool validationAttente(Donnees *donnees); //vérifie s'il y a des validations en attente
+int compareJust(const void *a, const void *b); //qsort utile dans la C5
 
 int execution(char *commande, Donnees *donnees){ //exécute une commande par comparaison
         char nomEtu[NOM_MAX]; //nom d'étudiant ne peut pas excéder NOM_MAX de caractères
@@ -88,7 +90,7 @@ int execution(char *commande, Donnees *donnees){ //exécute une commande par com
     else if (strcmp(commande, "help") == 0) { //Cpersonnalisée : help
         help();
     }
-    else{ //Cpersonnalisée : help
+    else{
         printf("Commande inconnue, veuillez reessayer.\n"); //à enlever à la fin
         return 0;
     }
@@ -137,6 +139,15 @@ bool absenceJustExistance(Donnees *donnees, int tempIdAbsJust){
         }
     }
     return false; //l'id n'existe pas
+}
+
+bool validationAttente(Donnees *donnees){
+    for(int i = 1; i < donnees->idAbsInc; ++i){
+        if(donnees->tabAbsence[i].idAbsJustifieeTab != 0 && donnees->tabAbsence[i].idValidation == 0){
+            return true;
+        }
+    }
+    return false;
 }
 
 int inscription(char nomEtu[NOM_MAX], unsigned int numGrp, Donnees *donnees){ //C1 : inscription <nom etu> <nom grp> → inscription de l'étudiant
@@ -241,15 +252,18 @@ int justificatif(unsigned int tempIdAbs, unsigned int numJour, char justificatif
         return 0;
     }
     printf("Justificatif enregistre\n");
-    strcpy(donnees->tabAbsence[donnees->idAbsInc].justificatifTxtTab, justificatifTxt); //copie le texte justificatif de l'absence
+    strcpy(donnees->tabAbsence[tempIdAbs].justificatifTxtTab, justificatifTxt); //copie le texte justificatif de l'absence
     donnees->tabAbsence[tempIdAbs].idAbsJustifieeTab = tempIdAbs; //enregistre l'id de l'absence justifiée dans un tableau ayant le meme Id que son absence (on différencie celles non justifiées et celles non justifiées)
     return 1;
 }
 
 int validations(Donnees *donnees) {
-    printf("Absences en attente de validation:\n");
+    if(!validationAttente(donnees)){
+        printf("Aucune validation en attente\n");
+        return 0;
+    }
     for (int i = 1; i < donnees->idAbsInc; ++i) {
-        if (donnees->tabAbsence[i].idAbsJustifieeTab) {
+        if(donnees->tabAbsence[i].idAbsJustifieeTab !=0 && donnees->tabAbsence[i].idValidation == 0){
             printf("[%u] (%-u) %-30s %4u %3u/%2s (%s)\n", 
                  donnees->tabAbsence[i].idAbsTab, 
                  donnees->tabAbsence[i].idAbsEtuTab, 
