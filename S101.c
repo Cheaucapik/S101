@@ -100,7 +100,8 @@ int execution(char *commande, Donnees *donnees){ //exécute une commande par com
 
 int main(int argc, char *argv[]){
     char commande[MAX_COMMANDE];
-    Donnees donnees = {1, 1}; //initialisation de idEtu et de idAbs
+    Donnees donnees = {1, 1};
+
     printf("Entrer votre commande :\n"); //entrée de la commande
     while(1){ //boucle tant que l'on n'arrête pas le programme
             if (argc > 1) { //si l'entrée n'est pas nulle
@@ -159,10 +160,10 @@ int inscription(char nomEtu[NOM_MAX], unsigned int numGrp, Donnees *donnees){ //
             return 0;
         }
     }
-    printf("Inscription enregistree (%u)\n", donnees->idEtuInc);
     strcpy(donnees->tabEtudiant[donnees->idEtuInc].nomEtuTab, nomEtu); //le nom de l'étudiant est copié dans un tableau se trouvant à la même place que l'id de l'étudiant pour pouvoir attribuer ce nom à un étudiant(id)
     donnees->tabEtudiant[donnees->idEtuInc].numGrpTab = numGrp; //le numéro de groupe est copié dans un tableau se trouvant à la même place que l'id de l'étudiant pour pouvoir attribuer ce numéro à un étudaint(id)
     donnees->tabEtudiant[donnees->idEtuInc].idEtuTab = donnees->idEtuInc; //l'id de l'étudiant est copié dans un tableau à la même place que son id. Ainsi on a l'id 1 qui se trouve à la position 1 du tableau, permettant une gestion plus facile des données
+    printf("Inscription enregistree (%u)\n", donnees->idEtuInc);
     ++donnees->idEtuInc; //incrémente l'id de l'étudiant à chaque nouvelle inscription
     return 1;
 }
@@ -187,11 +188,11 @@ int absence(int tempIdEtu, int numJour, char demiJournee[3], Donnees *donnees){ 
             return 0;
         }
     }
-    printf("Absence enregistree [%u]\n", donnees->idAbsInc);
     donnees->tabAbsence[donnees->idAbsInc].idAbsEtuTab = tempIdEtu; //on enregiste l'id de l'absence de l'étudiant selon l'id de l'étudiant puisque c'est celui-ci que l'on rentre
     donnees->tabAbsence[donnees->idAbsInc].idAbsTab = donnees->idAbsInc; //on enregistre l'id de l'absence pour les futures commandes nécessitant l'id de l'absence et non l'id de l'étudiant
     donnees->tabAbsence[donnees->idAbsInc].numJourTab = numJour; //le numéro de jour est copié dans un tableau se trouvant à la même place que l'absence pour pouvoir attribuer ce numéro à l'absence
     strcpy(donnees->tabAbsence[donnees->idAbsInc].demiJourneeTab, demiJournee); //la demi-journée est copiée dans un tableau se trouvant à la même place que l'absence pour pouvoir attribuer cette demi-journée à l'absence
+    printf("Absence enregistree [%u]\n", donnees->idAbsInc);
     ++donnees->idAbsInc; //incrémente l'id de l'absence à chaque nouvelle absence
 
     return 1;
@@ -247,14 +248,14 @@ int justificatif(unsigned int tempIdAbs, unsigned int numJour, char justificatif
             return 0;
         }
     }
-    if(numJour > donnees->tabAbsence[tempIdAbs].numJourTab + JOUR_JUST){ //si le numJour dépasse 3 jours au numJour de l'absence, on enregistre le justificatif et on classe l'absence comme étant non justifiée
-        printf("Justificatif enregistre mais non admis\n"); //A changer
+    if(numJour - donnees->tabAbsence[tempIdAbs].numJourTab > JOUR_JUST){ //si le numJour dépasse 3 jours au numJour de l'absence, on enregistre le justificatif et on classe l'absence comme étant non justifiée
         donnees->tabAbsence[tempIdAbs].idAbsNonJustifeeTab = tempIdAbs;
-        return 1;
+        printf("Justificatif enregistre mais non admis\n"); //A changer
+        return 0;
     }
-    printf("Justificatif enregistre\n");
     strcpy(donnees->tabAbsence[tempIdAbs].justificatifTxtTab, justificatifTxt); //copie le texte justificatif de l'absence
     donnees->tabAbsence[tempIdAbs].idAbsJustifieeTab = tempIdAbs; //enregistre l'id de l'absence justifiée dans un tableau ayant le meme Id que son absence (on différencie celles non justifiées et celles non justifiées)
+    printf("Justificatif enregistre\n");
     return 1;
 }
 
@@ -304,7 +305,7 @@ int compareChronos(const void *a, const void *b){
         return 1; //id de l'étudiant A est bien inférieur à celui de l'étudiant B
     }
     else{
-        strcmp(AbsenceA->demiJourneeTab, AbsenceB->demiJourneeTab); //si on a la même date on trie selon la demi-journée
+        return strcmp(AbsenceA->demiJourneeTab, AbsenceB->demiJourneeTab); //si on a la même date on trie selon la demi-journée
     }
 }
 
@@ -319,12 +320,12 @@ int validation(unsigned int tempIdAbsJust, char code[3], Donnees* donnees){
     }
     for(int i = 1; i < donnees->idAbsInc; ++i){
         if(tempIdAbsJust == donnees->tabAbsence[i].idValidation){
-            printf("Validation deja connue");
+            printf("Validation deja connue\n");
             return 0;
         }
     }
-    printf("Validation enregistree\n");
     donnees->tabAbsence[tempIdAbsJust].idValidation = tempIdAbsJust;
+    printf("Validation enregistree\n");
     return 1;
 }
 
