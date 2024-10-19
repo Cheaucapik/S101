@@ -36,6 +36,8 @@ typedef struct{
     unsigned int idEtuInc, idAbsInc; //permet l'incrémentation sans la modification des valeurs dans la fonction
     Absence tabAbsence[MAX_ABS]; //tableau pour contenir toutes les données de la commande absence
     Etudiant tabEtudiant[MAX_ETU]; //tableau pour contenir toutes les données de la commande etudiant
+    Absence tabAbsenceCopie[MAX_ABS];
+    Etudiant tabEtudiantCopie[MAX_ETU];
 }Donnees; //struct évitant les variables globales
 
 //fonctions prototypes
@@ -52,8 +54,8 @@ bool etudiantExistance(Donnees *donnees, int tempIdEtu); //vérifie si l'id étu
 bool absenceExistance(Donnees *donnees, int tempIdAbs); //vérifie si l'id de l'absence existe (selon l'id etu temp)
 bool absenceJustExistance(Donnees *donnees, int tempIdAbsJust); //vérifie si l'id de l'absence existe
 bool validationAttente(Donnees *donnees); //vérifie s'il y a des validations en attente
-int compareJust(const void *a, const void *b); //qsort utile dans la C5
-int compareChronos(const void *a, const void *b); //utilise dans la C5 (par ordre chornologique)
+int comparerAbsences(const void *a, const void *b);
+void copierAbsences(Donnees *donnees);
 
 int execution(char *commande, Donnees *donnees){ //exécute une commande par comparaison
         char nomEtu[NOM_MAX]; //nom d'étudiant ne peut pas excéder NOM_MAX de caractères
@@ -152,6 +154,20 @@ bool validationAttente(Donnees *donnees){
     return false;
 }
 
+void copierAbsences(Donnees *donnees){
+    for (int i = 0; i < donnees->idAbsInc; ++i) {
+        donnees->tabAbsenceCopie[i] = donnees->tabAbsence[i];
+    }
+}
+
+void copierEtudiants(Donnees *donnees) {
+    for (int i = 0; i < donnees->idEtuInc; ++i) {
+        donnees->tabEtudiantCopie[i].idEtuTab = donnees->tabEtudiant[i].idEtuTab;
+        donnees->tabEtudiantCopie[i].numGrpTab = donnees->tabEtudiant[i].numGrpTab;
+        strncpy(donnees->tabEtudiantCopie[i].nomEtuTab, donnees->tabEtudiant[i].nomEtuTab, NOM_MAX);
+    }
+}
+
 int inscription(char nomEtu[NOM_MAX], unsigned int numGrp, Donnees *donnees){ //C1 : inscription <nom etu> <nom grp> → inscription de l'étudiant
 
     for(int i = 1; i < donnees->idEtuInc; ++i){
@@ -219,8 +235,8 @@ int etudiants(int numJourCourant, Donnees *donnees){
 }
 
 int compareEtu(const void *a, const void *b){
-    Etudiant *etudiantA = (Etudiant *)a;
-    Etudiant *etudiantB = (Etudiant *)b;
+    const Etudiant *etudiantA = (Etudiant *)a;
+    const Etudiant *etudiantB = (Etudiant *)b;
     if (etudiantA->numGrpTab < etudiantB->numGrpTab) { //si le numGrp de l'étudiant A < numGrp de l'étudiant B
         return -1;
     } //numGrp de l'étudiant A est bien inférieur à celui de l'étudiant B
@@ -264,53 +280,38 @@ int validations(Donnees *donnees) {
         printf("Aucune validation en attente\n");
         return 0;
     }
-    qsort(donnees->tabAbsence + 1, donnees->idAbsInc - 1, sizeof(Absence), compareJust); //trie le tableau de validations dans un ordre croissant (par idEtu)
-    qsort(donnees->tabAbsence + 1, donnees->idAbsInc - 1, sizeof(Absence), compareChronos); //trie le tableau de validations dans un ordre chronologique
+    copierAbsences(donnees); //Copie des absences pour ne pas modifier les index
+    copierEtudiants(donnees); //Copie des absences pour ne pas modifier les index
+    qsort(donnees->tabAbsenceCopie + 1, donnees->idAbsInc - 1, sizeof(Absence), comparerAbsences);
     for (int i = 1; i < donnees->idAbsInc; ++i) {
         if(donnees->tabAbsence[i].idAbsJustifieeTab !=0 && donnees->tabAbsence[i].idValidation == 0){
             printf("[%u] (%-u) %-30s %4u %3u/%2s (%s)\n", 
-                 donnees->tabAbsence[i].idAbsTab, 
-                 donnees->tabAbsence[i].idAbsEtuTab, 
-                 donnees->tabEtudiant[donnees->tabAbsence[i].idAbsEtuTab].nomEtuTab, 
-                 donnees->tabEtudiant[donnees->tabAbsence[i].idAbsEtuTab].numGrpTab, 
-                 donnees->tabAbsence[i].numJourTab, 
-                 donnees->tabAbsence[i].demiJourneeTab, 
+                 donnees->tabAbsenceCopie[i].idAbsTab, 
+                 donnees->tabAbsenceCopie[i].idAbsEtuTab, 
+                 donnees->tabEtudiantCopie[donnees->tabAbsence[i].idAbsEtuTab].nomEtuTab, 
+                 donnees->tabEtudiantCopie[donnees->tabAbsence[i].idAbsEtuTab].numGrpTab, 
+                 donnees->tabAbsenceCopie[i].numJourTab, 
+                 donnees->tabAbsenceCopie[i].demiJourneeTab, 
                  donnees->tabAbsence[i].justificatifTxtTab);
         }
     }
     return 1;
 }
 
-int compareJust(const void *a, const void *b){
-    Etudiant *etudiantA = (Etudiant *)a;
-    Etudiant *etudiantB = (Etudiant *)b;
-    if (etudiantA->idEtuTab < etudiantB->idEtuTab) { //si l'id de l'étudiant A < id de l'étudiantB
-        return -1;
-    } //numGrp de l'étudiant A est bien inférieur à celui de l'étudiant B
-    else if(etudiantA->idEtuTab > etudiantB->idEtuTab) { //si l'id de l'étudiant A < id de l'étudiant B
-        return 1; //numGrp de l'étudiant A est bien inférieur à celui de l'étudiant B
-    } 
-    else{
-        return strcmp(etudiantA->nomEtuTab, etudiantB->nomEtuTab); //Ordre alphabétique (les numGrp de l'étudiant A et B sont identiques)
+int comparerAbsences(const void *a, const void *b) {
+    const Absence *absenceA = (const Absence *)a;
+    const Absence *absenceB = (const Absence *)b;
+    if (absenceA->idAbsEtuTab != absenceB->idAbsEtuTab) {
+        return absenceA->idAbsEtuTab - absenceB->idAbsEtuTab; //Tri croissant par IdEtu
     }
-}
-
-int compareChronos(const void *a, const void *b){
-    Absence *AbsenceA = (Absence *)a;
-    Absence *AbsenceB = (Absence *)b;
-    if (AbsenceA->numJourTab < AbsenceB->numJourTab) { //si le numJourAbs de l'étudiant A < numJourAbs de l'étudiant B
-        return -1;
-    } //numGrp de l'étudiant A est bien inférieur à celui de l'étudiant B
-    else if(AbsenceA->numJourTab > AbsenceB->numJourTab) { //si le numJourAbs de l'étudiant A < numJourAbs de l'étudiant B
-        return 1; //id de l'étudiant A est bien inférieur à celui de l'étudiant B
+    if (absenceA->numJourTab != absenceB->numJourTab) {
+        return absenceA->numJourTab - absenceB->numJourTab; //Tri croissant par jour
     }
-    else{
-        return strcmp(AbsenceA->demiJourneeTab, AbsenceB->demiJourneeTab); //si on a la même date on trie selon la demi-journée
-    }
+    return strcmp(absenceA->demiJourneeTab, absenceB->demiJourneeTab); //Si numJourTab est identique on compare par demiJourneeTab
 }
 
 int validation(unsigned int tempIdAbsJust, char code[3], Donnees* donnees){
-    if(!absenceJustExistance(donnees, tempIdAbsJust)){
+    if(!absenceJustExistance(donnees, tempIdAbsJust) || tempIdAbsJust == 0){
         printf("Identifiant incorrect\n");
         return 0;
     }
