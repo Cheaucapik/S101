@@ -108,7 +108,6 @@ int main(int argc, char *argv[]){
     while(1){ //boucle tant que l'on n'arrête pas le programme
             if (argc > 1) { //si l'entrée n'est pas nulle
                 strcpy(commande, argv[1]);
-                return 0;
             } else {
                 fgets(commande, sizeof(commande), stdin);
                 commande[strcspn(commande, "\n")] = 0; //évite de prendre en compte du retour à la ligne du fgets -> dans la commande dès qu'il y a un retour à la ligne il est remplacé par le caractère nul
@@ -216,11 +215,14 @@ int absence(int tempIdEtu, int numJour, char demiJournee[3], Donnees *donnees){ 
 
 int etudiants(int numJourCourant, Donnees *donnees){
     qsort(donnees->tabEtudiant + 1, donnees->idEtuInc - 1, sizeof(Etudiant), compareEtu); //trie le tableau d'étudiants dans un ordre croissant (par groupe), puis par ordre alphabétique
+    if(donnees->idEtuInc <= 1){ //s'il n'y a aucun inscrit
+        printf("Aucun inscrit\n");
+        return 0;
+    }
     if(numJourCourant < MIN_JOUR){
         printf("Date incorrecte\n");
         return 0;
     }
-
     for(int i = 1; i < donnees->idEtuInc; ++i){
         unsigned int totalAbs = 0; //le total d'absences revient à 0 pour chaque nouveau étudiant
         for(int j = 1; j < donnees->idAbsInc; ++j){
@@ -276,23 +278,37 @@ int justificatif(unsigned int tempIdAbs, unsigned int numJour, char justificatif
 }
 
 int validations(Donnees *donnees) {
-    if(!validationAttente(donnees)){
+    if (!validationAttente(donnees)) {
         printf("Aucune validation en attente\n");
         return 0;
     }
-    copierAbsences(donnees); //Copie des absences pour ne pas modifier les index
-    copierEtudiants(donnees); //Copie des absences pour ne pas modifier les index
+
+    copierAbsences(donnees);  // Copie des absences
+    copierEtudiants(donnees);  // Copie des étudiants
+
     qsort(donnees->tabAbsenceCopie + 1, donnees->idAbsInc - 1, sizeof(Absence), comparerAbsences);
+
     for (int i = 1; i < donnees->idAbsInc; ++i) {
-        if(donnees->tabAbsence[i].idAbsJustifieeTab !=0 && donnees->tabAbsence[i].idValidation == 0){
-            printf("[%u] (%-u) %-30s %4u %3u/%2s (%s)\n", 
-                 donnees->tabAbsenceCopie[i].idAbsTab, 
-                 donnees->tabAbsenceCopie[i].idAbsEtuTab, 
-                 donnees->tabEtudiantCopie[donnees->tabAbsence[i].idAbsEtuTab].nomEtuTab, 
-                 donnees->tabEtudiantCopie[donnees->tabAbsence[i].idAbsEtuTab].numGrpTab, 
-                 donnees->tabAbsenceCopie[i].numJourTab, 
-                 donnees->tabAbsenceCopie[i].demiJourneeTab, 
-                 donnees->tabAbsence[i].justificatifTxtTab);
+        if (donnees->tabAbsenceCopie[i].idAbsJustifieeTab != 0 && donnees->tabAbsenceCopie[i].idValidation == 0) {
+            //Recherche des infos de l'étudiant lié à l'absence
+            unsigned int etuId = donnees->tabAbsenceCopie[i].idAbsEtuTab;
+            char* etuNom = "";
+            unsigned int etuGrp = 0;
+            for (int j = 1; j < donnees->idEtuInc; ++j) {
+                if (donnees->tabEtudiant[j].idEtuTab == etuId) {
+                    etuNom = donnees->tabEtudiant[j].nomEtuTab;
+                    etuGrp = donnees->tabEtudiant[j].numGrpTab;
+                    break;
+                }
+            }
+            printf("[%u] (%-u) %-30s %4u %3u/%2s (%s)\n",
+                   donnees->tabAbsenceCopie[i].idAbsTab,
+                   etuId,
+                   etuNom,
+                   etuGrp,
+                   donnees->tabAbsenceCopie[i].numJourTab,
+                   donnees->tabAbsenceCopie[i].demiJourneeTab,
+                   donnees->tabAbsenceCopie[i].justificatifTxtTab);
         }
     }
     return 1;
@@ -311,7 +327,7 @@ int comparerAbsences(const void *a, const void *b) {
 }
 
 int validation(unsigned int tempIdAbsJust, char code[3], Donnees* donnees){
-    if(!absenceJustExistance(donnees, tempIdAbsJust) || tempIdAbsJust == 0){
+    if(!absenceJustExistance(donnees, tempIdAbsJust) || tempIdAbsJust == 0){ //si l'id n'existe pas ou est égal à 0
         printf("Identifiant incorrect\n");
         return 0;
     }
@@ -340,8 +356,8 @@ void help(void){ //Commande supplémentaire affichant toutes les commandes
     printf("%-70s %70s", "absence <id etu> <Num jour> <am/pm>", "enregistrer une absence\n"); //C2
     printf("%-70s %70s", "etudiants <Num jour courant>", "liste des etudiants\n"); //C3
     printf("%-70s %70s", "justificatif <Id absence> <Num jour> <justificatif>", "Depot de justificatif\n"); //C4
-    printf("%-70s %70s", "validations", "liste des absences a valider\n"); //C5
+    printf("%-70s %70s", "validations", "liste des justifications a valider\n"); //C5
     printf("%-70s %70s", "validation <id absence> <ok/ko>", "validation d'une justification d'absence\n"); //C6
     printf("%-70s %70s", "etudiant <id etu> <Num jour courant>", "situation d'un etudiant\n"); //C7
-    printf("%-70s %70s", "defaillants <Num jour courant>", "liste des absences\n"); //C8
+    printf("%-70s %70s", "defaillants <Num jour courant>", "liste des étudiants défaillants\n"); //C8
 }
