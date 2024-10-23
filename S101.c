@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <strings.h>
 #include <stdlib.h>
 #include <stdbool.h>
 #include <ctype.h>
@@ -96,10 +97,10 @@ int execution(char *commande, Donnees *donnees){ //exécute une commande par com
     else if(sscanf(commande, "validation %u %2s", &tempIdAbsJust, code) == 2){ //C6 : validation
         validation(tempIdAbsJust, code, donnees);
     }
-    else if (sscanf(commande, "etudiant %u %u", &tempIdEtu, &numJour) == 2) {
+    else if (sscanf(commande, "etudiant %u %u", &tempIdEtu, &numJourCourant) == 2) {
         etudiant(tempIdEtu, numJourCourant, donnees); //C7 : situation d'un étudiant
     }
-    else if (sscanf(commande, "etudiant %u %u", &tempIdEtu, &numJour) == 2) {
+    else if (sscanf(commande, "defaillants %u %u", &numJourCourant) == 1) {
         defaillants(numJourCourant, donnees); //C8 : liste des étudiants défaillants
     }
     else if (strcmp(commande, "help") == 0) { //Cpersonnalisée : help
@@ -422,7 +423,22 @@ int etudiant(unsigned int tempIdEtu, unsigned int numJourCourant, Donnees *donne
 
 
 int defaillants(unsigned int numJourCourant, Donnees *donnees){ //C8 : liste des étudiants défaillants
-    
+    if(numJourCourant < MIN_JOUR){ //on vérifie que la date est supérieure à MIN_JOUR
+        printf("Date incorrecte\n");
+        return 0;
+    }
+
+    for(int i = 1; i < donnees->idEtuInc; ++i){
+        unsigned int totalAbs = 0; //le total d'absences revient à 0 pour chaque nouveau étudiant
+        for(int j = 1; j < donnees->idAbsInc; ++j){
+            if(donnees->tabAbsence[j].idAbsEtuTab == donnees->tabEtudiant[i].idEtuTab &&
+               donnees->tabAbsence[j].numJourTab <= numJourCourant){
+                totalAbs++; //incrémente le total d'absence si on trouve une absence (pour l'étudiant) pour le num de jour courant supérieur ou égal au num de jour de l'absence
+            }
+        }
+        printf("(%u) %-30s %4u %4u\n", donnees->tabEtudiant[i].idEtuTab, donnees->tabEtudiant[i].nomEtuTab, donnees->tabEtudiant[i].numGrpTab, totalAbs); //printf pour chaque étudiant, ligne par ligne
+    }
+    return 1;
 }
 
 void help(void){ //Commande supplémentaire affichant toutes les commandes
