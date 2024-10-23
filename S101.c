@@ -26,7 +26,8 @@ typedef struct{
     char demiJourneeTab[3]; //Contient la demi-journée de chaque absence
     unsigned int idAbsEtuTab; //Contient l'id d'absence selon l'id de l'étudiant
 
-    char justificatifTxtTab[MAX_JUSTIFICATIF]; //contient le texte justificatif d'absence de chaque étudiant ayant justifié une absence
+    char justificatifTxtTab[MAX_JUSTIFICATIF]; //contient le texte justificatif d'absence de chaque étudiant ayant justifié une absence dans les temps
+    char justificatifTxtNonJustTab[MAX_JUSTIFICATIF]; //contient le texte justificatif d'absence de chaque étudiant ayant justifié une absence mais non dans les temps
     unsigned int idAbsJustifieeTab; //contient l'id de l'absence si elle est justifiée
     unsigned int idAbsNonJustifeeTab; //contient les absences non justifées 
     unsigned int idValidation; //contient l'id de validation de chaque justificatif
@@ -105,10 +106,6 @@ int execution(char *commande, Donnees *donnees){ //exécute une commande par com
     }
     else if (strcmp(commande, "help") == 0) { //Cpersonnalisée : help
         help();
-    }
-    else{
-        printf("Commande inconnue, veuillez reessayer.\n"); //à enlever à la fin
-        return 0;
     }
     return 1;
 }
@@ -273,6 +270,7 @@ int justificatif(unsigned int tempIdAbs, unsigned int numJour, char justificatif
     }
     if(numJour - donnees->tabAbsence[tempIdAbs].numJourTab > JOUR_JUST){ //si le numJour dépasse 3 jours au numJour de l'absence, on enregistre le justificatif et on classe l'absence comme étant non justifiée
         donnees->tabAbsence[tempIdAbs].idAbsNonJustifeeTab = tempIdAbs;
+        strcpy(donnees->tabAbsence[tempIdAbs].justificatifTxtNonJustTab, justificatifTxt);
         printf("Justificatif enregistre\n");
         return 0;
     }
@@ -375,25 +373,26 @@ int etudiant(unsigned int tempIdEtu, unsigned int numJourCourant, Donnees *donne
     bool enAttenteJustificatif = false, enAttenteValidation = false, justifiees = false, nonJustifiees = false;
 
     //affichage des informations de l'étudiant
-    for (int i = 1; i < donnees->idEtuInc; ++i) {
-        if (donnees->tabEtudiant[i].idEtuTab == tempIdEtu) {
+    for(int i = 1; i < donnees->idEtuInc; ++i){
+        if (donnees->tabEtudiant[i].idEtuTab == tempIdEtu){
             //compter et afficher les absences
-            for (int j = 1; j < donnees->idAbsInc; ++j) {
-                if (donnees->tabAbsence[j].idAbsEtuTab == tempIdEtu && donnees->tabAbsence[j].numJourTab <= numJourCourant) {
+            for(int j = 1; j < donnees->idAbsInc; ++j){
+                if(donnees->tabAbsence[j].idAbsEtuTab == tempIdEtu && donnees->tabAbsence[j].numJourTab <= numJourCourant){
                     nbAbsences++; //compter l'absence
 
                     //vérification du statut de l'absence
-                    if (donnees->tabAbsence[j].idAbsJustifieeTab == 0 && strlen(donnees->tabAbsence[j].justificatifTxtTab) == 0) {
-                        // Absence non justifiée
-                        if (numJourCourant - donnees->tabAbsence[j].numJourTab > JOUR_JUST) {
-                            if (!nonJustifiees) {
+                    if(donnees->tabAbsence[j].idAbsJustifieeTab == 0 && strlen(donnees->tabAbsence[j].justificatifTxtTab) == 0){
+                        //absence non justifiée
+                        if(numJourCourant - donnees->tabAbsence[j].numJourTab > JOUR_JUST) {
+                            if(!nonJustifiees){
                                 printf("- Non-justifiees\n");
                                 nonJustifiees = true;
                             }//PROBLEME DANS LA LIGNE SUIVANTE SUR LAFFICHAGE DU JUSTIFICATIF(ya moyen on doit faire un autre if et un autre printf si la justification a été effectuée après
-                            printf("  [%u] %u/%s(%s)\n", donnees->tabAbsence[j].idAbsTab, donnees->tabAbsence[j].numJourTab, donnees->tabAbsence[j].demiJourneeTab,donnees->tabAbsence[j].justificatifTxtTab);
+                            printf("  [%u] %u/%s (%s)\n", donnees->tabAbsence[j].idAbsTab, donnees->tabAbsence[j].numJourTab, donnees->tabAbsence[j].demiJourneeTab,donnees->tabAbsence[j].justificatifTxtNonJustTab);
                         //on cherche à conditionner que SI la date de justification est APRES la date de dépassement de délai, on printf ci dessous donc :
-                        } else {
-                            if (!enAttenteJustificatif) {
+                        } 
+                        else{
+                            if(!enAttenteJustificatif){
                                 printf("- En attente justificatif\n");
                                 enAttenteJustificatif = true;
                             }
@@ -401,16 +400,17 @@ int etudiant(unsigned int tempIdEtu, unsigned int numJourCourant, Donnees *donne
                         }
                     } 
                     
-                    else if (donnees->tabAbsence[j].idAbsJustifieeTab != 0 && donnees->tabAbsence[j].idValidation == 0) {
+                    else if(donnees->tabAbsence[j].idAbsJustifieeTab != 0 && donnees->tabAbsence[j].idValidation == 0){
                         //absence justifiée, en attente de validation
                         if (!enAttenteValidation) {
                             printf("- En attente validation\n");
                             enAttenteValidation = true;
                         }
                         printf("  [%u] %u/%s (%s)\n", donnees->tabAbsence[j].idAbsTab, donnees->tabAbsence[j].numJourTab, donnees->tabAbsence[j].demiJourneeTab, donnees->tabAbsence[j].justificatifTxtTab);
-                    } else if (donnees->tabAbsence[j].idAbsJustifieeTab != 0 && donnees->tabAbsence[j].idValidation != 0) {
+                    } 
+                    else if(donnees->tabAbsence[j].idAbsJustifieeTab != 0 && donnees->tabAbsence[j].idValidation != 0){
                         //absence justifiée et validée
-                        if (!justifiees) {
+                        if(!justifiees) {
                             printf("- Justifiees\n");
                             justifiees = true;
                         }
