@@ -6,12 +6,12 @@
 
 enum{MAX_ETU = 100, //il ne peut pas y avoir plus de 100 étudiants inscrits
     NOM_MAX = 31, //limites numériques du programme (un nom ne peut pas excéder 30 caractères)
-    MAX_ABS = 100,
+    MAX_ABS = 200,
     MAX_JUSTIFICATIF = 51, //Le texte de justification ne peux pas excéder 50 caractères
     MAX_COMMANDE = 70, //La commande justificatif fait un peu moins de 70 caractères si on utilise les 50 caractères possibles
-    MAX_JOUR = 40,
-    MIN_JOUR = 1,
-    JOUR_JUST = 3};
+    MAX_JOUR = 40, //Le numJour ne peut pas dépasser les 40 jours
+    MIN_JOUR = 1, //Le numJour ne peut pas être inférieur à 1
+    JOUR_JUST = 3}; //Le numJourJust ne peut pas être supérieur à 3 auquel cas l'absence sera considérée comme non justifiée
 
 typedef struct{
     char nomEtuTab[NOM_MAX]; //Contient le nom d'étudiant
@@ -49,8 +49,8 @@ int etudiants(int numJourCourant, Donnees *donnees); //C3 : etudiants <Num jour 
 int justificatif(unsigned int tempIdAbs, unsigned int numJour, char justificatifTxt[MAX_JUSTIFICATIF], Donnees *donnees); //C4 : justificatif <id etu> <numJour> <justificatif> → enregistre un justificatif pour une absence existante
 int validations(Donnees *donnees); //C5 : validations → affiche toutes les justifications en attente d'une validation
 int validation(unsigned int tempIdAbsJust, char code[3], Donnees* donnees); //C6 : validation <id abs> <ok/ko> → valide une absence justifiée
-int etudiant(unsigned int tempIdEtu, unsigned int numJourCourant, Donnees *donnees); //C7 : situation d'un étudiant
-int defaillants(unsigned int numJourCourant, Donnees *donnees); //C8 : liste des étudiants défaillants
+int etudiant(unsigned int tempIdEtu, unsigned int numJourCourant, Donnees *donnees); //C7 : etudiant <id etu> <Num jour courant> → situation d'un etudiant
+int defaillants(unsigned int numJourCourant, Donnees *donnees); //C8 : defaillants <Num jour courant> → liste des étudiants défaillants
 
 //fonctions bool
 bool etudiantExistance(Donnees *donnees, int tempIdEtu); //vérifie si l'id étudiant existe
@@ -167,7 +167,7 @@ void copierAbsences(Donnees *donnees){
 
 int inscription(char nomEtu[NOM_MAX], unsigned int numGrp, Donnees *donnees){ //C1 : inscription <nom etu> <nom grp> → inscription de l'étudiant
 
-    for(int i = 1; i < donnees->idEtuInc; ++i){
+    for(int i = 1; i < donnees->idEtuInc; ++i){ //Le nom et le groupe de l'étudiant entrés sont similaires à un étudiant déjà existant
         if((strcmp(nomEtu, donnees->tabEtudiant[i].nomEtuTab) == 0) && (numGrp == donnees->tabEtudiant[i].numGrpTab)){ //évite les doublons
             printf("Nom incorrect\n");
             return 0;
@@ -217,7 +217,7 @@ int etudiants(int numJourCourant, Donnees *donnees){
         printf("Aucun inscrit\n");
         return 0;
     }
-    if(numJourCourant < MIN_JOUR){
+    if(numJourCourant < MIN_JOUR){ //La date est inférieure au MIN_JOUR
         printf("Date incorrecte\n");
         return 0;
     }
@@ -234,13 +234,13 @@ int etudiants(int numJourCourant, Donnees *donnees){
     return 1;
 }
 
-int compareEtu(const void *a, const void *b){
+int compareEtu(const void *a, const void *b){ //tri pour la C3
     const Etudiant *etudiantA = (Etudiant *)a;
     const Etudiant *etudiantB = (Etudiant *)b;
-    if (etudiantA->numGrpTab < etudiantB->numGrpTab) { //si le numGrp de l'étudiant A < numGrp de l'étudiant B
+    if(etudiantA->numGrpTab < etudiantB->numGrpTab){ //si le numGrp de l'étudiant A < numGrp de l'étudiant B
         return -1;
     } //numGrp de l'étudiant A est bien inférieur à celui de l'étudiant B
-    else if(etudiantA->numGrpTab > etudiantB->numGrpTab) { //si le numGrp de l'étudiant A < numGrp de l'étudiant B
+    else if(etudiantA->numGrpTab > etudiantB->numGrpTab){ //si le numGrp de l'étudiant A < numGrp de l'étudiant B
         return 1; //id de l'étudiant A est bien inférieur à celui de l'étudiant B
     }
     else{
@@ -250,16 +250,16 @@ int compareEtu(const void *a, const void *b){
 
 int justificatif(unsigned int tempIdAbs, unsigned int numJour, char justificatifTxt[MAX_JUSTIFICATIF], Donnees *donnees){
 
-    if(!absenceExistance(donnees, tempIdAbs)){
+    if(!absenceExistance(donnees, tempIdAbs)){ //l'identifiant entré n'existe pas
         printf("Identifiant incorrect\n");
         return 0;
     }
-    if(numJour < donnees->tabAbsence[tempIdAbs].numJourTab){
+    if(numJour < donnees->tabAbsence[tempIdAbs].numJourTab){ //Si le numJour entré est inférieur au numJour de l'absence
         printf("Date incorrecte\n");
         return 0;
     }
     for(int i = 1; i < donnees->idAbsInc; ++i){
-        if(tempIdAbs == donnees->tabAbsence[i].idAbsJustifieeTab || tempIdAbs == donnees->tabAbsence[i].idAbsNonJustifeeTab){
+        if(tempIdAbs == donnees->tabAbsence[i].idAbsJustifieeTab || tempIdAbs == donnees->tabAbsence[i].idAbsNonJustifeeTab){ //evite les doublons
             printf("Justificatif deja connu\n");
             return 0;
         }
@@ -277,7 +277,7 @@ int justificatif(unsigned int tempIdAbs, unsigned int numJour, char justificatif
 }
 
 int validations(Donnees *donnees) {
-    if (!validationAttente(donnees)) {
+    if(!validationAttente(donnees)){ //s'il n'y aucune justification à valider
         printf("Aucune validation en attente\n");
         return 0;
     }
@@ -310,16 +310,16 @@ int validations(Donnees *donnees) {
     return 1;
 }
 
-int comparerAbsences(const void *a, const void *b) {
+int comparerAbsences(const void *a, const void *b){ //tri pour la C5
     const Absence *absenceA = (const Absence *)a;
     const Absence *absenceB = (const Absence *)b;
-    if (absenceA->idAbsEtuTab != absenceB->idAbsEtuTab) {
-        return absenceA->idAbsEtuTab - absenceB->idAbsEtuTab; //Tri croissant par IdEtu
+    if(absenceA->idAbsEtuTab != absenceB->idAbsEtuTab){
+        return absenceA->idAbsEtuTab - absenceB->idAbsEtuTab; //tri croissant par IdEtu
     }
-    if (absenceA->numJourTab != absenceB->numJourTab) {
-        return absenceA->numJourTab - absenceB->numJourTab; //Tri croissant par jour
+    if(absenceA->numJourTab != absenceB->numJourTab){
+        return absenceA->numJourTab - absenceB->numJourTab; //tri croissant par jour
     }
-    return strcmp(absenceA->demiJourneeTab, absenceB->demiJourneeTab); //Si numJourTab est identique on compare par demiJourneeTab
+    return strcmp(absenceA->demiJourneeTab, absenceB->demiJourneeTab); //si numJourTab est identique on compare par demiJourneeTab
 }
 
 int validation(unsigned int tempIdAbsJust, char code[3], Donnees* donnees){
@@ -337,41 +337,40 @@ int validation(unsigned int tempIdAbsJust, char code[3], Donnees* donnees){
             return 0;
         }
     }
-    if(strcmp(code, "ko") == 0){
+    if(strcmp(code, "ko") == 0){ //on différencie la validation ok de ko pour enregistrer cette absence dans le bon tableau
         donnees->tabAbsence[tempIdAbsJust].idValidation = tempIdAbsJust;
         donnees->tabAbsence[tempIdAbsJust].idAbsNonJustifeeTab = donnees->tabAbsence[tempIdAbsJust].idAbsJustifieeTab;
         strcpy(donnees->tabAbsence[tempIdAbsJust].justificatifTxtNonJustTab, donnees->tabAbsence[tempIdAbsJust].justificatifTxtTab);
         printf("Validation enregistree\n");
         return 0;
     }
-    if(strcmp(code, "ok") == 0){
+    if(strcmp(code, "ok") == 0){ //on différencie la validation ok de ko pour enregistrer cette absence dans le bon tableau
         donnees->tabAbsence[tempIdAbsJust].idValidation = tempIdAbsJust;
         printf("Validation enregistree\n");
         return 1;
     }
 }
 
-int comparerChronos(const void *a, const void *b) {
+int comparerChronos(const void *a, const void *b){ //compare chronologiquement les absences pour la C7
     const Absence *absenceA = (const Absence *)a;
     const Absence *absenceB = (const Absence *)b;
-    if (absenceA->numJourTab != absenceB->numJourTab) {
-        return absenceA->numJourTab - absenceB->numJourTab; //Tri croissant par jour
+    if(absenceA->numJourTab != absenceB->numJourTab){
+        return absenceA->numJourTab - absenceB->numJourTab; //tri croissant par jour
     }
-    return strcmp(absenceA->demiJourneeTab, absenceB->demiJourneeTab); //Si numJourTab est identique on compare par demiJourneeTab
+    return strcmp(absenceA->demiJourneeTab, absenceB->demiJourneeTab); //si numJourTab est identique on compare par demiJourneeTab
 }
 
-int etudiant(unsigned int tempIdEtu, unsigned int numJourCourant, Donnees *donnees) {
-    if (!etudiantExistance(donnees, tempIdEtu)) {
+int etudiant(unsigned int tempIdEtu, unsigned int numJourCourant, Donnees *donnees){
+    if(!etudiantExistance(donnees, tempIdEtu)){
         printf("Identifiant incorrect\n");
         return 0;
     }
 
-    // Affichage des infos de l'étudiant
-    for (int i = 1; i < donnees->idEtuInc; ++i) {
-        if (donnees->tabEtudiant[i].idEtuTab == tempIdEtu) {
+    for(int i = 1; i < donnees->idEtuInc; ++i){ //affichage des infos de l'étudiant
+        if(donnees->tabEtudiant[i].idEtuTab == tempIdEtu){
             unsigned int totalAbs = 0;
-            for (int j = 1; j < donnees->idAbsInc; ++j) {
-                if (donnees->tabAbsence[j].idAbsEtuTab == tempIdEtu) {
+            for(int j = 1; j < donnees->idAbsInc; ++j){
+                if (donnees->tabAbsence[j].idAbsEtuTab == tempIdEtu){
                     totalAbs++;
                 }
             }
@@ -380,23 +379,23 @@ int etudiant(unsigned int tempIdEtu, unsigned int numJourCourant, Donnees *donne
         }
     }
 
-    // Variables pour gérer l'état des absences
+    //bools pour gérer l'état des absences
     bool enAttenteJustificatif = false, enAttenteValidation = false, justifiees = false, nonJustifiees = false;
 
-    // Gestion des absences
-    for (int j = 1; j < donnees->idAbsInc; ++j) {
-        if (donnees->tabAbsence[j].idAbsEtuTab == tempIdEtu) {
-            // En attente de justificatif
-            if (strlen(donnees->tabAbsence[j].justificatifTxtTab) == 0 && numJourCourant - donnees->tabAbsence[j].numJourTab <= JOUR_JUST) {
-                if (!enAttenteJustificatif) {
+    for(int j = 1; j < donnees->idAbsInc; ++j){
+        if(donnees->tabAbsence[j].idAbsEtuTab == tempIdEtu){
+        
+            //en attente de justificatif
+            if(strlen(donnees->tabAbsence[j].justificatifTxtTab) == 0 && numJourCourant - donnees->tabAbsence[j].numJourTab <= JOUR_JUST){
+                if(!enAttenteJustificatif){
                     printf("- En attente justificatif\n");
                     enAttenteJustificatif = true;
                 }
                 printf("  [%u] %u/%s\n", donnees->tabAbsence[j].idAbsTab, donnees->tabAbsence[j].numJourTab, donnees->tabAbsence[j].demiJourneeTab);
             }
 
-            // Absence non justifiée mais avec justificatif enregistré
-            if (strlen(donnees->tabAbsence[j].justificatifTxtTab) > 0) {
+            //absence non justifiée mais avec justificatif enregistré
+            if(strlen(donnees->tabAbsence[j].justificatifTxtTab) > 0){
                 if (!nonJustifiees) {
                     printf("- Non-justifiees\n");
                     nonJustifiees = true;
@@ -404,27 +403,27 @@ int etudiant(unsigned int tempIdEtu, unsigned int numJourCourant, Donnees *donne
                 printf("  [%u] %u/%s (%s)\n", donnees->tabAbsence[j].idAbsTab, donnees->tabAbsence[j].numJourTab, donnees->tabAbsence[j].demiJourneeTab, donnees->tabAbsence[j].justificatifTxtTab);
             }
 
-            // Absence avec justificatif en attente de validation
-            else if (strlen(donnees->tabAbsence[j].justificatifTxtTab) > 0 && donnees->tabAbsence[j].idValidation == 0) {
-                if (!enAttenteValidation) {
+            //absence avec justificatif en attente de validation
+            else if(strlen(donnees->tabAbsence[j].justificatifTxtTab) > 0 && donnees->tabAbsence[j].idValidation == 0){
+                if(!enAttenteValidation){
                     printf("- En attente validation\n");
                     enAttenteValidation = true;
                 }
                 printf("  [%u] %u/%s (%s)\n", donnees->tabAbsence[j].idAbsTab, donnees->tabAbsence[j].numJourTab, donnees->tabAbsence[j].demiJourneeTab, donnees->tabAbsence[j].justificatifTxtTab);
             }
 
-            // Absence justifiée si la validation est "ok"
-            else if (donnees->tabAbsence[j].idValidation == donnees->tabAbsence[j].idAbsTab && strcmp(donnees->tabAbsence[j].justificatifTxtTab, "") != 0) {
-                if (!justifiees) {
+            //absence justifiée si la validation est "ok"
+            else if(donnees->tabAbsence[j].idValidation == donnees->tabAbsence[j].idAbsTab && strcmp(donnees->tabAbsence[j].justificatifTxtTab, "") != 0){
+                if(!justifiees){
                     printf("- Justifiees\n");
                     justifiees = true;
                 }
                 printf("  [%u] %u/%s (%s)\n", donnees->tabAbsence[j].idAbsTab, donnees->tabAbsence[j].numJourTab, donnees->tabAbsence[j].demiJourneeTab, donnees->tabAbsence[j].justificatifTxtTab);
             }
 
-            // Absence non justifiée si la validation est refusée (validation "ko")
-            else if (donnees->tabAbsence[j].idValidation == donnees->tabAbsence[j].idAbsTab && strcmp(donnees->tabAbsence[j].justificatifTxtTab, "") != 0) {
-                if (!nonJustifiees) {
+            //absence non justifiée si la validation est refusée (validation "ko")
+            else if(donnees->tabAbsence[j].idValidation == donnees->tabAbsence[j].idAbsTab && strcmp(donnees->tabAbsence[j].justificatifTxtTab, "") != 0){
+                if(!nonJustifiees){
                     printf("- Non-justifiees\n");
                     nonJustifiees = true;
                 }
@@ -436,12 +435,9 @@ int etudiant(unsigned int tempIdEtu, unsigned int numJourCourant, Donnees *donne
     return 1;
 }
 
+int defaillants(unsigned int numJourCourant, Donnees *donnees){
 
-
-
-int defaillants(unsigned int numJourCourant, Donnees *donnees) {
-
-    if (numJourCourant < MIN_JOUR) {
+    if(numJourCourant < MIN_JOUR){ //Si le numJourCourant est inférieur au MIN_JOUR
         printf("Date incorrecte\n");
         return 0;
     }
@@ -449,46 +445,42 @@ int defaillants(unsigned int numJourCourant, Donnees *donnees) {
     bool aucunDefaillant = true;  //on vérifie s'il y a des défaillants
 
 
-    for (int i = 1; i < donnees->idEtuInc; ++i) {
+    for(int i = 1; i < donnees->idEtuInc; ++i){
         unsigned int totalAbs = 0;            //total des absences de l'étudiant
         unsigned int absNonJustifiees = 0;    //total des absences non justifiées
 
-        for (int j = 1; j < donnees->idAbsInc; ++j) {
+        for(int j = 1; j < donnees->idAbsInc; ++j){
             //jour <= au jour courant
-            if (donnees->tabAbsence[j].idAbsEtuTab == donnees->tabEtudiant[i].idEtuTab &&
-                donnees->tabAbsence[j].numJourTab <= numJourCourant) {
+            if(donnees->tabAbsence[j].idAbsEtuTab == donnees->tabEtudiant[i].idEtuTab &&
+                donnees->tabAbsence[j].numJourTab <= numJourCourant){
 
-                //Compter le total des absences
+                //compter le total des absences
                 totalAbs++;
 
-                //Vérifier si l'absence n'est pas justifiée
-                if (donnees->tabAbsence[j].idAbsJustifieeTab == 0 &&
-                    strlen(donnees->tabAbsence[j].justificatifTxtTab) == 0) {
-                    absNonJustifiees++;  // on compte les absences non justifiées
+                //vérifier si l'absence n'est pas justifiée
+                if(donnees->tabAbsence[j].idAbsJustifieeTab == 0 &&
+                    strlen(donnees->tabAbsence[j].justificatifTxtTab) == 0){
+                    absNonJustifiees++;  //on compte les absences non justifiées
                     }
                 }
         }
 
-
-        if (absNonJustifiees >= 5) { //on vérifie si l'étudiant est défaillant (5 absences non justifiées ou plus)
+        if(absNonJustifiees >= 5){ //on vérifie si l'étudiant est défaillant (5 absences non justifiées ou plus)
 
             aucunDefaillant = false; //si on trouve au moins un défaillant, on désactive notre condition
-
 
             printf("(%u) %-30s %4u %4u\n", donnees->tabEtudiant[i].idEtuTab, //on affiche les informations de l'étudiant : id, nom, groupe, total absences
                    donnees->tabEtudiant[i].nomEtuTab, donnees->tabEtudiant[i].numGrpTab, totalAbs);
         }
     }
 
-
-    if (aucunDefaillant) {
+    if(aucunDefaillant){ //si aucun étudiant n'a plus de 5 absences injustifiées
         printf("Aucun defaillant\n");
     }
-
     return 1;
 }
 
-void help(void){ //Commande supplémentaire affichant toutes les commandes
+void help(void){ //commande supplémentaire affichant toutes les commandes
     printf("********************************************************************************************************************************************\n"); //esthétique
     printf("%80s", "Commandes disponibles\n");
     printf("********************************************************************************************************************************************\n"); //esthétique
