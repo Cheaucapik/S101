@@ -1,0 +1,106 @@
+etudiants 1
+validations
+inscription fedele 202
+inscription jock 101
+absence 1 7 am
+absence 1 40 am
+inscription leslie 202
+inscription janos 101
+inscription garry 101
+inscription deb 102
+absence 6 14 pm
+absence 5 25 pm
+absence 4 10 am
+absence 2 28 am
+absence 5 21 pm
+justificatif 1 11 certif. medical
+absence 3 4 am
+absence 2 32 am
+validations
+justificatif 7 22 certif. medical
+validation 7 ok
+inscription hildegard 101
+validations
+absence 2 38 am
+absence 5 38 am
+validations
+justificatif 2 44 j'avais d'autres choses a faire
+absence 5 37 pm
+absence 1 9 am
+absence 1 38 pm
+absence 5 29 am
+justificatif 10 40 convoc. police
+absence 4 30 am
+absence 3 14 am
+etudiants 24
+absence 3 6 am
+absence 7 30 am
+validations
+absence 7 17 am
+absence 2 33 pm
+absence 1 2 pm
+absence 6 19 pm
+absence 4 3 pm
+absence 2 34 am
+justificatif 12 43 permis de conduire
+justificatif 25 40 Journee defense et citoyennete
+justificatif 22 5 j'aime pas ce cours
+absence 1 24 pm
+justificatif 15 32 Journee defense et citoyennete
+absence 3 10 pm
+justificatif 19 36 convoc. tribunal
+validations
+justificatif 23 21 permis de conduire
+etudiants 30
+absence 7 3 am
+justificatif 26 30 Journee defense et citoyennete
+justificatif 8 6 certif. medical
+absence 5 7 pm
+absence 3 31 pm
+justificatif 5 16 permis de conduire
+validations
+validation 22 ko
+validation 8 ok
+validation 23 ko
+justificatif 6 29 convoc. police
+absence 7 24 pm
+absence 4 18 pm
+validation 15 ok
+validations
+validation 10 ok
+justificatif 9 35 j'avais d'autres choses a faire
+justificatif 13 10 j'avais piscine
+validation 6 ok
+justificatif 31 27 j'avais d'autres choses a faire
+justificatif 20 18 convoc. police
+absence 4 33 am
+absence 5 25 am
+justificatif 30 35 permis de conduire
+justificatif 34 28 j'aime pas ce prof
+validation 20 ok
+validation 9 ko
+validation 34 ok
+justificatif 16 33 j'avais d'autres choses a faire
+validation 13 ko
+absence 1 30 pm
+justificatif 17 15 j'avais piscine
+justificatif 28 6 certif. medical
+justificatif 35 36 certif. medical
+validation 31 ok
+justificatif 18 10 ma chaine de velo a deraille
+absence 4 11 am
+validation 28 ok
+justificatif 36 12 j'aime pas ce prof
+validation 17 ok
+justificatif 33 36 Journee defense et citoyennete
+validation 36 ko
+absence 4 14 pm
+validation 33 ko
+validations
+absence 4 4 pm
+validation 16 ok
+justificatif 38 10 j'aime pas ce cours
+etudiants 1
+etudiants 41
+validations
+exit

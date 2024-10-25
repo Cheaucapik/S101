@@ -1,0 +1,273 @@
+Aucun inscrit
+Aucune validation en attente
+Inscription enregistree (1)
+Inscription enregistree (2)
+Inscription enregistree (3)
+Inscription enregistree (4)
+(1) thoth 101 0
+Aucune validation en attente
+Inscription enregistree (5)
+Absence enregistree [1]
+Inscription enregistree (6)
+Absence enregistree [2]
+Absence enregistree [3]
+(4) huw 202 0
+(6) cezar   40 0
+(2) josif   50 1
+(1) thoth  101 1
+(5) gwenda 102 0
+(3) wilson 103 0
+(4) huw    202 0
+Absence enregistree [4]
+Absence enregistree [5]
+Inscription enregistree (7)
+(2) josif 50 0
+Absence enregistree [6]
+Absence enregistree [7]
+Absence enregistree [8]
+Inscription enregistree (8)
+Inscription enregistree (9)
+Absence enregistree [9]
+Absence enregistree [10]
+Absence enregistree [11]
+Absence enregistree [12]
+Absence enregistree [13]
+Aucune validation en attente
+(8) zan 101 0
+Absence enregistree [14]
+Aucune validation en attente
+Justificatif enregistre
+Absence enregistree [15]
+(9) vojtech 40 0
+Absence enregistree [16]
+Absence enregistree [17]
+Absence enregistree [18]
+Absence enregistree [19]
+Absence enregistree [20]
+Justificatif enregistre
+Justificatif enregistre
+Absence enregistree [21]
+Justificatif enregistre
+Justificatif enregistre
+[3]  (1) thoth   101 5/am (j'aime pas ce cours)
+[15] (7) yasmina 101 4/am (certif. medical)
+Absence enregistree [22]
+Justificatif enregistre
+Absence enregistree [23]
+Inscription enregistree (10)
+Validation enregistree
+Absence enregistree [24]
+Absence enregistree [25]
+Absence enregistree [26]
+Absence enregistree [27]
+Justificatif enregistre
+Justificatif enregistre
+(6)  cezar    40 2
+(9)  vojtech  40 2
+(2)  josif    50 2
+(10) lis      50 1
+(1)  thoth   101 2
+(7)  yasmina 101 3
+(8)  zan     101 3
+(5)  gwenda  102 0
+(3)  wilson  103 0
+(4)  huw     202 3
+Justificatif enregistre
+Absence enregistree [28]
+Validation enregistree
+Absence enregistree [29]
+Justificatif enregistre
+Absence enregistree [30]
+Absence enregistree [31]
+Absence enregistree [32]
+Justificatif enregistre
+Justificatif enregistre
+Absence enregistree [33]
+[16] (2) josif    50 35/pm (convoc. police)
+[15] (7) yasmina 101  4/am (certif. medical)
+Justificatif enregistre
+Absence enregistree [34]
+Justificatif enregistre
+Justificatif enregistre
+Absence enregistree [35]
+Absence enregistree [36]
+Justificatif enregistre
+Justificatif enregistre
+Absence enregistree [37]
+Absence enregistree [38]
+Validation enregistree
+Absence enregistree [39]
+Justificatif enregistre
+Justificatif enregistre
+Justificatif enregistre
+Justificatif enregistre
+Justificatif enregistre
+Validation enregistree
+Absence enregistree [40]
+Absence enregistree [41]
+(10) lis 50 1
+- En attente justificatif
+  [26] 18/pm
+Validation enregistree
+Validation enregistree
+Absence enregistree [42]
+Validation enregistree
+Justificatif enregistre
+(6)  cezar    40 0
+(9)  vojtech  40 1
+(2)  josif    50 1
+(10) lis      50 0
+(1)  thoth   101 1
+(7)  yasmina 101 2
+(8)  zan     101 2
+(5)  gwenda  102 0
+(3)  wilson  103 0
+(4)  huw     202 1
+Validation enregistree
+Validation enregistree
+Absence enregistree [43]
+Validation enregistree
+Absence enregistree [44]
+Absence enregistree [45]
+Justificatif enregistre
+Justificatif enregistre
+Justificatif enregistre
+Absence enregistree [46]
+Absence enregistree [47]
+Absence enregistree [48]
+Justificatif enregistre
+Justificatif enregistre
+Justificatif enregistre
+(4) huw 202 6
+- En attente justificatif
+  [41] 28/am
+- En attente validation
+  [40] 14/pm (convoc. police)
+- Non-justifiees
+  [22]  5/pm (ma chaine de velo a deraille)
+  [29] 13/pm (certif. medical)
+  [12] 17/pm (permis de conduire)
+  [5]  19/pm (j'avais d'autres choses a faire)
+Justificatif enregistre
+Absence enregistree [49]
+Justificatif enregistre
+Validation enregistree
+Absence enregistree [50]
+Justificatif enregistre
+Validation enregistree
+Justificatif enregistre
+Validation enregistree
+Justificatif enregistre
+Validation enregistree
+Validation enregistree
+Justificatif enregistre
+Absence enregistree [51]
+Validation enregistree
+Validation enregistree
+(6)  cezar    40 0
+(9)  vojtech  40 0
+(2)  josif    50 0
+(10) lis      50 0
+(1)  thoth   101 0
+(7)  yasmina 101 0
+(8)  zan     101 0
+(5)  gwenda  102 0
+(3)  wilson  103 0
+(4)  huw     202 0
+(6)  cezar    40  3
+(9)  vojtech  40  2
+(2)  josif    50  4
+(10) lis      50  2
+(1)  thoth   101  2
+(7)  yasmina 101 12
+(8)  zan     101 10
+(5)  gwenda  102  3
+(3)  wilson  103  5
+(4)  huw     202  8
+Aucune validation en attente
+(1) thoth 101 0
+(1) thoth 101 2
+- Non-justifiees
+  [3]   5/am (j'aime pas ce cours)
+  [13] 20/pm (convoc. tribunal)
+(2) josif 50 0
+(2) josif 50 4
+- Justifiees
+  [16] 35/pm (convoc. police)
+- Non-justifiees
+  [24]  4/am (convoc. tribunal)
+  [2]  24/am (ma chaine de velo a deraille)
+  [21] 38/pm (convoc. police)
+(3) wilson 103 0
+(3) wilson 103 5
+- Justifiees
+  [23] 34/pm (convoc. police)
+- Non-justifiees
+  [43]  8/am (convoc. tribunal)
+  [45] 11/am (permis de conduire)
+  [31] 35/pm (ma chaine de velo a deraille)
+  [38] 39/am (convoc. police)
+(4) huw 202 0
+(4) huw 202 8
+- Justifiees
+  [4] 34/pm (ma chaine de velo a deraille)
+- Non-justifiees
+  [22]  5/pm (ma chaine de velo a deraille)
+  [29] 13/pm (certif. medical)
+  [40] 14/pm (convoc. police)
+  [12] 17/pm (permis de conduire)
+  [5]  19/pm (j'avais d'autres choses a faire)
+  [41] 28/am (certif. medical)
+  [1]  38/am
+(5) gwenda 102 0
+(5) gwenda 102 3
+- Justifiees
+  [39] 29/pm (ma chaine de velo a deraille)
+- Non-justifiees
+  [8]  36/am
+  [20] 38/pm (Journee defense et citoyennete)
+(6) cezar 40 0
+(6) cezar 40 3
+- Non-justifiees
+  [33] 20/pm
+  [7]  24/am (j'avais piscine)
+  [9]  30/pm (permis de conduire)
+(7) yasmina 101 0
+(7) yasmina 101 12
+- Justifiees
+  [15]  4/am (certif. medical)
+  [48]  5/am (permis de conduire)
+  [30] 39/pm (j'avais piscine)
+- Non-justifiees
+  [14]  6/am (certif. medical)
+  [46]  8/am
+  [25]  8/pm
+  [47] 12/pm
+  [51] 28/pm
+  [6]  31/am (certif. medical)
+  [18] 34/pm (j'avais piscine)
+  [50] 36/am (Journee defense et citoyennete)
+  [32] 38/am
+(8) zan 101 0
+(8) zan 101 10
+- Non-justifiees
+  [34]  2/pm
+  [49]  4/pm (Journee defense et citoyennete)
+  [37]  5/am (j'avais d'autres choses a faire)
+  [10] 11/pm
+  [11] 18/pm
+  [42] 19/am (certif. medical)
+  [19] 26/am
+  [44] 27/am
+  [35] 34/pm (convoc. tribunal)
+  [28] 38/am
+(9) vojtech 40 0
+(9) vojtech 40 2
+- Non-justifiees
+  [27]  5/pm (ma chaine de velo a deraille)
+  [17] 26/pm (permis de conduire)
+(10) lis 50 0
+(10) lis 50 2
+- Non-justifiees
+  [26] 18/pm
+  [36] 28/am

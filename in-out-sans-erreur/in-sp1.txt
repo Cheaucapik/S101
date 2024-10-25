@@ -1,0 +1,29 @@
+etudiants 1
+inscription mohamed 203
+inscription carmen 102
+absence 2 17 pm
+absence 2 3 pm
+etudiants 7
+inscription fedele 202
+absence 3 16 am
+etudiants 41
+etudiants 7
+absence 2 27 am
+inscription cliodhna 50
+absence 1 17 am
+absence 3 19 pm
+absence 4 35 am
+inscription zan 201
+absence 4 22 am
+absence 5 7 am
+absence 5 5 pm
+absence 1 23 pm
+absence 1 36 pm
+etudiants 18
+absence 4 4 pm
+etudiants 11
+absence 1 8 pm
+absence 4 11 am
+etudiants 1
+etudiants 41
+exit

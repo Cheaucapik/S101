@@ -1,0 +1,703 @@
+Aucun inscrit
+Aucune validation en attente
+Aucun defaillant
+Inscription enregistree (1)
+Absence enregistree [1]
+Inscription enregistree (2)
+Aucun defaillant
+Inscription enregistree (3)
+Inscription enregistree (4)
+Identifiant incorrect
+Absence enregistree [2]
+Inscription enregistree (5)
+Inscription enregistree (6)
+Inscription enregistree (7)
+Absence enregistree [3]
+Inscription enregistree (8)
+Absence enregistree [4]
+Absence enregistree [5]
+Absence enregistree [6]
+Absence enregistree [7]
+Absence enregistree [8]
+Inscription enregistree (9)
+Inscription enregistree (10)
+Absence enregistree [9]
+Identifiant incorrect
+Inscription enregistree (11)
+Absence enregistree [10]
+Absence enregistree [11]
+Absence enregistree [12]
+Absence enregistree [13]
+Inscription enregistree (12)
+Identifiant incorrect
+Absence enregistree [14]
+Nom incorrect
+Absence enregistree [15]
+Inscription enregistree (13)
+Absence enregistree [16]
+Justificatif enregistre
+Absence enregistree [17]
+Nom incorrect
+Absence enregistree [18]
+Justificatif enregistre
+Absence enregistree [19]
+Aucune validation en attente
+Absence enregistree [20]
+Absence enregistree [21]
+Absence enregistree [22]
+Absence enregistree [23]
+(8) elise 101 0
+Absence enregistree [24]
+Absence enregistree [25]
+Absence enregistree [26]
+Aucun defaillant
+(4)  bergliot  30 0
+(2)  corrado   30 1
+(1)  grant     30 0
+(6)  lake      30 1
+(13) tomos     30 0
+(7)  spiridon  40 1
+(5)  anselma   50 0
+(3)  romey     50 2
+(8)  elise    101 0
+(12) kelda    101 1
+(9)  dunja    102 0
+(11) arianna  103 1
+(10) heino    103 1
+Absence enregistree [27]
+Absence enregistree [28]
+Inscription enregistree (14)
+Absence enregistree [29]
+Absence enregistree [30]
+Absence enregistree [31]
+Absence enregistree [32]
+Absence enregistree [33]
+Absence enregistree [34]
+Justificatif enregistre
+Absence enregistree [35]
+(8) elise 101 0
+Justificatif enregistre
+Inscription enregistree (15)
+Justificatif enregistre
+Absence enregistree [36]
+Absence enregistree [37]
+Absence enregistree [38]
+Absence enregistree [39]
+Justificatif enregistre
+Absence enregistree [40]
+[33] (9)  dunja 102 29/pm (permis de conduire)
+[35] (10) heino 103 39/pm (certif. medical)
+Absence enregistree [41]
+Absence enregistree [42]
+Absence enregistree [43]
+Absence enregistree [44]
+Absence enregistree [45]
+Justificatif enregistre
+Absence enregistree [46]
+Justificatif enregistre
+Justificatif enregistre
+Absence enregistree [47]
+Absence enregistree [48]
+Absence enregistree [49]
+Justificatif enregistre
+Justificatif enregistre
+Absence enregistree [50]
+Absence enregistree [51]
+Absence enregistree [52]
+Date incorrecte
+Absence enregistree [53]
+Absence enregistree [54]
+Justificatif enregistre
+Absence enregistree [55]
+Aucun defaillant
+Validation enregistree
+Absence enregistree [56]
+Absence enregistree [57]
+Justificatif enregistre
+Absence enregistree [58]
+Absence enregistree [59]
+Absence enregistree [60]
+(14) mahomet 40 0
+Absence enregistree [61]
+Absence enregistree [62]
+Absence enregistree [63]
+Identifiant incorrect
+[9]  (3)  romey     50  7/pm (ma chaine de velo a deraille)
+[13] (7)  spiridon  40  3/pm (permis de conduire)
+[53] (8)  elise    101 39/am (j'avais d'autres choses a faire)
+[33] (9)  dunja    102 29/pm (permis de conduire)
+[14] (12) kelda    101  4/pm (convoc. police)
+[52] (12) kelda    101 21/pm (j'avais piscine)
+Absence enregistree [64]
+Absence enregistree [65]
+Aucun defaillant
+Date incorrecte
+Absence enregistree [66]
+Absence deja connue
+Justificatif enregistre
+Date incorrecte
+Absence enregistree [67]
+Absence enregistree [68]
+Validation enregistree
+Absence enregistree [69]
+Absence enregistree [70]
+Justificatif enregistre
+Absence enregistree [71]
+Justificatif enregistre
+Absence enregistree [72]
+Absence enregistree [73]
+Absence enregistree [74]
+Absence enregistree [75]
+Justificatif enregistre
+Absence enregistree [76]
+Validation enregistree
+Aucun defaillant
+Absence enregistree [77]
+Absence enregistree [78]
+Absence enregistree [79]
+Absence deja connue
+Absence enregistree [80]
+Validation enregistree
+Justificatif enregistre
+Absence enregistree [81]
+Absence deja connue
+Justificatif enregistre
+Absence enregistree [82]
+Absence enregistree [83]
+Absence enregistree [84]
+Absence enregistree [85]
+Absence enregistree [86]
+(4)  bergliot    30  8
+(2)  corrado     30  7
+(15) kreszentia  30  5
+(6)  lake        30  7
+(14) mahomet     40  7
+(8)  elise      101  7
+(12) kelda      101 12
+Absence enregistree [87]
+Justificatif enregistre
+(4)  bergliot    30 0
+(2)  corrado     30 1
+(1)  grant       30 1
+(15) kreszentia  30 2
+(6)  lake        30 3
+(13) tomos       30 0
+(14) mahomet     40 1
+(7)  spiridon    40 2
+(5)  anselma     50 1
+(3)  romey       50 3
+(8)  elise      101 1
+(12) kelda      101 2
+(9)  dunja      102 1
+(11) arianna    103 2
+(10) heino      103 1
+Absence enregistree [88]
+Absence enregistree [89]
+Validation enregistree
+Absence enregistree [90]
+Absence enregistree [91]
+Absence enregistree [92]
+Validation enregistree
+Justificatif enregistre
+Absence enregistree [93]
+Absence enregistree [94]
+Absence enregistree [95]
+Absence enregistree [96]
+Justificatif enregistre
+Justificatif enregistre
+Absence deja connue
+Justificatif enregistre
+Absence enregistree [97]
+Absence enregistree [98]
+Justificatif enregistre
+Date incorrecte
+Justificatif enregistre
+Absence enregistree [99]
+Absence enregistree [100]
+Justificatif enregistre
+Absence enregistree [101]
+Absence enregistree [102]
+Absence enregistree [103]
+Absence deja connue
+Absence enregistree [104]
+Absence enregistree [105]
+Justificatif enregistre
+Absence enregistree [106]
+Justificatif enregistre
+Justificatif enregistre
+Justificatif enregistre
+Validation enregistree
+Absence enregistree [107]
+Absence enregistree [108]
+Justificatif enregistre
+Justificatif enregistre
+(4)  bergliot  30 11
+(2)  corrado   30  9
+(1)  grant     30  9
+(6)  lake      30  9
+(14) mahomet   40  8
+(5)  anselma   50  8
+(3)  romey     50  7
+(8)  elise    101 10
+(12) kelda    101 12
+(10) heino    103  6
+Absence enregistree [109]
+Absence enregistree [110]
+Justificatif enregistre
+(4)  bergliot    30 11
+(2)  corrado     30 10
+(1)  grant       30  9
+(15) kreszentia  30  5
+(6)  lake        30  9
+(13) tomos       30  2
+(14) mahomet     40  8
+(7)  spiridon    40  3
+(5)  anselma     50  9
+(3)  romey       50  7
+(8)  elise      101 10
+(12) kelda      101 12
+(9)  dunja      102  4
+(11) arianna    103  5
+(10) heino      103  6
+Absence enregistree [111]
+Absence enregistree [112]
+Justificatif enregistre
+Absence enregistree [113]
+Justificatif enregistre
+Justificatif enregistre
+Absence enregistree [114]
+Justificatif enregistre
+Justificatif enregistre
+Absence enregistree [115]
+Justificatif enregistre
+Justificatif enregistre
+Validation enregistree
+Justificatif enregistre
+Absence enregistree [116]
+Absence enregistree [117]
+Justificatif enregistre
+Absence enregistree [118]
+Justificatif enregistre
+Justificatif enregistre
+Justificatif enregistre
+Justificatif enregistre
+Absence enregistree [119]
+Justificatif enregistre
+Justificatif enregistre
+Identifiant incorrect
+Justificatif enregistre
+Absence enregistree [120]
+Justificatif enregistre
+Justificatif enregistre
+Absence enregistree [121]
+Justificatif enregistre
+Justificatif enregistre
+Absence enregistree [122]
+Justificatif enregistre
+Justificatif enregistre
+Justificatif enregistre
+Justificatif enregistre
+Absence enregistree [123]
+Justificatif enregistre
+Justificatif enregistre
+Justificatif enregistre
+Validation enregistree
+[1]   (1)  grant       30 23/am (convoc. tribunal)
+[26]  (2)  corrado     30 15/pm (j'avais piscine)
+[108] (2)  corrado     30 27/pm (convoc. tribunal)
+[12]  (3)  romey       50  9/am (permis de conduire)
+[107] (5)  anselma     50 35/am (j'aime pas ce cours)
+[53]  (8)  elise      101 39/am (j'avais d'autres choses a faire)
+[22]  (11) arianna    103  1/am (j'avais d'autres choses a faire)
+[66]  (11) arianna    103 38/am (j'aime pas ce prof)
+[73]  (14) mahomet     40 18/am (j'avais piscine)
+[86]  (15) kreszentia  30  1/pm (convoc. police)
+[58]  (15) kreszentia  30  3/am (convoc. police)
+Justificatif enregistre
+Justificatif enregistre
+Justificatif enregistre
+Justificatif enregistre
+Absence enregistree [124]
+Justificatif deja connu
+Absence enregistree [125]
+Absence enregistree [126]
+Justificatif enregistre
+Date incorrecte
+Absence enregistree [127]
+Validation enregistree
+Validation enregistree
+Justificatif enregistre
+Absence enregistree [128]
+Justificatif enregistre
+Absence enregistree [129]
+Justificatif enregistre
+Justificatif enregistre
+Validation enregistree
+Validation enregistree
+Absence enregistree [130]
+Absence enregistree [131]
+Absence enregistree [132]
+Justificatif enregistre
+(13) tomos 30 0
+Absence enregistree [133]
+Absence enregistree [134]
+Justificatif enregistre
+Justificatif enregistre
+Absence enregistree [135]
+Validation enregistree
+Absence enregistree [136]
+Justificatif enregistre
+Absence enregistree [137]
+Validation enregistree
+Absence enregistree [138]
+Validation enregistree
+Justificatif enregistre
+Justificatif enregistre
+Absence enregistree [139]
+Justificatif enregistre
+Validation enregistree
+Absence enregistree [140]
+Absence enregistree [141]
+Absence enregistree [142]
+Absence enregistree [143]
+Absence enregistree [144]
+Validation enregistree
+Validation enregistree
+Justificatif enregistre
+Justificatif enregistre
+Absence enregistree [145]
+Justificatif enregistre
+Validation enregistree
+Justificatif enregistre
+Date incorrecte
+Absence enregistree [146]
+Identifiant incorrect
+Validation enregistree
+Absence enregistree [147]
+Justificatif enregistre
+Justificatif enregistre
+(1) grant 30 8
+Absence enregistree [148]
+Justificatif enregistre
+Justificatif enregistre
+Absence enregistree [149]
+Absence enregistree [150]
+Justificatif enregistre
+Justificatif enregistre
+Validation enregistree
+Validation enregistree
+Justificatif enregistre
+Validation enregistree
+Justificatif enregistre
+Justificatif enregistre
+Validation enregistree
+Justificatif enregistre
+Absence enregistree [151]
+Validation enregistree
+Absence enregistree [152]
+Validation enregistree
+Validation enregistree
+Justificatif enregistre
+Justificatif enregistre
+[141] (2)  corrado     30 37/pm (convoc. police)
+[133] (3)  romey       50 38/pm (j'aime pas ce prof)
+[39]  (8)  elise      101 27/pm (ma chaine de velo a deraille)
+[58]  (15) kreszentia  30  3/am (convoc. police)
+Justificatif enregistre
+Validation enregistree
+Justificatif enregistre
+Justificatif enregistre
+Justificatif enregistre
+Justificatif enregistre
+Validation enregistree
+Validation enregistree
+Validation enregistree
+Absence enregistree [153]
+Justificatif enregistre
+Absence enregistree [154]
+Validation enregistree
+Justificatif enregistre
+Absence enregistree [155]
+Justificatif enregistre
+Justificatif enregistre
+Validation enregistree
+Justificatif enregistre
+Validation enregistree
+Validation enregistree
+Justificatif enregistre
+Absence enregistree [156]
+Validation enregistree
+Validation enregistree
+Justificatif enregistre
+Validation enregistree
+Absence enregistree [157]
+Validation enregistree
+Justificatif enregistre
+Validation enregistree
+(4)  bergliot    30 0
+(2)  corrado     30 0
+(1)  grant       30 1
+(15) kreszentia  30 1
+(6)  lake        30 1
+(13) tomos       30 0
+(14) mahomet     40 0
+(7)  spiridon    40 0
+(5)  anselma     50 0
+(3)  romey       50 0
+(8)  elise      101 0
+(12) kelda      101 0
+(9)  dunja      102 0
+(11) arianna    103 1
+(10) heino      103 1
+(4)  bergliot    30 13
+(2)  corrado     30 12
+(1)  grant       30 16
+(15) kreszentia  30 11
+(6)  lake        30 10
+(13) tomos       30  2
+(14) mahomet     40 13
+(7)  spiridon    40  3
+(5)  anselma     50 12
+(3)  romey       50 16
+(8)  elise      101 14
+(12) kelda      101 15
+(9)  dunja      102  4
+(11) arianna    103 10
+(10) heino      103  6
+Aucune validation en attente
+(1) grant 30 1
+- En attente justificatif
+  [93] 1/pm
+(1) grant 30 16
+- Non-justifiees
+  [93]   1/pm (Journee defense et citoyennete)
+  [120]  2/am
+  [87]   3/pm (j'aime pas ce prof)
+  [125]  4/am (convoc. tribunal)
+  [100]  5/am
+  [128] 12/am (convoc. tribunal)
+  [96]  13/pm
+  [129] 15/am
+  [84]  16/am
+  [153] 18/am (convoc. tribunal)
+  [27]  18/pm
+  [76]  19/am
+  [151] 22/pm
+  [1]   23/am (convoc. tribunal)
+  [155] 24/am (j'avais piscine)
+  [97]  34/pm
+(2) corrado 30 0
+(2) corrado 30 12
+- Justifiees
+  [85]  26/am (j'aime pas ce prof)
+  [108] 27/pm (convoc. tribunal)
+- Non-justifiees
+  [19]   3/pm
+  [150]  8/am
+  [47]  13/pm (convoc. tribunal)
+  [26]  15/pm (j'avais piscine)
+  [109] 18/pm (j'aime pas ce cours)
+  [88]  32/am (permis de conduire)
+  [59]  35/am (j'aime pas ce cours)
+  [44]  36/pm
+  [38]  37/am (convoc. police)
+  [141] 37/pm (convoc. police)
+(3) romey 50 0
+(3) romey 50 16
+- Justifiees
+  [9]    7/pm (ma chaine de velo a deraille)
+  [12]   9/am (permis de conduire)
+  [134] 24/am (j'avais piscine)
+- Non-justifiees
+  [148]  6/am (convoc. tribunal)
+  [2]    7/am (convoc. police)
+  [135]  8/pm (j'aime pas ce prof)
+  [103] 14/pm
+  [4]   17/am (ma chaine de velo a deraille)
+  [130] 18/am (j'aime pas ce prof)
+  [145] 18/pm
+  [149] 21/pm
+  [104] 23/am (convoc. police)
+  [56]  29/am (Journee defense et citoyennete)
+  [156] 38/am (j'aime pas ce prof)
+  [133] 38/pm (j'aime pas ce prof)
+  [136] 40/am
+(4) bergliot 30 0
+(4) bergliot 30 13
+- Non-justifiees
+  [122]  7/pm (Journee defense et citoyennete)
+  [94]   8/pm (permis de conduire)
+  [91]   9/pm
+  [10]  11/am (j'avais d'autres choses a faire)
+  [111] 12/pm (convoc. tribunal)
+  [64]  14/am
+  [8]   19/am (convoc. tribunal)
+  [98]  20/pm
+  [77]  21/pm
+  [36]  23/am (certif. medical)
+  [7]   26/am (j'avais d'autres choses a faire)
+  [23]  29/pm (certif. medical)
+  [5]   32/am (permis de conduire)
+(5) anselma 50 0
+(5) anselma 50 12
+- Justifiees
+  [65] 27/am (permis de conduire)
+  [28] 28/am (j'aime pas ce prof)
+- Non-justifiees
+  [34]   2/pm (permis de conduire)
+  [143]  3/pm (j'avais d'autres choses a faire)
+  [116] 11/am (convoc. tribunal)
+  [110] 15/am (Journee defense et citoyennete)
+  [101] 25/am
+  [71]  28/pm (j'avais piscine)
+  [117] 34/pm (permis de conduire)
+  [107] 35/am (j'aime pas ce cours)
+  [24]  35/pm (permis de conduire)
+  [3]   37/pm (Journee defense et citoyennete)
+(6) lake 30 1
+- En attente justificatif
+  [70] 1/am
+(6) lake 30 10
+- Justifiees
+  [29] 3/pm (j'aime pas ce cours)
+- Non-justifiees
+  [70]   1/am
+  [11]   2/am
+  [92]   5/pm (convoc. tribunal)
+  [6]   20/pm
+  [45]  26/pm (permis de conduire)
+  [106] 27/pm
+  [119] 29/pm (j'aime pas ce prof)
+  [60]  31/am (Journee defense et citoyennete)
+  [32]  31/pm
+(7) spiridon 40 0
+(7) spiridon 40 3
+- Justifiees
+  [13] 3/pm (permis de conduire)
+- Non-justifiees
+  [16] 10/am (convoc. tribunal)
+  [79] 28/am
+(8) elise 101 0
+(8) elise 101 14
+- Justifiees
+  [40]  23/pm (certif. medical)
+  [144] 24/pm (j'avais piscine)
+- Non-justifiees
+  [105]  5/am
+  [43]   8/pm
+  [95]   9/am (convoc. police)
+  [51]  17/pm (j'aime pas ce cours)
+  [115] 21/am
+  [121] 27/am (Journee defense et citoyennete)
+  [39]  27/pm (ma chaine de velo a deraille)
+  [99]  29/pm
+  [42]  32/am
+  [78]  34/pm (Journee defense et citoyennete)
+  [140] 35/am
+  [53]  39/am (j'avais d'autres choses a faire)
+(9) dunja 102 0
+(9) dunja 102 4
+- Non-justifiees
+  [50]  9/pm
+  [49] 16/pm (j'avais piscine)
+  [33] 29/pm (permis de conduire)
+  [46] 30/pm
+(10) heino 103 1
+- En attente justificatif
+  [21] 1/am
+(10) heino 103 6
+- Justifiees
+  [35] 39/pm (certif. medical)
+- Non-justifiees
+  [21]  1/am (j'avais piscine)
+  [20] 12/am
+  [69] 14/pm (j'avais d'autres choses a faire)
+  [89] 17/am
+  [90] 18/pm (Journee defense et citoyennete)
+(11) arianna 103 1
+- En attente justificatif
+  [22] 1/am
+(11) arianna 103 10
+- Justifiees
+  [22]   1/am (j'avais d'autres choses a faire)
+  [152] 15/pm (certif. medical)
+  [147] 33/am (permis de conduire)
+  [66]  38/am (j'aime pas ce prof)
+- Non-justifiees
+  [15]  10/pm (convoc. tribunal)
+  [132] 11/pm
+  [55]  19/pm (j'aime pas ce prof)
+  [126] 31/pm (permis de conduire)
+  [113] 38/pm (convoc. police)
+  [82]  39/pm (ma chaine de velo a deraille)
+(12) kelda 101 0
+(12) kelda 101 15
+- Justifiees
+  [14]   4/pm (convoc. police)
+  [114]  6/am (certif. medical)
+  [52]  21/pm (j'avais piscine)
+- Non-justifiees
+  [41]   3/am (convoc. police)
+  [37]  20/am
+  [61]  21/am
+  [54]  24/am
+  [30]  25/am (Journee defense et citoyennete)
+  [67]  25/pm (ma chaine de velo a deraille)
+  [137] 27/pm (ma chaine de velo a deraille)
+  [127] 29/am (j'avais d'autres choses a faire)
+  [17]  36/am
+  [25]  38/am
+  [57]  39/pm (certif. medical)
+  [80]  40/pm (convoc. tribunal)
+(13) tomos 30 0
+(13) tomos 30 2
+- Non-justifiees
+  [18] 13/pm (permis de conduire)
+  [31] 24/pm
+(14) mahomet 40 0
+(14) mahomet 40 13
+- Justifiees
+  [124] 14/pm (certif. medical)
+- Non-justifiees
+  [74]   7/am (permis de conduire)
+  [123]  8/am (convoc. police)
+  [142] 14/am
+  [73]  18/am (j'avais piscine)
+  [112] 20/pm (certif. medical)
+  [83]  26/am (j'aime pas ce cours)
+  [72]  28/pm
+  [81]  34/pm
+  [63]  35/pm (j'avais piscine)
+  [146] 38/pm
+  [102] 39/pm
+  [48]  40/am (j'aime pas ce cours)
+(15) kreszentia 30 1
+- En attente justificatif
+  [86] 1/pm
+(15) kreszentia 30 11
+- Justifiees
+  [86]   1/pm (convoc. police)
+  [58]   3/am (convoc. police)
+  [118] 14/pm (j'avais d'autres choses a faire)
+  [62]  31/pm (j'avais d'autres choses a faire)
+  [154] 36/pm (j'avais d'autres choses a faire)
+- Non-justifiees
+  [138]  2/pm (certif. medical)
+  [131] 12/pm
+  [139] 16/am (certif. medical)
+  [157] 17/pm
+  [68]  23/pm (ma chaine de velo a deraille)
+  [75]  29/pm (j'aime pas ce cours)
+Aucun defaillant
+(4)  bergliot    30 13
+(2)  corrado     30 12
+(1)  grant       30 16
+(15) kreszentia  30 11
+(6)  lake        30 10
+(14) mahomet     40 13
+(5)  anselma     50 12
+(3)  romey       50 16
+(8)  elise      101 14
+(12) kelda      101 15
+(11) arianna    103 10
+(10) heino      103  6

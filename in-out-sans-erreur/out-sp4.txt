@@ -1,0 +1,744 @@
+Aucun inscrit
+Aucune validation en attente
+Aucun defaillant
+Inscription enregistree (1)
+Inscription enregistree (2)
+Inscription enregistree (3)
+Inscription enregistree (4)
+Inscription enregistree (5)
+(3) cezar    50 0
+(1) emmet    50 0
+(5) salomea  50 0
+(4) maud    102 0
+(2) wilson  103 0
+Inscription enregistree (6)
+Absence enregistree [1]
+Inscription enregistree (7)
+Absence enregistree [2]
+Absence enregistree [3]
+Inscription enregistree (8)
+(2) wilson 103 0
+Inscription enregistree (9)
+Absence enregistree [4]
+Justificatif enregistre
+Absence enregistree [5]
+Inscription enregistree (10)
+Absence enregistree [6]
+Absence enregistree [7]
+Absence enregistree [8]
+Absence enregistree [9]
+Absence enregistree [10]
+Absence enregistree [11]
+Absence enregistree [12]
+Absence enregistree [13]
+Justificatif enregistre
+Absence enregistree [14]
+Absence enregistree [15]
+Inscription enregistree (11)
+Inscription enregistree (12)
+Validation enregistree
+Absence enregistree [16]
+Absence enregistree [17]
+Absence enregistree [18]
+Absence enregistree [19]
+Aucun defaillant
+Absence enregistree [20]
+Inscription enregistree (13)
+Absence enregistree [21]
+Absence enregistree [22]
+Absence enregistree [23]
+Justificatif enregistre
+Absence enregistree [24]
+Absence enregistree [25]
+Inscription enregistree (14)
+Justificatif enregistre
+Absence enregistree [26]
+Absence enregistree [27]
+Absence enregistree [28]
+Justificatif enregistre
+Absence enregistree [29]
+Absence enregistree [30]
+Absence enregistree [31]
+Validation enregistree
+Absence enregistree [32]
+Absence enregistree [33]
+Justificatif enregistre
+Aucun defaillant
+Absence enregistree [34]
+Absence enregistree [35]
+Absence enregistree [36]
+Absence enregistree [37]
+[1]  (4)  maud    102 30/pm (convoc. police)
+[3]  (5)  salomea  50 35/am (certif. medical)
+[14] (10) romey   102  4/pm (j'avais d'autres choses a faire)
+(5) salomea 50 0
+Justificatif enregistre
+Absence enregistree [38]
+Absence enregistree [39]
+Justificatif enregistre
+Inscription enregistree (15)
+Absence enregistree [40]
+Validation enregistree
+Absence enregistree [41]
+Aucun defaillant
+(1) emmet 50 3
+- Non-justifiees
+  [16] 11/am
+  [19] 14/pm
+  [23] 26/pm
+Absence enregistree [42]
+Justificatif enregistre
+Absence enregistree [43]
+Absence enregistree [44]
+(12) bashemath  50 1
+(3)  cezar      50 0
+(1)  emmet      50 2
+(11) fiona      50 1
+(8)  nicodemus  50 1
+(5)  salomea    50 1
+(13) jock      101 2
+(14) leslie    102 1
+(15) louiza    102 0
+(4)  maud      102 1
+(10) romey     102 3
+(9)  arianna   103 2
+(2)  wilson    103 2
+(7)  silvio    202 0
+(6)  mihhaelo  203 1
+Absence enregistree [45]
+Absence enregistree [46]
+Absence enregistree [47]
+Absence enregistree [48]
+Justificatif enregistre
+Absence enregistree [49]
+Justificatif enregistre
+Absence enregistree [50]
+Absence enregistree [51]
+Absence enregistree [52]
+Absence enregistree [53]
+Absence enregistree [54]
+Absence enregistree [55]
+Absence enregistree [56]
+Absence enregistree [57]
+Absence enregistree [58]
+Justificatif enregistre
+Absence enregistree [59]
+Absence enregistree [60]
+Absence enregistree [61]
+Validation enregistree
+Absence enregistree [62]
+Absence enregistree [63]
+Absence enregistree [64]
+Absence enregistree [65]
+[1]  (4)  maud      102 30/pm (convoc. police)
+[30] (5)  salomea    50 14/am (j'aime pas ce prof)
+[47] (8)  nicodemus  50 26/am (Journee defense et citoyennete)
+[14] (10) romey     102  4/pm (j'avais d'autres choses a faire)
+[26] (11) fiona      50 32/pm (ma chaine de velo a deraille)
+Justificatif enregistre
+Absence enregistree [66]
+Absence enregistree [67]
+Absence enregistree [68]
+Justificatif enregistre
+Absence enregistree [69]
+Absence enregistree [70]
+Absence enregistree [71]
+Absence enregistree [72]
+(4) maud 102 3
+- Non-justifiees
+  [57]  5/pm
+  [58] 11/pm
+  [4]  13/pm
+Justificatif enregistre
+Absence enregistree [73]
+Justificatif enregistre
+Validation enregistree
+Absence enregistree [74]
+Absence enregistree [75]
+Absence enregistree [76]
+Absence enregistree [77]
+Absence enregistree [78]
+Absence enregistree [79]
+Justificatif enregistre
+Validation enregistree
+Absence enregistree [80]
+Absence enregistree [81]
+Absence enregistree [82]
+Absence enregistree [83]
+Absence enregistree [84]
+Absence enregistree [85]
+Absence enregistree [86]
+Absence enregistree [87]
+Justificatif enregistre
+Absence enregistree [88]
+Justificatif enregistre
+Absence enregistree [89]
+Absence enregistree [90]
+Absence enregistree [91]
+Absence enregistree [92]
+Absence enregistree [93]
+Justificatif enregistre
+Absence enregistree [94]
+Absence enregistree [95]
+Absence enregistree [96]
+Validation enregistree
+Justificatif enregistre
+Absence enregistree [97]
+Absence enregistree [98]
+Absence enregistree [99]
+Absence enregistree [100]
+(11) fiona 50 2
+- En attente validation
+  [28] 14/pm (permis de conduire)
+- Non-justifiees
+  [95] 2/pm
+Justificatif enregistre
+Absence enregistree [101]
+Justificatif enregistre
+Absence enregistree [102]
+Justificatif enregistre
+[1]  (4)  maud      102 30/pm (convoc. police)
+[47] (8)  nicodemus  50 26/am (Journee defense et citoyennete)
+[14] (10) romey     102  4/pm (j'avais d'autres choses a faire)
+[28] (11) fiona      50 14/pm (permis de conduire)
+[26] (11) fiona      50 32/pm (ma chaine de velo a deraille)
+[32] (11) fiona      50 38/pm (j'avais d'autres choses a faire)
+[60] (13) jock      101 24/am (ma chaine de velo a deraille)
+(12) bashemath  50  4
+(3)  cezar      50  2
+(1)  emmet      50  4
+(11) fiona      50  3
+(8)  nicodemus  50  7
+(5)  salomea    50  3
+(13) jock      101  6
+(14) leslie    102  5
+(15) louiza    102  7
+(4)  maud      102  9
+(10) romey     102  5
+(9)  arianna   103  5
+(2)  wilson    103 11
+(7)  silvio    202  5
+(6)  mihhaelo  203  7
+Absence enregistree [103]
+Justificatif enregistre
+Absence enregistree [104]
+Absence enregistree [105]
+Justificatif enregistre
+Justificatif enregistre
+Validation enregistree
+Absence enregistree [106]
+Absence enregistree [107]
+Validation enregistree
+Justificatif enregistre
+Absence enregistree [108]
+Absence enregistree [109]
+Validation enregistree
+Justificatif enregistre
+[23] (1)  emmet      50 26/pm (convoc. police)
+[1]  (4)  maud      102 30/pm (convoc. police)
+[47] (8)  nicodemus  50 26/am (Journee defense et citoyennete)
+[26] (11) fiona      50 32/pm (ma chaine de velo a deraille)
+[32] (11) fiona      50 38/pm (j'avais d'autres choses a faire)
+[60] (13) jock      101 24/am (ma chaine de velo a deraille)
+Justificatif enregistre
+Validation enregistree
+Justificatif enregistre
+Validation enregistree
+Justificatif enregistre
+Justificatif enregistre
+Absence enregistree [110]
+Absence enregistree [111]
+Justificatif enregistre
+Justificatif enregistre
+Absence enregistree [112]
+Validation enregistree
+Absence enregistree [113]
+Validation enregistree
+Absence enregistree [114]
+Justificatif enregistre
+Absence enregistree [115]
+Validation enregistree
+Justificatif enregistre
+Validation enregistree
+Justificatif enregistre
+Absence enregistree [116]
+Validation enregistree
+Absence enregistree [117]
+Absence enregistree [118]
+Justificatif enregistre
+Absence enregistree [119]
+Absence enregistree [120]
+Absence enregistree [121]
+Justificatif enregistre
+Absence enregistree [122]
+Absence enregistree [123]
+Absence enregistree [124]
+Absence enregistree [125]
+Absence enregistree [126]
+Justificatif enregistre
+Justificatif enregistre
+Absence enregistree [127]
+Justificatif enregistre
+Absence enregistree [128]
+Justificatif enregistre
+Justificatif enregistre
+(12) bashemath  50  8
+(11) fiona      50  7
+(8)  nicodemus  50  8
+(14) leslie    102  7
+(15) louiza    102  8
+(4)  maud      102 10
+(10) romey     102  7
+(9)  arianna   103  6
+(2)  wilson    103 13
+(7)  silvio    202  8
+(6)  mihhaelo  203  8
+Absence enregistree [129]
+Absence enregistree [130]
+Justificatif enregistre
+(12) bashemath  50 6
+(3)  cezar      50 1
+(1)  emmet      50 4
+(11) fiona      50 5
+(8)  nicodemus  50 4
+(5)  salomea    50 2
+(13) jock      101 4
+(14) leslie    102 5
+(15) louiza    102 2
+(4)  maud      102 5
+(10) romey     102 6
+(9)  arianna   103 5
+(2)  wilson    103 9
+(7)  silvio    202 3
+(6)  mihhaelo  203 5
+Justificatif enregistre
+Absence enregistree [131]
+Justificatif enregistre
+Justificatif enregistre
+Justificatif enregistre
+Justificatif enregistre
+Absence enregistree [132]
+Justificatif enregistre
+Validation enregistree
+Validation enregistree
+Justificatif enregistre
+Justificatif enregistre
+Justificatif enregistre
+Justificatif enregistre
+Justificatif enregistre
+Justificatif enregistre
+Justificatif enregistre
+Justificatif enregistre
+Validation enregistree
+Absence enregistree [133]
+Validation enregistree
+Validation enregistree
+Absence enregistree [134]
+Justificatif enregistre
+Absence enregistree [135]
+Validation enregistree
+Justificatif enregistre
+Justificatif enregistre
+Validation enregistree
+Justificatif enregistre
+Justificatif enregistre
+Validation enregistree
+Absence enregistree [136]
+Absence enregistree [137]
+Validation enregistree
+Absence enregistree [138]
+Validation enregistree
+Validation enregistree
+Justificatif enregistre
+Justificatif enregistre
+Absence enregistree [139]
+Absence enregistree [140]
+Justificatif enregistre
+Validation enregistree
+Validation enregistree
+Absence enregistree [141]
+Validation enregistree
+Justificatif enregistre
+Absence enregistree [142]
+Justificatif enregistre
+Justificatif enregistre
+Absence enregistree [143]
+Absence enregistree [144]
+Justificatif enregistre
+Validation enregistree
+Justificatif enregistre
+Absence enregistree [145]
+Validation enregistree
+Justificatif enregistre
+Absence enregistree [146]
+Validation enregistree
+Justificatif enregistre
+Justificatif enregistre
+Justificatif enregistre
+Justificatif enregistre
+Validation enregistree
+Justificatif enregistre
+Absence enregistree [147]
+Justificatif enregistre
+Justificatif enregistre
+Justificatif enregistre
+Absence enregistree [148]
+Absence enregistree [149]
+Justificatif enregistre
+Justificatif enregistre
+Validation enregistree
+Validation enregistree
+Validation enregistree
+Justificatif enregistre
+Justificatif enregistre
+Validation enregistree
+Validation enregistree
+Justificatif enregistre
+Justificatif enregistre
+Absence enregistree [150]
+Justificatif enregistre
+Validation enregistree
+(12) bashemath  50 6
+(3)  cezar      50 1
+(1)  emmet      50 4
+(11) fiona      50 6
+(8)  nicodemus  50 5
+(5)  salomea    50 2
+(13) jock      101 4
+(14) leslie    102 8
+(15) louiza    102 4
+(4)  maud      102 7
+(10) romey     102 8
+(9)  arianna   103 6
+(2)  wilson    103 9
+(7)  silvio    202 3
+(6)  mihhaelo  203 5
+Absence enregistree [151]
+Justificatif enregistre
+Justificatif enregistre
+Validation enregistree
+Validation enregistree
+Justificatif enregistre
+Justificatif enregistre
+Validation enregistree
+Absence enregistree [152]
+Justificatif enregistre
+Justificatif enregistre
+Justificatif enregistre
+(12) bashemath  50 5
+(3)  cezar      50 0
+(1)  emmet      50 4
+(11) fiona      50 5
+(8)  nicodemus  50 4
+(5)  salomea    50 1
+(13) jock      101 4
+(14) leslie    102 6
+(15) louiza    102 3
+(4)  maud      102 6
+(10) romey     102 6
+(9)  arianna   103 5
+(2)  wilson    103 8
+(7)  silvio    202 3
+(6)  mihhaelo  203 5
+Validation enregistree
+Justificatif enregistre
+Validation enregistree
+Justificatif enregistre
+Validation enregistree
+Justificatif enregistre
+Validation enregistree
+Validation enregistree
+Validation enregistree
+Justificatif enregistre
+Absence enregistree [153]
+Absence enregistree [154]
+Justificatif enregistre
+Justificatif enregistre
+Validation enregistree
+Validation enregistree
+Validation enregistree
+(12) bashemath  50 11
+(1)  emmet      50  6
+(11) fiona      50  9
+(8)  nicodemus  50  9
+(13) jock      101  6
+(14) leslie    102 13
+(15) louiza    102 11
+(4)  maud      102 13
+(10) romey     102 10
+(9)  arianna   103  7
+(2)  wilson    103 13
+(7)  silvio    202  9
+(6)  mihhaelo  203  8
+Justificatif enregistre
+Validation enregistree
+Justificatif enregistre
+Validation enregistree
+Justificatif enregistre
+Validation enregistree
+(12) bashemath  50 1
+(3)  cezar      50 0
+(1)  emmet      50 0
+(11) fiona      50 1
+(8)  nicodemus  50 1
+(5)  salomea    50 0
+(13) jock      101 0
+(14) leslie    102 0
+(15) louiza    102 0
+(4)  maud      102 1
+(10) romey     102 0
+(9)  arianna   103 0
+(2)  wilson    103 0
+(7)  silvio    202 0
+(6)  mihhaelo  203 1
+(12) bashemath  50 12
+(3)  cezar      50  2
+(1)  emmet      50  6
+(11) fiona      50 11
+(8)  nicodemus  50 11
+(5)  salomea    50  5
+(13) jock      101  7
+(14) leslie    102 15
+(15) louiza    102 12
+(4)  maud      102 16
+(10) romey     102 13
+(9)  arianna   103 10
+(2)  wilson    103 15
+(7)  silvio    202 11
+(6)  mihhaelo  203  8
+Aucune validation en attente
+(1) emmet 50 0
+(1) emmet 50 6
+- Justifiees
+  [19] 14/pm (j'aime pas ce prof)
+- Non-justifiees
+  [121]  3/pm
+  [16]  11/am (j'aime pas ce prof)
+  [75]  16/pm
+  [130] 22/pm (convoc. tribunal)
+  [23]  26/pm (convoc. police)
+(2) wilson 103 0
+(2) wilson 103 15
+- Justifiees
+  [106] 14/pm (permis de conduire)
+  [54]  20/pm (convoc. tribunal)
+  [11]  35/pm (convoc. police)
+- Non-justifiees
+  [107]  4/am (convoc. police)
+  [68]   4/pm (j'aime pas ce cours)
+  [10]   6/pm (convoc. police)
+  [99]   8/pm
+  [80]  12/pm
+  [8]   13/am
+  [92]  16/pm (convoc. tribunal)
+  [81]  22/pm (j'avais piscine)
+  [21]  23/am (Journee defense et citoyennete)
+  [20]  25/am
+  [5]   26/pm
+  [29]  37/am (ma chaine de velo a deraille)
+(3) cezar 50 0
+(3) cezar 50 2
+- Non-justifiees
+  [2]  20/am (convoc. police)
+  [34] 32/pm (Journee defense et citoyennete)
+(4) maud 102 1
+- En attente justificatif
+  [147] 1/pm
+(4) maud 102 16
+- Justifiees
+  [127] 12/pm (j'avais d'autres choses a faire)
+  [88]  29/am (j'avais d'autres choses a faire)
+  [46]  29/pm (j'avais d'autres choses a faire)
+  [1]   30/pm (convoc. police)
+  [131] 37/am (j'aime pas ce cours)
+- Non-justifiees
+  [147]  1/pm (permis de conduire)
+  [137]  5/am
+  [57]   5/pm (j'aime pas ce cours)
+  [58]  11/pm (j'aime pas ce cours)
+  [4]   13/pm
+  [97]  19/pm
+  [96]  22/am (certif. medical)
+  [98]  23/pm (certif. medical)
+  [102] 34/am
+  [15]  37/pm
+  [24]  39/am (convoc. police)
+(5) salomea 50 0
+(5) salomea 50 5
+- Justifiees
+  [3] 35/am (certif. medical)
+- Non-justifiees
+  [30] 14/am (j'aime pas ce prof)
+  [67] 17/am (ma chaine de velo a deraille)
+  [59] 25/am (ma chaine de velo a deraille)
+  [13] 37/pm (ma chaine de velo a deraille)
+(6) mihhaelo 203 1
+- En attente justificatif
+  [9] 1/am
+(6) mihhaelo 203 8
+- Non-justifiees
+  [9]    1/am (j'avais piscine)
+  [62]   2/am (certif. medical)
+  [51]   3/pm
+  [56]   5/am
+  [94]   7/am (j'aime pas ce cours)
+  [108] 24/pm (permis de conduire)
+  [37]  27/am (j'avais d'autres choses a faire)
+  [31]  30/am
+(7) silvio 202 0
+(7) silvio 202 11
+- Justifiees
+  [104]  9/am (convoc. tribunal)
+  [55]  28/pm (ma chaine de velo a deraille)
+- Non-justifiees
+  [93]   2/pm
+  [116]  3/pm (j'aime pas ce prof)
+  [122] 21/am (j'aime pas ce cours)
+  [6]   23/pm
+  [72]  25/am
+  [38]  27/am (convoc. police)
+  [33]  33/pm
+  [84]  39/pm
+  [18]  40/am (j'avais d'autres choses a faire)
+(8) nicodemus 50 1
+- En attente justificatif
+  [90] 1/pm
+(8) nicodemus 50 11
+- Justifiees
+  [47] 26/am (Journee defense et citoyennete)
+  [53] 29/pm (permis de conduire)
+- Non-justifiees
+  [90]   1/pm (permis de conduire)
+  [48]   3/pm (convoc. police)
+  [35]   7/pm
+  [103] 14/pm
+  [149] 17/pm (Journee defense et citoyennete)
+  [73]  22/am (j'aime pas ce prof)
+  [83]  32/am
+  [150] 38/pm (j'avais piscine)
+  [41]  40/pm
+(9) arianna 103 0
+(9) arianna 103 10
+- Justifiees
+  [117]  5/am (permis de conduire)
+  [112] 37/pm (ma chaine de velo a deraille)
+- Non-justifiees
+  [101]  5/pm (j'aime pas ce cours)
+  [132]  7/pm
+  [36]  10/am (j'aime pas ce cours)
+  [12]  13/am (ma chaine de velo a deraille)
+  [74]  19/pm (j'avais piscine)
+  [69]  32/am
+  [124] 36/pm (certif. medical)
+  [25]  39/pm
+(10) romey 102 0
+(10) romey 102 13
+- Justifiees
+  [14] 4/pm (j'avais d'autres choses a faire)
+- Non-justifiees
+  [76]   2/pm
+  [7]    3/pm
+  [125]  9/pm (ma chaine de velo a deraille)
+  [146] 11/pm (Journee defense et citoyennete)
+  [22]  13/pm (j'aime pas ce prof)
+  [141] 18/pm
+  [89]  19/am
+  [114] 21/am (Journee defense et citoyennete)
+  [110] 34/am (j'avais piscine)
+  [27]  37/am (ma chaine de velo a deraille)
+  [145] 38/am (j'avais piscine)
+  [52]  40/am
+(11) fiona 50 1
+- En attente justificatif
+  [105] 1/am
+(11) fiona 50 11
+- Non-justifiees
+  [105]  1/am
+  [95]   2/pm
+  [113]  4/am
+  [136] 12/pm (j'aime pas ce prof)
+  [28]  14/pm (permis de conduire)
+  [109] 19/am (ma chaine de velo a deraille)
+  [126] 22/am (Journee defense et citoyennete)
+  [142] 25/am (permis de conduire)
+  [26]  32/pm (ma chaine de velo a deraille)
+  [133] 36/am (permis de conduire)
+  [32]  38/pm (j'avais d'autres choses a faire)
+(12) bashemath 50 1
+- En attente justificatif
+  [115] 1/pm
+(12) bashemath 50 12
+- Justifiees
+  [82]  11/am (j'avais piscine)
+  [140] 24/pm (convoc. police)
+  [148] 37/am (j'avais piscine)
+- Non-justifiees
+  [115]  1/pm (j'aime pas ce cours)
+  [17]   2/am (convoc. police)
+  [128]  4/am
+  [49]  10/pm
+  [45]  19/pm (permis de conduire)
+  [118] 22/pm (convoc. tribunal)
+  [144] 27/pm (j'avais d'autres choses a faire)
+  [120] 29/pm (j'avais d'autres choses a faire)
+  [79]  33/am (certif. medical)
+(13) jock 101 0
+(13) jock 101 7
+- Justifiees
+  [39] 12/pm (convoc. tribunal)
+- Non-justifiees
+  [63]  2/pm
+  [42]  4/pm
+  [64]  9/am
+  [60] 24/am (ma chaine de velo a deraille)
+  [85] 28/pm (j'aime pas ce cours)
+  [50] 36/pm (j'aime pas ce prof)
+(14) leslie 102 0
+(14) leslie 102 15
+- Justifiees
+  [123] 27/am (j'aime pas ce prof)
+  [100] 40/pm (j'aime pas ce cours)
+- Non-justifiees
+  [134]  6/am
+  [143]  8/pm (convoc. tribunal)
+  [44]  11/am (convoc. tribunal)
+  [139] 15/am
+  [129] 15/pm (convoc. tribunal)
+  [65]  16/pm (j'avais d'autres choses a faire)
+  [111] 17/am
+  [71]  19/pm (certif. medical)
+  [154] 23/pm (convoc. police)
+  [152] 28/am
+  [78]  29/pm (j'aime pas ce prof)
+  [87]  32/am (j'aime pas ce prof)
+  [153] 37/pm
+(15) louiza 102 0
+(15) louiza 102 12
+- Justifiees
+  [91]   3/am (certif. medical)
+  [119] 24/am (j'aime pas ce cours)
+  [77]  25/am (permis de conduire)
+- Non-justifiees
+  [135]  2/pm
+  [61]  16/am
+  [138] 20/am (Journee defense et citoyennete)
+  [151] 21/am (ma chaine de velo a deraille)
+  [40]  22/pm (permis de conduire)
+  [66]  26/pm (convoc. police)
+  [43]  28/pm
+  [86]  30/am
+  [70]  35/am (ma chaine de velo a deraille)
+Aucun defaillant
+(12) bashemath  50 12
+(1)  emmet      50  6
+(11) fiona      50 11
+(8)  nicodemus  50 11
+(13) jock      101  7
+(14) leslie    102 15
+(15) louiza    102 12
+(4)  maud      102 16
+(10) romey     102 13
+(9)  arianna   103 10
+(2)  wilson    103 15
+(7)  silvio    202 11
+(6)  mihhaelo  203  8

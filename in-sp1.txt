@@ -1,0 +1,33 @@
+etudiants 1
+inscription grant 201
+inscription efigenia 40
+absence 2 2 pm
+inscription jenessa 30
+absence 2 30 am
+absence 1 41 pm
+inscription blejan 102
+absence 1 26 pm
+absence 1 1 qm
+etudiants 13
+absence 3 15 am
+absence 1 14 pm
+absence 1 41 pm
+absence 1 10 am
+absence 4 34 pm
+absence 1 25 am
+inscription evfemia 50
+absence 3 1 pm
+absence 3 1 pm
+absence 5 20 pm
+absence 1 41 pm
+absence 4 30 am
+absence 5 30 am
+absence 5 40 pm
+etudiants 34
+etudiants 6
+etudiants 27
+absence 5 5 pm
+etudiants 15
+etudiants 1
+etudiants 41
+exit

@@ -1,0 +1,91 @@
+etudiants 1
+validations
+inscription dakota 101
+inscription vi 203
+inscription kelda 40
+justificatif 0 10 j'ai mal au ventre
+validations
+inscription efigenia 102
+inscription temujin 30
+absence 3 35 pm
+inscription kelda 40
+validations
+inscription dakota 101
+absence 1 26 am
+absence 4 4 am
+absence 1 0 pm
+absence 1 33 pm
+inscription aiolos 202
+etudiants 3
+absence 5 16 am
+absence 4 3 am
+inscription fred 203
+absence 5 21 pm
+absence 7 23 pm
+absence 3 35 pm
+absence 3 1 am
+absence 3 11 pm
+absence 4 21 pm
+absence 7 30 pm
+justificatif 2 29 j'aime pas ce prof
+justificatif 11 25 certif. medical
+absence 7 17 pm
+absence 2 24 pm
+validation 2 ko
+justificatif 1 36 convoc. tribunal
+absence 3 12 pm
+absence 2 22 am
+justificatif 9 3 ma chaine de velo a deraille
+justificatif 4 34 Journee defense et citoyennete
+absence 2 16 pm
+validation 4 ok
+validations
+justificatif 15 14 convoc. tribunal
+justificatif 8 27 j'aime pas ce prof
+validations
+absence 2 35 pm
+validation 15 ko
+validations
+absence 5 31 am
+validation 9 ko
+validation 1 ok
+absence 6 39 pm
+absence 2 23 pm
+justificatif 5 21 permis de conduire
+justificatif 16 25 ma chaine de velo a deraille
+justificatif 7 25 j'avais piscine
+validation 15 ok
+absence 2 26 pm
+absence 6 3 am
+justificatif 23 7 j'avais d'autres choses a faire
+absence 7 18 pm
+justificatif 22 25 Journee defense et citoyennete
+absence 2 39 am
+etudiants 21
+justificatif 13 18 ma chaine de velo a deraille
+validations
+absence 7 22 am
+justificatif 14 25 certif. medical
+validations
+absence 7 12 am
+validations
+justificatif 19 32 certif. medical
+validation 19 ko
+absence 7 18 pm
+justificatif 23 2 permis de conduire
+absence 7 37 am
+justificatif 24 22 convoc. police
+justificatif 26 25 ma chaine de velo a deraille
+validation 26 ok
+validation 14 ok
+justificatif 28 43 j'aime pas ce prof
+absence 2 3 pm
+justificatif 22 25 Journee defense et citoyennete
+validation 13 ko
+justificatif 21 26 certif. medical
+validation 21 ko
+validation 16 ok
+etudiants 1
+etudiants 41
+validations
+exit

@@ -1,0 +1,59 @@
+Aucun inscrit
+Inscription enregistree (1)
+Inscription enregistree (2)
+Absence enregistree [1]
+Inscription enregistree (3)
+Absence enregistree [2]
+Date incorrecte
+Inscription enregistree (4)
+Absence enregistree [3]
+Demi-journee incorrecte
+(3) jenessa   30 0
+(2) efigenia  40 1
+(4) blejan   102 0
+(1) grant    201 0
+Absence enregistree [4]
+Absence enregistree [5]
+Date incorrecte
+Absence enregistree [6]
+Absence enregistree [7]
+Absence enregistree [8]
+Inscription enregistree (5)
+Absence enregistree [9]
+Absence deja connue
+Absence enregistree [10]
+Date incorrecte
+Absence enregistree [11]
+Absence enregistree [12]
+Absence enregistree [13]
+(3) jenessa   30 2
+(2) efigenia  40 2
+(5) evfemia   50 2
+(4) blejan   102 2
+(1) grant    201 4
+(3) jenessa   30 1
+(2) efigenia  40 1
+(5) evfemia   50 0
+(4) blejan   102 0
+(1) grant    201 0
+(3) jenessa   30 2
+(2) efigenia  40 1
+(5) evfemia   50 1
+(4) blejan   102 0
+(1) grant    201 4
+Absence enregistree [14]
+(3) jenessa   30 2
+(2) efigenia  40 1
+(5) evfemia   50 1
+(4) blejan   102 0
+(1) grant    201 2
+(3) jenessa   30 1
+(2) efigenia  40 0
+(5) evfemia   50 0
+(4) blejan   102 0
+(1) grant    201 0
+(3) jenessa   30 2
+(2) efigenia  40 2
+(5) evfemia   50 4
+(4) blejan   102 2
+(1) grant    201 4

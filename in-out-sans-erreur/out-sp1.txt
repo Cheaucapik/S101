@@ -1,0 +1,49 @@
+Aucun inscrit
+Inscription enregistree (1)
+Inscription enregistree (2)
+Absence enregistree [1]
+Absence enregistree [2]
+(2) carmen  102 1
+(1) mohamed 203 0
+Inscription enregistree (3)
+Absence enregistree [3]
+(2) carmen  102 2
+(3) fedele  202 1
+(1) mohamed 203 0
+(2) carmen  102 1
+(3) fedele  202 0
+(1) mohamed 203 0
+Absence enregistree [4]
+Inscription enregistree (4)
+Absence enregistree [5]
+Absence enregistree [6]
+Absence enregistree [7]
+Inscription enregistree (5)
+Absence enregistree [8]
+Absence enregistree [9]
+Absence enregistree [10]
+Absence enregistree [11]
+Absence enregistree [12]
+(4) cliodhna  50 0
+(2) carmen   102 2
+(5) zan      201 2
+(3) fedele   202 1
+(1) mohamed  203 1
+Absence enregistree [13]
+(4) cliodhna  50 1
+(2) carmen   102 1
+(5) zan      201 2
+(3) fedele   202 0
+(1) mohamed  203 0
+Absence enregistree [14]
+Absence enregistree [15]
+(4) cliodhna  50 0
+(2) carmen   102 0
+(5) zan      201 0
+(3) fedele   202 0
+(1) mohamed  203 0
+(4) cliodhna  50 4
+(2) carmen   102 3
+(5) zan      201 2
+(3) fedele   202 2
+(1) mohamed  203 4

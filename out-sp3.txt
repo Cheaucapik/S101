@@ -1,0 +1,385 @@
+Aucun inscrit
+Aucune validation en attente
+Identifiant incorrect
+Inscription enregistree (1)
+Inscription enregistree (2)
+Inscription enregistree (3)
+Date incorrecte
+Nom incorrect
+Inscription enregistree (4)
+Inscription enregistree (5)
+Absence enregistree [1]
+Absence enregistree [2]
+Inscription enregistree (6)
+Inscription enregistree (7)
+Absence deja connue
+Absence enregistree [3]
+Absence enregistree [4]
+Inscription enregistree (8)
+Nom incorrect
+Absence enregistree [5]
+Identifiant incorrect
+Absence enregistree [6]
+Justificatif enregistre
+(4) janos 103 0
+Absence enregistree [7]
+Inscription enregistree (9)
+Absence enregistree [8]
+Absence enregistree [9]
+Justificatif enregistre
+Absence enregistree [10]
+Absence enregistree [11]
+Justificatif enregistre
+(8) vi 201 1
+- En attente justificatif
+  [6] 19/pm
+Inscription enregistree (10)
+Absence enregistree [12]
+Absence enregistree [13]
+Absence deja connue
+Absence enregistree [14]
+Absence enregistree [15]
+(4) janos 103 2
+- Non-justifiees
+  [14] 23/am
+  [1]  30/pm (j'aime pas ce prof)
+Absence enregistree [16]
+Justificatif enregistre
+Justificatif enregistre
+Absence enregistree [17]
+Absence enregistree [18]
+Absence enregistree [19]
+Date incorrecte
+Justificatif enregistre
+(9)  dunja       30 2
+(5)  gwenda      50 1
+(3)  parris      50 1
+(2)  isadora    102 0
+(6)  kreszentia 102 2
+(4)  janos      103 0
+(1)  desta      201 3
+(8)  vi         201 2
+(10) deb        202 0
+(7)  salomea    202 1
+Absence enregistree [20]
+Absence enregistree [21]
+Absence enregistree [22]
+Absence enregistree [23]
+Justificatif enregistre
+Absence enregistree [24]
+Absence enregistree [25]
+Absence enregistree [26]
+Absence enregistree [27]
+Absence enregistree [28]
+[9]  (5) gwenda 50  4/am (j'avais piscine)
+[16] (9) dunja  30  5/pm (convoc. tribunal)
+[13] (9) dunja  30 16/am (certif. medical)
+(7) salomea 202 2
+- Non-justifiees
+  [8]  10/pm
+  [21] 22/pm
+Absence enregistree [29]
+Absence enregistree [30]
+Justificatif enregistre
+Absence enregistree [31]
+Absence enregistree [32]
+Justificatif enregistre
+(3) parris 50 3
+- En attente justificatif
+  [11] 27/pm
+- Non-justifiees
+  [32]  1/pm
+  [2]  16/am
+Validation enregistree
+Absence enregistree [33]
+Absence enregistree [34]
+Absence enregistree [35]
+Absence enregistree [36]
+Absence enregistree [37]
+Absence enregistree [38]
+Justificatif enregistre
+Absence enregistree [39]
+Justificatif enregistre
+Justificatif enregistre
+Absence enregistree [40]
+Absence enregistree [41]
+Absence enregistree [42]
+Justificatif enregistre
+Justificatif enregistre
+Absence deja connue
+Absence enregistree [43]
+(8) vi 201 4
+- En attente justificatif
+  [7] 30/am
+- Non-justifiees
+  [19]  8/am (permis de conduire)
+  [6]  19/pm
+  [28] 21/pm (j'aime pas ce cours)
+Validation enregistree
+Justificatif enregistre
+Justificatif enregistre
+Absence enregistree [44]
+Justificatif enregistre
+Justificatif enregistre
+Justificatif enregistre
+Absence enregistree [45]
+Absence enregistree [46]
+(1) desta 201 5
+- Non-justifiees
+  [18]  3/pm
+  [17] 15/pm
+  [15] 16/pm
+  [20] 18/am
+  [30] 23/pm
+Absence enregistree [47]
+Absence enregistree [48]
+Validation deja connue
+(9)  dunja       30 1
+(5)  gwenda      50 1
+(3)  parris      50 1
+(2)  isadora    102 0
+(6)  kreszentia 102 3
+(4)  janos      103 1
+(1)  desta      201 1
+(8)  vi         201 1
+(10) deb        202 1
+(7)  salomea    202 1
+Absence enregistree [49]
+Absence enregistree [50]
+Absence enregistree [51]
+Justificatif enregistre
+Absence enregistree [52]
+Absence enregistree [53]
+Validation enregistree
+Date incorrecte
+Absence enregistree [54]
+Absence enregistree [55]
+Absence enregistree [56]
+(5) gwenda 50 2
+- En attente validation
+  [9] 4/am (j'avais piscine)
+- Non-justifiees
+  [37] 18/pm
+Justificatif enregistre
+(3) parris 50 1
+- Non-justifiees
+  [32] 1/pm
+Absence enregistree [57]
+[48] (2)  isadora    102 26/am (Journee defense et citoyennete)
+[9]  (5)  gwenda      50  4/am (j'avais piscine)
+[43] (6)  kreszentia 102 29/am (ma chaine de velo a deraille)
+[24] (10) deb        202 33/pm (j'avais d'autres choses a faire)
+Justificatif enregistre
+Date incorrecte
+Absence enregistree [58]
+Absence enregistree [59]
+Justificatif enregistre
+Validation enregistree
+Absence enregistree [60]
+Justificatif enregistre
+Justificatif enregistre
+Validation enregistree
+Justificatif enregistre
+Absence enregistree [61]
+Justificatif enregistre
+Absence deja connue
+Absence enregistree [62]
+Validation enregistree
+Absence enregistree [63]
+Justificatif enregistre
+Justificatif enregistre
+(9)  dunja       30 5
+(5)  gwenda      50 2
+(3)  parris      50 5
+(2)  isadora    102 6
+(6)  kreszentia 102 4
+(4)  janos      103 3
+(1)  desta      201 8
+(8)  vi         201 3
+(10) deb        202 4
+(7)  salomea    202 3
+Absence enregistree [64]
+Justificatif enregistre
+Justificatif enregistre
+Justificatif enregistre
+Justificatif enregistre
+Validation enregistree
+Nom incorrect
+Absence enregistree [65]
+Justificatif enregistre
+Validation enregistree
+Justificatif enregistre
+Absence enregistree [66]
+(8) vi 201 3
+- En attente justificatif
+  [28] 21/pm
+- Non-justifiees
+  [19]  8/am (permis de conduire)
+  [6]  19/pm
+Absence enregistree [67]
+Justificatif enregistre
+Justificatif enregistre
+Absence enregistree [68]
+Absence enregistree [69]
+Justificatif enregistre
+Validation enregistree
+Justificatif enregistre
+Validation enregistree
+Justificatif enregistre
+Justificatif enregistre
+Absence enregistree [70]
+Absence enregistree [71]
+Validation enregistree
+Absence enregistree [72]
+Justificatif enregistre
+Absence enregistree [73]
+Validation enregistree
+Validation enregistree
+Justificatif enregistre
+Validation enregistree
+Validation deja connue
+Validation enregistree
+Validation enregistree
+Absence enregistree [74]
+Validation enregistree
+Justificatif enregistre
+Justificatif enregistre
+Validation enregistree
+Absence enregistree [75]
+Validation enregistree
+Justificatif enregistre
+Justificatif enregistre
+Validation enregistree
+(9)  dunja       30 0
+(5)  gwenda      50 0
+(3)  parris      50 1
+(2)  isadora    102 0
+(6)  kreszentia 102 0
+(4)  janos      103 0
+(1)  desta      201 0
+(8)  vi         201 0
+(10) deb        202 0
+(7)  salomea    202 0
+(9)  dunja       30  7
+(5)  gwenda      50  3
+(3)  parris      50  6
+(2)  isadora    102 10
+(6)  kreszentia 102  7
+(4)  janos      103 11
+(1)  desta      201 10
+(8)  vi         201  6
+(10) deb        202 11
+(7)  salomea    202  4
+Aucune validation en attente
+(1) desta 201 0
+(1) desta 201 10
+- Justifiees
+  [54] 15/am (j'aime pas ce prof)
+  [61] 27/am (j'avais piscine)
+- Non-justifiees
+  [18]  3/pm (ma chaine de velo a deraille)
+  [17] 15/pm (convoc. tribunal)
+  [15] 16/pm (ma chaine de velo a deraille)
+  [20] 18/am (convoc. police)
+  [30] 23/pm
+  [60] 25/pm
+  [75] 30/am (permis de conduire)
+  [64] 35/am (convoc. police)
+(2) isadora 102 0
+(2) isadora 102 10
+- Non-justifiees
+  [55] 17/am (j'avais piscine)
+  [27] 18/am (j'aime pas ce cours)
+  [63] 18/pm (Journee defense et citoyennete)
+  [38] 24/am
+  [48] 26/am (Journee defense et citoyennete)
+  [40] 27/pm
+  [72] 28/am (j'aime pas ce prof)
+  [23] 36/am (j'aime pas ce prof)
+  [41] 39/am
+  [70] 39/pm
+(3) parris 50 1
+- En attente justificatif
+  [32] 1/pm
+(3) parris 50 6
+- Non-justifiees
+  [32]  1/pm
+  [35] 15/am (convoc. police)
+  [2]  16/am
+  [33] 25/am
+  [11] 27/pm (convoc. tribunal)
+  [31] 33/am (certif. medical)
+(4) janos 103 0
+(4) janos 103 11
+- Justifiees
+  [45]  5/pm (certif. medical)
+  [68] 14/pm (convoc. tribunal)
+  [34] 32/am (j'aime pas ce prof)
+  [53] 34/am (permis de conduire)
+- Non-justifiees
+  [69]  3/pm
+  [66]  4/pm (Journee defense et citoyennete)
+  [56] 13/pm (convoc. tribunal)
+  [14] 23/am
+  [49] 28/pm (convoc. tribunal)
+  [1]  30/pm (j'aime pas ce prof)
+  [5]  40/am (j'avais piscine)
+(5) gwenda 50 0
+(5) gwenda 50 3
+- Justifiees
+  [9] 4/am (j'avais piscine)
+- Non-justifiees
+  [37] 18/pm (convoc. tribunal)
+  [62] 31/am
+(6) kreszentia 102 0
+(6) kreszentia 102 7
+- Non-justifiees
+  [4]   5/am
+  [46]  9/pm (j'aime pas ce prof)
+  [3]  13/am (j'avais piscine)
+  [25] 22/pm
+  [43] 29/am (ma chaine de velo a deraille)
+  [47] 34/am
+  [57] 35/am (permis de conduire)
+(7) salomea 202 0
+(7) salomea 202 4
+- Non-justifiees
+  [8]  10/pm (j'aime pas ce prof)
+  [44] 18/pm (j'aime pas ce cours)
+  [21] 22/pm
+  [29] 30/am (j'aime pas ce prof)
+(8) vi 201 0
+(8) vi 201 6
+- Non-justifiees
+  [19]  8/am (permis de conduire)
+  [6]  19/pm
+  [28] 21/pm (j'aime pas ce cours)
+  [7]  30/am
+  [39] 33/am
+  [42] 34/pm (certif. medical)
+(9) dunja 30 0
+(9) dunja 30 7
+- Justifiees
+  [16]  5/pm (convoc. tribunal)
+  [13] 16/am (certif. medical)
+  [22] 38/am (certif. medical)
+- Non-justifiees
+  [59] 11/pm
+  [58] 13/pm
+  [51] 26/am
+  [10] 39/am (convoc. tribunal)
+(10) deb 202 0
+(10) deb 202 11
+- Justifiees
+  [36] 8/am (certif. medical)
+- Non-justifiees
+  [74]  4/pm
+  [52]  9/pm
+  [71] 20/pm (ma chaine de velo a deraille)
+  [50] 23/am
+  [65] 23/pm
+  [67] 27/am
+  [12] 27/pm (j'avais d'autres choses a faire)
+  [24] 33/pm (j'avais d'autres choses a faire)
+  [26] 38/pm (convoc. tribunal)
+  [73] 40/am

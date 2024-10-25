@@ -1,0 +1,136 @@
+Aucun inscrit
+Aucune validation en attente
+Inscription enregistree (1)
+Inscription enregistree (2)
+Absence enregistree [1]
+Absence enregistree [2]
+Inscription enregistree (3)
+Inscription enregistree (4)
+Inscription enregistree (5)
+Inscription enregistree (6)
+Absence enregistree [3]
+Absence enregistree [4]
+Absence enregistree [5]
+Absence enregistree [6]
+Absence enregistree [7]
+Justificatif enregistre
+Absence enregistree [8]
+Absence enregistree [9]
+Aucune validation en attente
+Justificatif enregistre
+Validation enregistree
+Inscription enregistree (7)
+Aucune validation en attente
+Absence enregistree [10]
+Absence enregistree [11]
+Aucune validation en attente
+Justificatif enregistre
+Absence enregistree [12]
+Absence enregistree [13]
+Absence enregistree [14]
+Absence enregistree [15]
+Justificatif enregistre
+Absence enregistree [16]
+Absence enregistree [17]
+(5) garry     101 1
+(7) hildegard 101 0
+(4) janos     101 1
+(2) jock      101 0
+(6) deb       102 1
+(1) fedele    202 2
+(3) leslie    202 2
+Absence enregistree [18]
+Absence enregistree [19]
+[10] (2) jock 101 38/am (convoc. police)
+Absence enregistree [20]
+Absence enregistree [21]
+Absence enregistree [22]
+Absence enregistree [23]
+Absence enregistree [24]
+Absence enregistree [25]
+Justificatif enregistre
+Justificatif enregistre
+Justificatif enregistre
+Absence enregistree [26]
+Justificatif enregistre
+Absence enregistree [27]
+Justificatif enregistre
+[22] (1) fedele 202  2/pm (j'aime pas ce cours)
+[10] (2) jock   101 38/am (convoc. police)
+[15] (5) garry  101 29/am (Journee defense et citoyennete)
+Justificatif enregistre
+(5) garry     101 3
+(7) hildegard 101 2
+(4) janos     101 3
+(2) jock      101 1
+(6) deb       102 2
+(1) fedele    202 4
+(3) leslie    202 4
+Absence enregistree [28]
+Justificatif enregistre
+Justificatif enregistre
+Absence enregistree [29]
+Absence enregistree [30]
+Justificatif enregistre
+[22] (1) fedele 202  2/pm (j'aime pas ce cours)
+[10] (2) jock   101 38/am (convoc. police)
+[8]  (3) leslie 202  4/am (certif. medical)
+[15] (5) garry  101 29/am (Journee defense et citoyennete)
+[23] (6) deb    102 19/pm (permis de conduire)
+Validation enregistree
+Validation enregistree
+Validation enregistree
+Justificatif enregistre
+Absence enregistree [31]
+Absence enregistree [32]
+Validation enregistree
+[6]  (2) jock 101 28/am (convoc. police)
+[10] (2) jock 101 38/am (convoc. police)
+Validation enregistree
+Justificatif enregistre
+Justificatif enregistre
+Validation enregistree
+Justificatif enregistre
+Justificatif enregistre
+Absence enregistree [33]
+Absence enregistree [34]
+Justificatif enregistre
+Justificatif enregistre
+Validation enregistree
+Validation enregistree
+Validation enregistree
+Justificatif enregistre
+Validation enregistree
+Absence enregistree [35]
+Justificatif enregistre
+Justificatif enregistre
+Justificatif enregistre
+Validation enregistree
+Justificatif enregistre
+Absence enregistree [36]
+Validation enregistree
+Justificatif enregistre
+Validation enregistree
+Justificatif enregistre
+Validation enregistree
+Absence enregistree [37]
+Validation enregistree
+[16] (4) janos 101 30/am (j'avais d'autres choses a faire)
+Absence enregistree [38]
+Validation enregistree
+Justificatif enregistre
+(5) garry     101 0
+(7) hildegard 101 0
+(4) janos     101 0
+(2) jock      101 0
+(6) deb       102 0
+(1) fedele    202 0
+(3) leslie    202 0
+(5) garry     101 7
+(7) hildegard 101 4
+(4) janos     101 8
+(2) jock      101 5
+(6) deb       102 2
+(1) fedele    202 7
+(3) leslie    202 5
+Aucune validation en attente
